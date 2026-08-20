@@ -44,9 +44,19 @@ For maximum accuracy, enable the LLM judge (any OpenAI-compatible endpoint — O
 local model) via env vars: `ADHIKAAR_LLM_JUDGE=1`, `ADHIKAAR_LLM_API_KEY`, `ADHIKAAR_LLM_BASE_URL`,
 `ADHIKAAR_LLM_MODEL`. Keys are read from the environment only — never commit them.
 
+## Web scanner (frontend)
+
+`frontend/Scanner.dc.html` is the live scanner UI, wired to the backend `/scan` endpoint — the real
+engine runs the assessment and the result renders in the page. See [`frontend/README.md`](frontend/README.md)
+to run it (start the backend, serve the folder, open Scanner.dc.html). The API base is configurable via
+`window.ADHIKAAR_API` (defaults to `http://localhost:8000`).
+
 ## Layout
 
 ```
+frontend/
+  Scanner.dc.html       live scanner UI (calls the backend /scan)
+  *.dc.html, *.js       site pages + DC runtime + i18n
 backend/
   adhikaar_scan.py                CLI (crawl → probe → score → render)
   app/compliance/       catalog, crawler, engine, exposure, records, subdomains, renderers

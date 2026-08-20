@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<script src="i18n.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F3EEE4; font-family: 'Archivo', Helvetica, Arial, sans-serif; color: #1A1A1A; -webkit-font-smoothing: antialiased; }
+  a { color: #1A1A1A; text-decoration: none; }
+  a:hover { color: #1f9e57; }
+  ::selection { background: #33C06D; color: #fff; }
+  @keyframes scanpulse { 0%, 100% { opacity: 0.35 } 50% { opacity: 1 } }
+  details > summary::-webkit-details-marker { display: none; }
+</style>
+</helmet>
+
+<div style="background: #F3EEE4; min-height: 100vh" data-screen-label="Scanner">
+
+  <!-- ============ NAV ============ -->
+  <header style="position: sticky; top: 0; z-index: 50; padding: 18px 28px; background: rgba(243,238,228,0.88); backdrop-filter: blur(12px)">
+    <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 28px">
+      <a href="Adhikar Landing.dc.html" style="display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 20px; letter-spacing: -0.02em">
+        <img src="uploads/adhikar-logo.png" alt="" style="width: 30px; height: 31px; display: block" />
+        Adhikar
+      </a>
+      <div style="flex: 1; display: flex; justify-content: center; gap: 6px">
+        <a href="Adhikar Landing.dc.html#what" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navWhat }}</a>
+        <a href="Scanner.dc.html" style="font-size: 14.5px; font-weight: 600; padding: 8px 14px; border-radius: 99px; background: rgba(26,26,26,0.06); white-space: nowrap">{{ navScan }}</a>
+        <a href="The DPDP Act.dc.html" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navAct }}</a>
+        <a href="Managing Permissions.dc.html" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navGuide }}</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px">
+        <select value="{{ locale }}" onChange="{{ onLocaleChange }}" aria-label="Choose language" style="border: 1.5px solid rgba(26,26,26,0.25); background: transparent; border-radius: 99px; padding: 10px 14px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; color: #1A1A1A; max-width: 116px">
+          <sc-for list="{{ languages }}" as="lg" hint-placeholder-count="1"><option value="{{ lg.code }}">{{ lg.native }}</option></sc-for>
+        </select>
+        <a href="Adhikar Landing.dc.html#cta" style="background: #33C06D; color: #0d2a19; font-weight: 700; font-size: 15px; padding: 12px 24px; border-radius: 99px; display: inline-block" style-hover="background: #2bae61; color: #0d2a19">{{ navAdd }}</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ HERO + INPUT ============ -->
+  <section data-screen-label="Scanner input" style="padding: 56px 28px 56px; text-align: center">
+    <div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 22px">
+      <span style="display: inline-block; padding: 8px 18px; border-radius: 99px; border: 1.5px solid rgba(26,26,26,0.22); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase">{{ tScanBadge }}</span>
+      <h1 style="margin: 0; font-weight: 900; letter-spacing: -0.035em; line-height: 1.03; font-size: clamp(42px, 6vw, 80px)">{{ tScanH1 }}</h1>
+      <p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.6; color: rgba(26,26,26,0.72)">{{ tScanSub }}</p>
+
+      <div style="width: 100%; max-width: 640px; display: flex; flex-direction: column; gap: 12px; margin-top: 10px">
+        <div style="display: flex; gap: 10px; background: #FBF8F1; border: 1.5px solid rgba(26,26,26,0.15); border-radius: 99px; padding: 8px 8px 8px 24px; align-items: center">
+          <input value="{{ url }}" onChange="{{ onUrlChange }}" onKeyDown="{{ onUrlKey }}" placeholder="https://example.com" style="flex: 1; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: #1A1A1A; min-width: 0" />
+          <button onClick="{{ scanUrl }}" style="background: #33C06D; color: #0d2a19; font-weight: 700; font-size: 15.5px; padding: 13px 26px; border-radius: 99px; border: none; cursor: pointer; font-family: inherit; white-space: nowrap" style-hover="background: #2bae61">{{ tScanBtn }}</button>
+        </div>
+        <button onClick="{{ togglePaste }}" style="align-self: center; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600; color: rgba(26,26,26,0.6); text-decoration: underline; text-underline-offset: 3px" style-hover="color: #1f9e57">{{ pasteToggleLabel }}</button>
+        <sc-if value="{{ showPaste }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <textarea value="{{ policyText }}" onChange="{{ onPolicyChange }}" placeholder="Paste the privacy policy text here" rows="8" style="width: 100%; box-sizing: border-box; border: 1.5px solid rgba(26,26,26,0.15); border-radius: 20px; padding: 18px 20px; font-family: inherit; font-size: 14.5px; line-height: 1.6; background: #FBF8F1; color: #1A1A1A; outline: none; resize: vertical"></textarea>
+            <button onClick="{{ scanText }}" style="align-self: center; background: #1A1A1A; color: #F3EEE4; font-weight: 700; font-size: 15px; padding: 13px 28px; border-radius: 99px; border: none; cursor: pointer; font-family: inherit" style-hover="background: #333">{{ tAnalyse }}</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATUS ============ -->
+  <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+    <section style="padding: 0 28px 80px; text-align: center">
+      <div style="max-width: 560px; margin: 0 auto; background: #FBF8F1; border-radius: 32px; padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 16px">
+        <div style="display: flex; gap: 8px">
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #33C06D; animation: scanpulse 1.2s ease-in-out infinite"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #33C06D; animation: scanpulse 1.2s ease-in-out 0.2s infinite"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #33C06D; animation: scanpulse 1.2s ease-in-out 0.4s infinite"></span>
+        </div>
+        <p style="margin: 0; font-size: 16px; font-weight: 600">{{ statusLine }}</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ HONEST HANDOFF ============ -->
+  <sc-if value="{{ showHandoff }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Handoff" style="padding: 0 28px 80px">
+      <div style="max-width: 640px; margin: 0 auto; background: #FBF8F1; border: 1.5px solid rgba(240,162,75,0.5); border-radius: 32px; padding: 40px; display: flex; flex-direction: column; gap: 14px">
+        <span style="align-self: flex-start; padding: 6px 14px; border-radius: 99px; background: rgba(240,162,75,0.15); color: #b06f1e; font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase">{{ tHandoffChip }}</span>
+        <h2 style="margin: 0; font-weight: 800; letter-spacing: -0.02em; font-size: 26px">{{ tHandoffTitle }}</h2>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(26,26,26,0.72)">{{ handoffReason }}</p>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(26,26,26,0.72)">Open the site's privacy policy, copy the text, and paste it above. The analysis will run on the real text, not on assumptions.</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ RESULTS ============ -->
+  <sc-if value="{{ showResult }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Scan result" style="background: #FBF8F1; border-radius: 64px 64px 0 0; padding: 64px 28px 90px">
+      <div style="max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap">
+          <div>
+            <p style="margin: 0 0 6px; font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(26,26,26,0.5)">{{ tResultTitle }}</p>
+            <h2 style="margin: 0; font-weight: 900; letter-spacing: -0.025em; font-size: clamp(26px, 3.4vw, 38px); overflow-wrap: anywhere">{{ scanTarget }}</h2>
+          </div>
+          <div style="display: flex; gap: 6px; background: #EFE7D8; border-radius: 99px; padding: 5px">
+            <button onClick="{{ viewForYou }}" style="{{ forYouTabStyle }}">{{ tabYou }}</button>
+            <button onClick="{{ viewForSite }}" style="{{ forSiteTabStyle }}">{{ tabSite }}</button>
+          </div>
+        </div>
+
+        <div style="background: rgba(240,162,75,0.12); border-radius: 16px; padding: 14px 20px; font-size: 14px; line-height: 1.55; color: rgba(26,26,26,0.75)">
+          <strong>Coverage:</strong> {{ coverageNote }}
+        </div>
+
+        <!-- ======== FOR YOU (default) ======== -->
+        <sc-if value="{{ isForYou }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 22px">
+            <div style="background: #F3EEE4; border-radius: 28px; padding: 32px">
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 14px">
+                <h3 style="margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.015em">{{ tabYou }}</h3>
+                <span style="{{ riskChipStyle }}">{{ riskLevel }}</span>
+              </div>
+              <div style="height: 10px; border-radius: 99px; background: rgba(26,26,26,0.08); overflow: hidden; margin-bottom: 16px">
+                <div style="{{ riskBarStyle }}"></div>
+              </div>
+              <p style="margin: 0 0 8px; font-size: 15.5px; line-height: 1.65; color: rgba(26,26,26,0.72)">{{ riskSummary }}</p>
+              <p style="margin: 0; font-size: 12.5px; color: rgba(26,26,26,0.5)">A data-appetite judgement for you, based on sector norms. Separate from the DPDP compliance view, which is a statutory checklist for the site's owner. The two are never combined.</p>
+            </div>
+
+            <div style="background: #F3EEE4; border-radius: 28px; padding: 32px">
+              <h3 style="margin: 0 0 16px; font-size: 20px; font-weight: 800; letter-spacing: -0.015em">{{ tCollects }}</h3>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                <sc-for list="{{ collects }}" as="c" hint-placeholder-count="4">
+                  <span style="padding: 8px 16px; border-radius: 99px; background: #FBF8F1; border: 1px solid rgba(26,26,26,0.1); font-size: 14px; font-weight: 600">{{ c }}</span>
+                </sc-for>
+              </div>
+            </div>
+
+            <sc-if value="{{ hasBaseline }}" hint-placeholder-val="{{ false }}">
+              <div style="background: #F3EEE4; border-radius: 28px; padding: 32px">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap">
+                  <h3 style="margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.015em">{{ tBaseline }}</h3>
+                  <span style="padding: 4px 12px; border-radius: 99px; background: rgba(26,26,26,0.07); font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em; color: rgba(26,26,26,0.55)"; text-transform: uppercase">{{ tGuidance }}</span>
+                </div>
+                <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(26,26,26,0.72)">{{ baselineNote }}</p>
+              </div>
+            </sc-if>
+
+            <div style="background: #1A1A1A; color: #F3EEE4; border-radius: 28px; padding: 32px">
+              <h3 style="margin: 0 0 12px; font-size: 20px; font-weight: 800; letter-spacing: -0.015em; color: #F3EEE4">{{ tRights }}</h3>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(243,238,228,0.75)">{{ rightsNote }}</p>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== DPDP COMPLIANCE ======== -->
+        <sc-if value="{{ isForSite }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 22px">
+            <div style="background: #F3EEE4; border-radius: 28px; padding: 32px">
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 10px">
+                <h3 style="margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.015em">{{ tabSite }}</h3>
+                <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+                  <span style="{{ confChipStyle }}">{{ confLabel }}</span>
+                  <span style="{{ compChipStyle }}">{{ compBand }}</span>
+                </div>
+              </div>
+              <sc-if value="{{ hasScore }}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; align-items: baseline; gap: 10px; margin: 6px 0 10px">
+                  <span style="font-weight: 900; letter-spacing: -0.03em; font-size: 52px; line-height: 1">{{ scoreValue }}</span>
+                  <span style="font-size: 15px; font-weight: 600; color: rgba(26,26,26,0.5)">/ 100, on evaluable checks only</span>
+                </div>
+              </sc-if>
+              <sc-if value="{{ noScore }}" hint-placeholder-val="{{ false }}">
+                <p style="margin: 6px 0 10px; font-size: 16px; font-weight: 700; color: #96601a">No score emitted. We reached too little of this site to put a number on it, so you get the gap report only. A compliance number built on unread pages would be worse than no number.</p>
+              </sc-if>
+              <p style="margin: 0 0 6px; font-size: 15.5px; line-height: 1.6; color: rgba(26,26,26,0.72)">{{ compSummary }}</p>
+              <p style="margin: 0; font-size: 13px; line-height: 1.55; color: rgba(26,26,26,0.5)">A statutory checklist for the site's owner, grounded in the DPDP Act 2023 and DPDP Rules 2025. Checks we couldn't verify or that don't apply are excluded from the score, never counted against the site. Findings are gaps to close, not findings of violation. Adhikar is not the Data Protection Board. Compliance deadlines apply as notified, subject to phased commencement.</p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px">
+              <sc-for list="{{ checks }}" as="ck" hint-placeholder-count="5">
+                <details style="background: #F3EEE4; border-radius: 20px; padding: 0; overflow: hidden">
+                  <summary style="list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px; padding: 18px 24px">
+                    <span style="{{ ck.chipStyle }}">{{ ck.status }}</span>
+                    <span style="flex: 1; font-size: 15.5px; font-weight: 700">{{ ck.name }}</span>
+                    <span style="font-size: 12.5px; font-weight: 600; color: rgba(26,26,26,0.45); white-space: nowrap">{{ ck.citation }}</span>
+                  </summary>
+                  <div style="padding: 0 24px 20px; display: flex; flex-direction: column; gap: 10px">
+                    <p style="margin: 0; font-size: 14.5px; line-height: 1.6; color: rgba(26,26,26,0.72)">{{ ck.finding }}</p>
+                    <sc-if value="{{ ck.hasEvidence }}" hint-placeholder-val="{{ false }}">
+                      <blockquote style="margin: 0; border-left: 3px solid #33C06D; padding: 8px 16px; background: #FBF8F1; border-radius: 0 12px 12px 0; font-size: 14px; line-height: 1.6; color: rgba(26,26,26,0.75); font-style: italic">"{{ ck.evidence }}"<span style="display: block; margin-top: 6px; font-style: normal; font-size: 12px; font-weight: 600; color: rgba(26,26,26,0.45)">From: {{ ck.evidencePage }}</span></blockquote>
+                    </sc-if>
+                    <sc-if value="{{ ck.hasFix }}" hint-placeholder-val="{{ false }}">
+                      <p style="margin: 0; font-size: 14.5px; line-height: 1.6"><strong style="color: #1f9e57">Suggested fix:</strong> {{ ck.fix }}</p>
+                    </sc-if>
+                  </div>
+                </details>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <div style="border-top: 1.5px solid rgba(26,26,26,0.12); padding-top: 20px; display: flex; flex-direction: column; gap: 8px">
+          <p style="margin: 0; font-size: 14.5px; font-weight: 700">{{ tDisclaimer }}</p>
+          <p style="margin: 0; font-size: 13px; color: rgba(26,26,26,0.55)">{{ tStored }}</p>
+          <sc-if value="{{ showTranslatedNote }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0; font-size: 13px; font-weight: 600; color: #1f9e57">{{ tTranslated }}</p>
+          </sc-if>
+        </div>
+
+      </div>
+    </section>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const ADHIKAAR_API = (window.ADHIKAAR_API || 'http://localhost:8000');
+class Component extends DCLogic {
+  state = {
+    url: '', policyText: '', showPaste: false,
+    phase: 'idle', // idle | fetching | analyzing | handoff | done
+    handoffReason: '', view: 'you', result: null, scanTarget: '',
+    locale: 'en-IN', trans: {}, translatingFor: null
+  };
+
+  EXPECTED_PAGES = ['home', 'privacy notice', 'cookie policy', 'grievance contact', 'rights page'];
+
+  componentDidMount() {
+    try {
+      const u = new URLSearchParams(window.location.search).get('url');
+      if (u) { this.setState({ url: u }, () => this._runUrlScan(u)); }
+    } catch (e) {}
+    const seed = () => this.setState({ locale: window.ADHIKAR_I18N.getLocale() });
+    if (window.ADHIKAR_I18N) { seed(); }
+    else { const iv = setInterval(() => { if (window.ADHIKAR_I18N) { clearInterval(iv); seed(); } }, 50); }
+  }
+
+  tt(k) { const I = window.ADHIKAR_I18N; return I ? I.t(this.state.locale, k) : ''; }
+
+  // Layer 2: translate-after-reason. Only PUBLIC scan output is ever sent for
+  // translation; evidence quotes and citations stay verbatim in the original.
+  // (PII invariant: this scanner holds no user PII; a drafted rights letter
+  // must never pass through this function.)
+  async _ensureTranslation() {
+    const L = this.state.locale;
+    const I = window.ADHIKAR_I18N;
+    const r = this.state.result;
+    if (!I || !r || L === 'en-IN' || this.state.trans[L] || this.state.translatingFor === L) return;
+    const items = [r.risk.summary || '', r.risk.baseline || '', r.risk.rights || ''];
+    r.checks.forEach((c) => { items.push(c.finding || ''); items.push(c.fix || ''); });
+    const lang = I.LANGUAGES.find((l) => l.code === L);
+    this.setState({ translatingFor: L });
+    try {
+      const raw = await window.claude.complete({ messages: [{ role: 'user', content: 'Translate each string in the JSON array below into ' + lang.label + ' (' + lang.native + '), as used in India. Keep legal terms precise. Do NOT translate statutory citations like "s.6(1)", "Rule 3", the acronym DPDP, or anything inside double quotes. Empty strings stay empty. Return ONLY a JSON array of the same length and order, no commentary.\n\n' + JSON.stringify(items) }], max_tokens: 4000 });
+      const arr = JSON.parse(raw.replace(/^[\s\S]*?\[/, '[').replace(/\][^\]]*$/, ']'));
+      if (!Array.isArray(arr) || arr.length !== items.length) throw new Error('bad shape');
+      const tr = { summary: arr[0] || items[0], baseline: arr[1] || '', rights: arr[2] || items[2], findings: [], fixes: [] };
+      for (let i = 0; i < r.checks.length; i++) { tr.findings.push(arr[3 + i * 2] || ''); tr.fixes.push(arr[4 + i * 2] || ''); }
+      this.setState((s) => { const next = Object.assign({}, s.trans); next[L] = tr; return { trans: next, translatingFor: null }; });
+    } catch (e) {
+      // identity passthrough: keep showing English rather than a blank card
+      this.setState({ translatingFor: null });
+    }
+  }
+
+  chip(bg, fg) {
+    return { padding: '5px 14px', borderRadius: 99, background: bg, color: fg, fontSize: 12.5, fontWeight: 700, letterSpacing: '0.05em', whiteSpace: 'nowrap', flex: 'none' };
+  }
+
+  tab(active) {
+    return { border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 700, padding: '10px 18px', borderRadius: 99, background: active ? '#1A1A1A' : 'transparent', color: active ? '#F3EEE4' : '#1A1A1A', whiteSpace: 'nowrap' };
+  }
+
+  async _fetchPage(u) {
+    try {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 8000);
+      const res = await fetch(u, { signal: ctrl.signal });
+      clearTimeout(t);
+      if (!res.ok) return { ok: false, reason: 'returned ' + res.status };
+      const html = await res.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      doc.querySelectorAll('script,style,noscript,svg').forEach((n) => n.remove());
+      const text = (doc.body ? doc.body.textContent : '').replace(/\s+/g, ' ').trim();
+      return { ok: true, text: text, doc: doc };
+    } catch (e) {
+      return { ok: false, reason: 'blocked by the site or the browser (cross-site read)' };
+    }
+  }
+
+  async _runUrlScan(url) {
+    let target = (url || '').trim();
+    if (!target) return;
+    if (!/^https?:\/\//i.test(target)) target = 'https://' + target;
+    let host = target;
+    try { host = new URL(target).hostname; } catch (e) {}
+    this.setState({ phase: 'analyzing', scanTarget: host, result: null });
+    try {
+      const res = await fetch(ADHIKAAR_API + '/scan', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: target, org: host })
+      });
+      if (!res.ok) throw new Error('scan service returned ' + res.status);
+      const data = await res.json();
+      if (!data.risk || !Array.isArray(data.checks)) throw new Error('unexpected response shape');
+      this.setState({ phase: 'done', result: { risk: data.risk, checks: data.checks, coverage: data.coverage }, view: 'you' }, () => this._ensureTranslation());
+    } catch (e) {
+      this.setState({ phase: 'handoff', showPaste: true,
+        handoffReason: 'Could not reach the Adhikaar scan service (' + ADHIKAAR_API + '). Start the backend (uvicorn app.main:app --host 0.0.0.0 --port 8000) or set window.ADHIKAAR_API to your tunnel URL. ' + (e.message || '') });
+    }
+  }
+
+  _runTextScan() {
+    const t = (this.state.policyText || '').trim();
+    if (t.length < 200) {
+      this.setState({ phase: 'handoff', handoffReason: 'That text is too short to ground an honest analysis. Paste the full privacy policy so every finding can quote the real text.' });
+      return;
+    }
+    const unreached = this.EXPECTED_PAGES.filter((p) => p !== 'privacy notice').map((p) => ({ page: p, reason: 'only pasted text was provided' }));
+    this._analyze([{ page: 'privacy notice (pasted)', text: t }], this.state.scanTarget || this.state.url || 'Pasted policy text', { reached: ['privacy notice'], unreached: unreached });
+  }
+
+  async _analyze(texts, target, coverage) {
+    this.setState({ phase: 'analyzing', scanTarget: target });
+    let budget = 16000;
+    const per = Math.floor(budget / texts.length);
+    const corpus = texts.map((t) => '<PAGE name="' + t.page + '">\n' + t.text.slice(0, per) + '\n</PAGE>').join('\n');
+    const prompt = 'You are the analysis engine of Adhikar, a data-rights companion grounded in India\u2019s DPDP Act 2023 and DPDP Rules 2025 (G.S.R. 846(E)). Analyse ONLY the text inside <PAGE> tags. Never invent facts not present in it.\n\nReturn STRICT JSON (no markdown fences) with this shape:\n{\n "risk": { "level": "Low|Medium|High", "summary": "2 sentences: how much data this service collects relative to what a service of its kind plausibly needs (data-appetite, for the person browsing).", "collects": ["data categories actually named in the text, max 8"], "baseline": "1-2 sentences of sector-norm guidance, or empty string. Phrase as reasonable-expectation guidance, never as law.", "rights": "2 sentences on which DPDP rights (access s.11, correction/erasure s.12) are most useful against this policy." },\n "checks": [\n  {"id":"notice","title":"Notice present and itemised","citation":"Act s.5 + Rules r.3"},\n  {"id":"notice_means","title":"Notice states how to withdraw, exercise rights, complain","citation":"Rules r.3"},\n  {"id":"consent","title":"Consent free, specific, informed, unambiguous, affirmative","citation":"Act s.6(1)"},\n  {"id":"withdrawal","title":"Withdrawal as easy as giving","citation":"Act s.6(4)-(6)"},\n  {"id":"banner","title":"Consent/cookie banner: reject as easy as accept","citation":"Act s.6(1) + Rules r.4"},\n  {"id":"contact","title":"Business contact published","citation":"Act s.8(9)"},\n  {"id":"grievance","title":"Grievance-redressal mechanism","citation":"Act s.8(10)"},\n  {"id":"rights","title":"Rights mechanism (access, correct, erase, nominate)","citation":"Act ss.11-14"},\n  {"id":"retention","title":"Retention and erasure","citation":"Act s.8(7)-(8) + Rules r.8"},\n  {"id":"security","title":"Security safeguards and breach readiness","citation":"Act s.8(5)-(6) + Rules r.7"},\n  {"id":"children","title":"Children\u2019s data","citation":"Act s.9"},\n  {"id":"crossborder","title":"Cross-border transfer disclosure","citation":"Act s.16"}\n ]\n}\n\nFor EACH check add:\n- "verdict": "PASS" | "PARTIAL" | "GAP" | "COULD_NOT_VERIFY" | "NOT_APPLICABLE"\n- "evidence": for PASS/PARTIAL a real, COMPLETE clause quoted VERBATIM from a page (a full sentence or clause; never a heading, never a marketing/reassurance line, never a fragment cut mid-word); else null\n- "evidence_page": the PAGE name the evidence came from, else null\n- "finding": one honest sentence. GAP must read "We couldn\u2019t find X on the pages we read. Under [citation], ..." \u2014 never "violating" / "illegal" / "non-compliant". COULD_NOT_VERIFY must read like "We couldn\u2019t reach the page this lives on, so we can\u2019t assess it. This is not a finding against the site."\n- "fix": one concrete line for GAP/PARTIAL, else null\n\nVerdict rules:\n- A GAP requires positive evidence of absence: the page where the obligation would live IS in the provided pages, and it is not there. If that page is not provided, the verdict is COULD_NOT_VERIFY.\n- "contact" (s.8(9)) and "grievance" (s.8(10)) are SEPARATE: publishing a contact is not the same as having a redressal mechanism.\n- "children" is NOT_APPLICABLE unless the text suggests the service plausibly serves children. "crossborder" is NOT_APPLICABLE unless the text discloses or implies processing outside India.\n- "banner" behaviour usually cannot be verified from policy text alone: unless the text describes the banner, use COULD_NOT_VERIFY.\n\nPages provided: ' + coverage.reached.join(', ') + '. Pages NOT provided: ' + (coverage.unreached.map((u) => u.page).join(', ') || 'none') + '.\n\n' + corpus;
+    try {
+      const raw = await window.claude.complete({ messages: [{ role: 'user', content: prompt }], max_tokens: 8000 });
+      const cleaned = raw.replace(/^[\s\S]*?\{/, '{').replace(/\}[^}]*$/, '}');
+      const data = JSON.parse(cleaned);
+      if (!data.risk || !Array.isArray(data.checks)) throw new Error('bad shape');
+      // Evidence discipline: every PASS/PARTIAL evidence must be a verbatim substring of a fetched page
+      const norm = (s) => (s || '').replace(/\s+/g, ' ').replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D]/g, '"').toLowerCase().trim();
+      const corpusNorm = norm(texts.map((t) => t.text).join(' '));
+      data.checks.forEach((c) => {
+        if (['PASS', 'PARTIAL'].includes(c.verdict)) {
+          const ev = norm(c.evidence);
+          const tooShort = !ev || ev.split(' ').length < 4;
+          if (tooShort || corpusNorm.indexOf(ev) === -1) {
+            c.verdict = 'COULD_NOT_VERIFY';
+            c.evidence = null; c.evidence_page = null;
+            c.finding = 'The engine could not trace its evidence for this check back to the pages we read, so it is not assessed. This is not a finding against the site.';
+            c.fix = null;
+          }
+        }
+      });
+      this.setState({ phase: 'done', result: { risk: data.risk, checks: data.checks, coverage: coverage }, view: 'you' }, () => this._ensureTranslation());
+    } catch (e) {
+      console.warn('[adhikar] analysis failed:', e);
+      this.setState({ phase: 'handoff', handoffReason: 'The analysis engine could not return a grounded result this time. Nothing was scored. Try again, or paste a cleaner copy of the policy text.' });
+    }
+  }
+
+  renderVals() {
+    const st = this.state;
+    const r = st.result;
+    const busy = st.phase === 'fetching' || st.phase === 'analyzing';
+    const L = st.locale;
+    const I = window.ADHIKAR_I18N;
+    const tr = (L !== 'en-IN' && r && st.trans[L]) ? st.trans[L] : null;
+
+    let compBand = '', compSummary = '', compChipStyle = this.chip('rgba(26,26,26,0.08)', '#1A1A1A');
+    let confLabel = '', confChipStyle = this.chip('rgba(26,26,26,0.08)', 'rgba(26,26,26,0.6)');
+    let hasScore = false, noScore = false, scoreValue = 0;
+    let checks = []; let coverageNote = '';
+    if (r) {
+      const cov = r.coverage;
+      const nReached = cov.reached.length;
+      // confidence from coverage
+      const confidence = nReached >= 4 ? 'high' : nReached >= 2 ? 'medium' : 'low';
+      confLabel = 'Confidence: ' + confidence;
+      confChipStyle = confidence === 'high' ? this.chip('rgba(51,192,109,0.18)', '#1f7a47') : confidence === 'medium' ? this.chip('rgba(240,162,75,0.2)', '#96601a') : this.chip('rgba(26,26,26,0.08)', 'rgba(26,26,26,0.6)');
+
+      const evald = r.checks.filter((c) => ['PASS', 'PARTIAL', 'GAP'].includes(c.verdict));
+      const cnv = r.checks.filter((c) => c.verdict === 'COULD_NOT_VERIFY').length;
+      const na = r.checks.filter((c) => c.verdict === 'NOT_APPLICABLE').length;
+      const pass = evald.filter((c) => c.verdict === 'PASS').length;
+      const part = evald.filter((c) => c.verdict === 'PARTIAL').length;
+      const gaps = evald.filter((c) => c.verdict === 'GAP').length;
+      const frac = evald.length ? (pass + 0.5 * part) / evald.length : 0;
+
+      if (confidence === 'low' || !evald.length) {
+        noScore = true; hasScore = false;
+        compBand = 'Gap report only';
+        compChipStyle = this.chip('rgba(26,26,26,0.08)', '#1A1A1A');
+      } else {
+        hasScore = true; scoreValue = Math.round(frac * 100);
+        if (frac >= 0.8) { compBand = 'Largely aligned'; compChipStyle = this.chip('rgba(51,192,109,0.18)', '#1f7a47'); }
+        else if (frac >= 0.5) { compBand = 'Partial alignment'; compChipStyle = this.chip('rgba(240,162,75,0.2)', '#96601a'); }
+        else { compBand = 'Significant gaps'; compChipStyle = this.chip('rgba(217,83,79,0.15)', '#b13a36'); }
+      }
+      compSummary = evald.length + ' of ' + r.checks.length + ' checks were evaluable: ' + pass + ' pass, ' + part + ' partial, ' + gaps + ' gaps. Excluded from the score: ' + cnv + ' could not be verified, ' + na + ' not applicable.' + (confidence === 'medium' && hasScore ? ' Coverage was partial, so treat this number with its caveat, never bare.' : '');
+
+      coverageNote = 'We read ' + nReached + ' of ' + this.EXPECTED_PAGES.length + ' expected pages (' + (cov.reached.join(', ') || 'none') + ').' + (cov.unreached.length ? ' Unreached: ' + cov.unreached.map((u) => u.page + ' (' + u.reason + ')').join('; ') + '.' : '') + ' Checks that live on unreached pages are marked could-not-verify, never scored as gaps.';
+
+      const chipFor = (v) => v === 'PASS' ? this.chip('rgba(51,192,109,0.18)', '#1f7a47')
+        : v === 'PARTIAL' ? this.chip('rgba(240,162,75,0.2)', '#96601a')
+        : v === 'GAP' ? this.chip('rgba(217,83,79,0.15)', '#b13a36')
+        : this.chip('rgba(26,26,26,0.08)', 'rgba(26,26,26,0.6)');
+      checks = r.checks.map((c, ci) => ({
+        name: c.title, citation: c.citation, status: (c.verdict || '').replace(/_/g, ' '), chipStyle: chipFor(c.verdict),
+        finding: (tr && tr.findings[ci]) || c.finding || '',
+        hasEvidence: !!c.evidence, evidence: c.evidence || '', evidencePage: c.evidence_page || '',
+        hasFix: !!c.fix, fix: (tr && c.fix && tr.fixes[ci]) || c.fix || ''
+      }));
+    }
+
+    const riskLevel = r ? (r.risk.level || 'Medium') : '';
+    const riskColor = riskLevel === 'Low' ? '#33C06D' : riskLevel === 'High' ? '#D9534F' : '#F0A24B';
+    const riskWidth = riskLevel === 'Low' ? '22%' : riskLevel === 'High' ? '85%' : '55%';
+
+    return {
+      url: st.url, policyText: st.policyText, showPaste: st.showPaste,
+      pasteToggleLabel: st.showPaste ? this.tt('scan.hide') : this.tt('scan.paste'),
+      onUrlChange: (e) => this.setState({ url: e.target.value }),
+      onPolicyChange: (e) => this.setState({ policyText: e.target.value }),
+      onUrlKey: (e) => { if (e.key === 'Enter') this._runUrlScan(this.state.url); },
+      togglePaste: () => this.setState({ showPaste: !this.state.showPaste }),
+      scanUrl: () => this._runUrlScan(this.state.url),
+      scanText: () => this._runTextScan(),
+      busy: busy,
+      statusLine: st.phase === 'fetching' ? this.tt('scan.fetching') : this.tt('scan.reading'),
+      showHandoff: st.phase === 'handoff',
+      handoffReason: st.handoffReason,
+      showResult: st.phase === 'done' && !!r,
+      scanTarget: st.scanTarget,
+      coverageNote: coverageNote,
+      viewForYou: () => this.setState({ view: 'you' }),
+      viewForSite: () => this.setState({ view: 'site' }),
+      isForYou: st.view === 'you', isForSite: st.view === 'site',
+      forYouTabStyle: this.tab(st.view === 'you'),
+      forSiteTabStyle: this.tab(st.view === 'site'),
+      riskLevel: riskLevel ? riskLevel + ' risk' : '',
+      riskChipStyle: this.chip(riskColor + '26', riskLevel === 'Low' ? '#1f7a47' : riskLevel === 'High' ? '#b13a36' : '#96601a'),
+      riskBarStyle: { height: '100%', width: riskWidth, borderRadius: 99, background: riskColor },
+      riskSummary: r ? ((tr && tr.summary) || r.risk.summary) : '',
+      collects: r ? (r.risk.collects || []) : [],
+      hasBaseline: !!(r && r.risk.baseline),
+      baselineNote: r ? ((tr && tr.baseline) || r.risk.baseline || '') : '',
+      rightsNote: r ? ((tr && tr.rights) || r.risk.rights) : '',
+      compBand: compBand, compChipStyle: compChipStyle, compSummary: compSummary,
+      confLabel: confLabel, confChipStyle: confChipStyle,
+      hasScore: hasScore, noScore: noScore, scoreValue: scoreValue,
+      checks: checks,
+      locale: L,
+      languages: I ? I.LANGUAGES : [],
+      onLocaleChange: (e) => { const c = e.target.value; window.ADHIKAR_I18N.setLocale(c); this.setState({ locale: c }, () => this._ensureTranslation()); },
+      navWhat: this.tt('nav.what'), navScan: this.tt('nav.scan'), navAct: this.tt('nav.act'), navGuide: this.tt('nav.guide'), navAdd: this.tt('nav.add'),
+      tScanBadge: this.tt('scan.badge'), tScanH1: this.tt('scan.h1'), tScanSub: this.tt('scan.sub'), tScanBtn: this.tt('scan.btn'), tAnalyse: this.tt('scan.analyse'),
+      tHandoffChip: this.tt('handoff.chip'), tHandoffTitle: this.tt('handoff.title'),
+      tResultTitle: this.tt('result.title'), tabYou: this.tt('tab.you'), tabSite: this.tt('tab.site'),
+      tCollects: this.tt('result.collects'), tBaseline: this.tt('result.baseline'), tGuidance: this.tt('result.guidance'), tRights: this.tt('result.rights'),
+      tDisclaimer: this.tt('result.disclaimer'), tStored: this.tt('result.stored'),
+      showTranslatedNote: !!(r && L !== 'en-IN'),
+      tTranslated: st.translatingFor === L ? this.tt('scan.translating') : this.tt('result.translated')
+    };
+  }
+}
+
+</script>
+</body>
+</html>

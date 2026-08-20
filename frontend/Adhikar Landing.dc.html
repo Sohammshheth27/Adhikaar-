@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<script src="i18n.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F3EEE4; font-family: 'Archivo', Helvetica, Arial, sans-serif; color: #1A1A1A; -webkit-font-smoothing: antialiased; }
+  a { color: #1A1A1A; text-decoration: none; }
+  a:hover { color: #1f9e57; }
+  ::selection { background: #33C06D; color: #fff; }
+</style>
+</helmet>
+
+<div style="background: #F3EEE4; min-height: 100vh" data-screen-label="Adhikar Landing">
+
+  <!-- ============ NAV ============ -->
+  <header style="position: sticky; top: 0; z-index: 50; padding: 18px 28px; background: rgba(243,238,228,0.88); backdrop-filter: blur(12px)">
+    <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 28px">
+      <a href="#top" style="display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 20px; letter-spacing: -0.02em">
+        <img src="uploads/adhikar-logo.png" alt="" style="width: 30px; height: 31px; display: block" />
+        Adhikar
+      </a>
+      <div style="flex: 1; display: flex; justify-content: center; gap: 6px">
+        <a href="#what" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navWhat }}</a>
+        <a href="#see" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navHow }}</a>
+        <a href="Scanner.dc.html" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navScan }}</a>
+        <a href="The DPDP Act.dc.html" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navAct }}</a>
+        <a href="Managing Permissions.dc.html" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navGuide }}</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px">
+        <select value="{{ locale }}" onChange="{{ onLocaleChange }}" aria-label="Choose language" style="border: 1.5px solid rgba(26,26,26,0.25); background: transparent; border-radius: 99px; padding: 10px 14px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; color: #1A1A1A; max-width: 116px">
+          <sc-for list="{{ languages }}" as="lg" hint-placeholder-count="1"><option value="{{ lg.code }}">{{ lg.native }}</option></sc-for>
+        </select>
+        <a href="#cta" aria-label="Help" style="width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(26,26,26,0.25); display: grid; place-items: center" style-hover="border-color: #1A1A1A; color: #1A1A1A">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        </a>
+        <a href="#cta" style="background: #33C06D; color: #0d2a19; font-weight: 700; font-size: 15px; padding: 12px 24px; border-radius: 99px; display: inline-block" style-hover="background: #2bae61; color: #0d2a19">{{ navAdd }}</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" data-screen-label="Hero" style="padding: 56px 28px 110px; text-align: center">
+    <div style="max-width: 1120px; margin: 0 auto">
+      <p style="margin: 0 0 22px; font-size: 15px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(26,26,26,0.55)">{{ heroKicker }}</p>
+
+      <h1 style="margin: 0; font-weight: 900; letter-spacing: -0.035em; line-height: 1.02; font-size: clamp(56px, 8.5vw, 118px)">
+        <span style="display: block">{{ heroL1 }}</span>
+        <span style="display: inline-flex; align-items: center; gap: 22px; flex-wrap: wrap; justify-content: center">
+          <span style="display: inline-flex; align-items: center; justify-content: center; width: 250px; height: 110px; border-radius: 99px; overflow: hidden; vertical-align: middle; box-shadow: 0 18px 40px rgba(26,26,26,0.18); border: 1.5px solid rgba(26,26,26,0.15); background: #EFE7D8">
+            <img src="uploads/adhikar-logo.png" alt="Adhikar logo" style="height: 84px; width: auto; display: block" />
+          </span>
+          <span>{{ heroKnow }}</span>
+        </span>
+        <span style="display: block">{{ heroL3 }}</span>
+      </h1>
+
+      <p style="margin: 30px auto 0; max-width: 560px; font-size: clamp(19px, 2vw, 23px); font-weight: 400; line-height: 1.45; color: rgba(26,26,26,0.72)">{{ heroSub }}</p>
+
+      <div style="margin-top: 42px; display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap">
+        <a href="#cta" style="background: #33C06D; color: #0d2a19; font-weight: 700; font-size: 17px; padding: 17px 34px; border-radius: 99px; display: inline-block" style-hover="background: #2bae61; color: #0d2a19">{{ navAdd }}</a>
+        <a href="#what" style="display: inline-flex; align-items: center; gap: 12px; font-weight: 600; font-size: 17px; padding: 10px 10px 10px 24px; border: 1.5px solid rgba(26,26,26,0.3); border-radius: 99px" style-hover="border-color: #1A1A1A; color: #1A1A1A">
+          {{ heroCta2 }}
+          <span style="width: 40px; height: 40px; border-radius: 50%; background: #1A1A1A; color: #F3EEE4; display: grid; place-items: center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIVE SCANNER STRIP ============ -->
+  <section id="scan" data-screen-label="Scan strip" style="padding: 0 28px 90px">
+    <div style="max-width: 760px; margin: 0 auto; background: #1A1A1A; border-radius: 36px; padding: 44px 40px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px">
+      <h2 style="margin: 0; font-weight: 900; letter-spacing: -0.025em; font-size: clamp(24px, 3vw, 34px); color: #F3EEE4">{{ stripH }}</h2>
+      <p style="margin: 0; max-width: 460px; font-size: 15.5px; line-height: 1.55; color: rgba(243,238,228,0.6)">{{ stripSub }}</p>
+      <div style="width: 100%; max-width: 520px; display: flex; gap: 10px; background: #F3EEE4; border-radius: 99px; padding: 7px 7px 7px 22px; align-items: center">
+        <input value="{{ scanUrl }}" onChange="{{ onScanChange }}" onKeyDown="{{ onScanKey }}" placeholder="https://example.com" style="flex: 1; border: none; outline: none; background: transparent; font-family: inherit; font-size: 15.5px; color: #1A1A1A; min-width: 0" />
+        <button onClick="{{ goScan }}" style="background: #33C06D; color: #0d2a19; font-weight: 700; font-size: 15px; padding: 12px 24px; border-radius: 99px; border: none; cursor: pointer; font-family: inherit; white-space: nowrap" style-hover="background: #2bae61">{{ tScanBtn }}</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT IT DOES ============ -->
+  <section id="what" data-screen-label="What it does" style="background: #FBF8F1; border-radius: 64px 64px 0 0; padding: 90px 28px 100px">
+    <div style="max-width: 1200px; margin: 0 auto">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; margin-bottom: 56px">
+        <div style="max-width: 640px">
+          <span style="display: inline-block; padding: 8px 18px; border-radius: 99px; border: 1.5px solid rgba(26,26,26,0.22); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 22px">What it does</span>
+          <h2 style="margin: 0; font-weight: 900; letter-spacing: -0.03em; line-height: 1.06; font-size: clamp(36px, 4.6vw, 58px)">Made to protect you during everyday browsing.</h2>
+        </div>
+        <a href="#see" style="display: inline-flex; align-items: center; gap: 12px; font-weight: 600; font-size: 16px; flex: none" style-hover="color: #1f9e57">
+          Learn more
+          <span style="width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgba(26,26,26,0.25); display: grid; place-items: center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+          </span>
+        </a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px">
+        <div style="background: #EFE7D8; border-radius: 32px; padding: 38px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 250px">
+          <span style="width: 54px; height: 54px; border-radius: 50%; background: #1A1A1A; color: #F3EEE4; display: grid; place-items: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h12l4 4v12H4z"></path><path d="M8 11h8M8 15h8"></path></svg>
+          </span>
+          <h3 style="margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em">Read any policy</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(26,26,26,0.68)">Adhikar reads a site's real privacy policy in plain language. It tells you what the site collects, and whether that is more than it needs.</p>
+        </div>
+        <div style="background: #EFE7D8; border-radius: 32px; padding: 38px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 250px">
+          <span style="width: 54px; height: 54px; border-radius: 50%; background: #33C06D; color: #0d2a19; display: grid; place-items: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M2 12s3.5-6.5 10-6.5S22 12 22 12s-3.5 6.5-10 6.5S2 12 2 12z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          </span>
+          <h3 style="margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em">See what it's really doing</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(26,26,26,0.68)">It shows you the trackers and permissions a page uses right now. What they promise, next to what they actually do.</p>
+        </div>
+        <div style="background: #EFE7D8; border-radius: 32px; padding: 38px 34px; display: flex; flex-direction: column; gap: 18px; min-height: 250px">
+          <span style="width: 54px; height: 54px; border-radius: 50%; background: #1A1A1A; color: #F3EEE4; display: grid; place-items: center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          </span>
+          <h3 style="margin: 0; font-size: 24px; font-weight: 800; letter-spacing: -0.02em">Use your rights</h3>
+          <p style="margin: 0; font-size: 16px; line-height: 1.6; color: rgba(26,26,26,0.68)">It turns your rights under India's DPDP Act into action. Draft a request to access or erase your data, right on your device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ IMPACT ============ -->
+  <section id="impact" data-screen-label="Impact" style="background: #F3EEE4; border-radius: 50% 50% 0 0 / 90px 90px 0 0; margin-top: -1px; padding: 100px 28px 110px; text-align: center">
+    <div style="max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 26px">
+      <span style="display: inline-block; padding: 8px 18px; border-radius: 99px; border: 1.5px solid rgba(26,26,26,0.22); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase">The moment that matters</span>
+      <h2 style="margin: 0; font-weight: 900; letter-spacing: -0.03em; line-height: 1.08; font-size: clamp(34px, 4.4vw, 54px)">India gave you data rights. Adhikar helps you use them.</h2>
+      <div style="font-weight: 900; letter-spacing: -0.04em; line-height: 1; font-size: clamp(90px, 14vw, 190px); color: #33C06D">Nov 2025</div>
+      <p style="margin: 0; max-width: 520px; font-size: 18px; line-height: 1.6; color: rgba(26,26,26,0.68)">When India's DPDP Rules went live. Most people still can't read a privacy policy, let alone use those rights.</p>
+      <div style="width: 220px; height: 6px; border-radius: 99px; background: rgba(26,26,26,0.1); overflow: hidden">
+        <div style="height: 100%; width: 34%; border-radius: 99px; background: #F0A24B"></div>
+      </div>
+      <p style="margin: -12px 0 0; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(26,26,26,0.45)">Awareness is still catching up</p>
+    </div>
+  </section>
+
+  <!-- ============ SEE WHAT THEY SEE ============ -->
+  <section id="see" data-screen-label="See what they see" style="background: #1A1A1A; color: #F3EEE4; border-radius: 64px 64px 0 0; padding: 96px 28px 110px">
+    <div style="max-width: 1200px; margin: 0 auto">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; margin-bottom: 54px">
+        <div style="max-width: 620px">
+          <h2 style="margin: 0 0 18px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.06; font-size: clamp(36px, 4.6vw, 58px); color: #F3EEE4">See what they see.</h2>
+          <p style="margin: 0; font-size: 18px; line-height: 1.6; color: rgba(243,238,228,0.65)">The moment you open a page, ad companies start watching. Adhikar names them, live.</p>
+        </div>
+        <a href="#cta" style="display: inline-flex; align-items: center; gap: 12px; font-weight: 600; font-size: 16px; flex: none; color: #F3EEE4" style-hover="color: #33C06D">
+          See it in action
+          <span style="width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgba(243,238,228,0.3); display: grid; place-items: center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+          </span>
+        </a>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px">
+
+        <!-- Card 1: tracker list -->
+        <div style="background: #242424; border: 1px solid rgba(243,238,228,0.09); border-radius: 32px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+          <div style="background: #F3EEE4; color: #1A1A1A; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(26,26,26,0.5)">Watching this page</div>
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #fff; border-radius: 12px; padding: 10px 14px; font-size: 13px; font-weight: 600">doubleclick.net <span style="color: #D9534F; font-size: 11px; font-weight: 700">ADS</span></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #fff; border-radius: 12px; padding: 10px 14px; font-size: 13px; font-weight: 600">facebook.net <span style="color: #D9534F; font-size: 11px; font-weight: 700">ADS</span></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #fff; border-radius: 12px; padding: 10px 14px; font-size: 13px; font-weight: 600">hotjar.com <span style="color: #F0A24B; font-size: 11px; font-weight: 700">SESSION</span></div>
+            <div style="font-size: 12px; font-weight: 600; color: #D9534F">+ 11 more named live</div>
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 800; letter-spacing: -0.02em; color: #F3EEE4">The tracker list</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(243,238,228,0.6)">Every ad company on the page, named as it loads. Not a count. Names.</p>
+          </div>
+        </div>
+
+        <!-- Card 2: bank location catch -->
+        <div style="background: #242424; border: 1px solid rgba(243,238,228,0.09); border-radius: 32px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+          <div style="background: #F3EEE4; color: #1A1A1A; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 10px">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(26,26,26,0.5)">Caught in the act</div>
+            <div style="background: #fff; border-radius: 12px; padding: 14px; font-size: 13px; line-height: 1.5">
+              <span style="display: inline-block; padding: 3px 9px; border-radius: 99px; background: rgba(217,83,79,0.12); color: #D9534F; font-size: 11px; font-weight: 700; margin-bottom: 8px">LOCATION</span>
+              <div style="font-weight: 600">Your bank's site asked for your precise location.</div>
+              <div style="color: rgba(26,26,26,0.55); margin-top: 4px">Its policy never mentions it.</div>
+            </div>
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 800; letter-spacing: -0.02em; color: #F3EEE4">The bank catch</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(243,238,228,0.6)">When a site does something its own policy never mentions, Adhikar says so.</p>
+          </div>
+        </div>
+
+        <!-- Card 3: risk bar -->
+        <div style="background: #242424; border: 1px solid rgba(243,238,228,0.09); border-radius: 32px; padding: 28px; display: flex; flex-direction: column; gap: 20px">
+          <div style="background: #F3EEE4; color: #1A1A1A; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px">
+            <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(26,26,26,0.5)">Risk at a glance</div>
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 700">shopping site <span style="color: #D9534F">High</span></div>
+            <div style="height: 10px; border-radius: 99px; background: rgba(26,26,26,0.08); overflow: hidden"><div style="height: 100%; width: 82%; border-radius: 99px; background: linear-gradient(90deg, #33C06D, #F0A24B, #D9534F)"></div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 700">news site <span style="color: #F0A24B">Medium</span></div>
+            <div style="height: 10px; border-radius: 99px; background: rgba(26,26,26,0.08); overflow: hidden"><div style="height: 100%; width: 48%; border-radius: 99px; background: linear-gradient(90deg, #33C06D, #F0A24B)"></div></div>
+            <div style="display: flex; align-items: center; justify-content: space-between; font-size: 13px; font-weight: 700">library site <span style="color: #1f9e57">Low</span></div>
+            <div style="height: 10px; border-radius: 99px; background: rgba(26,26,26,0.08); overflow: hidden"><div style="height: 100%; width: 16%; border-radius: 99px; background: #33C06D"></div></div>
+          </div>
+          <div>
+            <h3 style="margin: 0 0 8px; font-size: 21px; font-weight: 800; letter-spacing: -0.02em; color: #F3EEE4">The risk bar</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: rgba(243,238,228,0.6)">One honest read of how much a page collects, before you type a thing.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section id="cta" data-screen-label="CTA" style="background: #1A1A1A; padding: 40px 28px 120px">
+    <div style="max-width: 720px; margin: 0 auto; background: #FBF8F1; border-radius: 40px; padding: 64px 48px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px">
+      <span style="width: 58px; height: 58px; border-radius: 50%; background: #33C06D; color: #0d2a19; display: grid; place-items: center">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"></path></svg>
+      </span>
+      <h2 style="margin: 0; font-weight: 900; letter-spacing: -0.03em; line-height: 1.08; font-size: clamp(34px, 4.4vw, 52px)">Take back your data rights.</h2>
+      <p style="margin: 0; max-width: 440px; font-size: 18px; line-height: 1.6; color: rgba(26,26,26,0.68)">Free. In your language. It reads to help you, and keeps nothing.</p>
+      <div style="margin-top: 14px; display: flex; justify-content: center; align-items: center; gap: 14px; flex-wrap: wrap">
+        <a href="#top" style="background: #33C06D; color: #0d2a19; font-weight: 700; font-size: 17px; padding: 17px 34px; border-radius: 99px; display: inline-block" style-hover="background: #2bae61; color: #0d2a19">Add to Chrome</a>
+        <a href="#see" style="display: inline-flex; align-items: center; gap: 12px; font-weight: 600; font-size: 17px; padding: 10px 10px 10px 24px; border: 1.5px solid rgba(26,26,26,0.3); border-radius: 99px" style-hover="border-color: #1A1A1A; color: #1A1A1A">
+          See it in action
+          <span style="width: 40px; height: 40px; border-radius: 50%; background: #1A1A1A; color: #F3EEE4; display: grid; place-items: center">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"></path></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background: #1A1A1A; color: rgba(243,238,228,0.7); padding: 0 28px 56px">
+    <div style="max-width: 1200px; margin: 0 auto; border-top: 1px solid rgba(243,238,228,0.12); padding-top: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap">
+      <div style="display: flex; align-items: center; gap: 14px">
+        <span style="display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; color: #F3EEE4">
+          <span style="width: 30px; height: 30px; border-radius: 50%; background: #F3EEE4; display: grid; place-items: center; overflow: hidden"><img src="uploads/adhikar-logo.png" alt="" style="width: 20px; height: 21px; display: block" /></span>
+          Adhikar
+        </span>
+        <span style="font-size: 14px; color: rgba(243,238,228,0.5)">Adhikar stays out of the way. It reads to help you, and keeps nothing.</span>
+      </div>
+      <div style="display: flex; gap: 24px; font-size: 14px; font-weight: 500">
+        <a href="#what" style="color: rgba(243,238,228,0.7)" style-hover="color: #33C06D">What it does</a>
+        <a href="#see" style="color: rgba(243,238,228,0.7)" style-hover="color: #33C06D">How it works</a>
+        <a href="The DPDP Act.dc.html" style="color: rgba(243,238,228,0.7)" style-hover="color: #33C06D">The DPDP Act</a>
+        <a href="Managing Permissions.dc.html" style="color: rgba(243,238,228,0.7)" style-hover="color: #33C06D">Permissions guide</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { scanUrl: '', locale: 'en-IN' };
+  componentDidMount() {
+    const seed = () => this.setState({ locale: window.ADHIKAR_I18N.getLocale() });
+    if (window.ADHIKAR_I18N) { seed(); }
+    else { const iv = setInterval(() => { if (window.ADHIKAR_I18N) { clearInterval(iv); seed(); } }, 50); }
+  }
+  tt(k) { const I = window.ADHIKAR_I18N; return I ? I.t(this.state.locale, k) : ''; }
+  renderVals() {
+    const go = () => {
+      const u = (this.state.scanUrl || '').trim();
+      window.location.href = 'Scanner.dc.html' + (u ? '?url=' + encodeURIComponent(u) : '');
+    };
+    const I = window.ADHIKAR_I18N;
+    return {
+      scanUrl: this.state.scanUrl,
+      onScanChange: (e) => this.setState({ scanUrl: e.target.value }),
+      onScanKey: (e) => { if (e.key === 'Enter') go(); },
+      goScan: go,
+      locale: this.state.locale,
+      languages: I ? I.LANGUAGES : [],
+      onLocaleChange: (e) => { const c = e.target.value; window.ADHIKAR_I18N.setLocale(c); this.setState({ locale: c }); },
+      navWhat: this.tt('nav.what'), navHow: this.tt('nav.how'), navScan: this.tt('nav.scan'), navAct: this.tt('nav.act'), navGuide: this.tt('nav.guide'), navAdd: this.tt('nav.add'),
+      heroKicker: this.tt('hero.kicker'), heroL1: this.tt('hero.l1'), heroKnow: this.tt('hero.know'), heroL3: this.tt('hero.l3'), heroSub: this.tt('hero.sub'), heroCta2: this.tt('hero.cta2'),
+      stripH: this.tt('strip.h'), stripSub: this.tt('strip.sub'), tScanBtn: this.tt('scan.btn')
+    };
+  }
+}
+</script>
+</body>
+</html>

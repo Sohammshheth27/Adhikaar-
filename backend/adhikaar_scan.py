@@ -1,9 +1,9 @@
 """
-run.py -- one-shot Adhikaar DPDP assessment: crawl -> probe exposure -> score -> report.
+adhikaar_scan.py -- one-shot Adhikaar DPDP assessment: crawl -> probe exposure -> score -> report.
 
 Usage:
-    python run.py https://example.org --org "Example Foundation" --out D:/Adhikaar/examples
-    python run.py https://example.org --static      # no-JS httpx fallback (no Playwright)
+    python adhikaar_scan.py https://example.org --org "Example Foundation" --out D:/Adhikaar/examples
+    python adhikaar_scan.py https://example.org --static      # no-JS httpx fallback (no Playwright)
 
 Produces <org>-Compliance.md and <org>-Recommendation.md in the output directory.
 """

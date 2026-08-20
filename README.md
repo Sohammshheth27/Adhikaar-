@@ -31,7 +31,7 @@ pip install -r requirements.txt
 python -m playwright install chromium
 
 # CLI: assess a site (offline judging, no API key needed)
-python run.py https://example.com --org "Example" --out reports/example
+python adhikaar_scan.py https://example.com --org "Example" --out reports/example
 
 # API: serve the engine
 uvicorn app.main:app --host 0.0.0.0 --port 8000
@@ -48,11 +48,11 @@ local model) via env vars: `ADHIKAAR_LLM_JUDGE=1`, `ADHIKAAR_LLM_API_KEY`, `ADHI
 
 ```
 backend/
-  run.py                CLI (crawl → probe → score → render)
+  adhikaar_scan.py                CLI (crawl → probe → score → render)
   app/compliance/       catalog, crawler, engine, exposure, records, subdomains, renderers
   app/rag/              semantic.py (fine-tuned model), llm_judge.py, retriever.py
   app/rag/models/adhikaar-minilm/   the deployed fine-tuned model (F1 0.73)
-  build_corpus.py / finetune.py / calibrate.py   the real-policy fine-tuning pipeline
+  adhikaar_build_corpus.py / adhikaar_finetune.py / adhikaar_calibrate.py   the real-policy fine-tuning pipeline
 ```
 
 ## Responsible use

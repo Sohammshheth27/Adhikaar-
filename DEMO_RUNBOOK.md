@@ -30,7 +30,7 @@ That's it — type a URL, hit Scan, the real engine runs and the UI fills in.
 With the backend running:
 ```powershell
 cd D:\Adhikaar\backend
-python demo_precache.py http://localhost:8000 https://siteA.com https://siteB.org
+python adhikaar_precache.py http://localhost:8000 https://siteA.com https://siteB.org
 ```
 Cached sites return **instantly** on stage and cannot hang.
 

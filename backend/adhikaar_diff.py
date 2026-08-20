@@ -1,9 +1,9 @@
 """
-diff.py -- compare two Adhikaar assessments of the same site over time and report what changed.
+adhikaar_diff.py -- compare two Adhikaar assessments of the same site over time and report what changed.
 
-    python diff.py old/report.json new/report.json
+    python adhikaar_diff.py old/report.json new/report.json
 
-Reads two report JSONs (written by run.py / batch.py) and prints the grade/adequacy movement,
+Reads two report JSONs (written by adhikaar_scan.py / adhikaar_batch.py) and prints the grade/adequacy movement,
 which findings were resolved, which are new, and which severities changed.
 """
 from __future__ import annotations

@@ -1,5 +1,5 @@
 """
-calibrate.py -- tune the semantic engine's thresholds against a labelled sentence set.
+adhikaar_calibrate.py -- tune the semantic engine's thresholds against a labelled sentence set.
 
 For each disclosure duty we hold realistic ways a real policy phrases it (POSITIVES) -- written
 differently from the exemplars in semantic.py, to test generalisation, not memorisation. Each
@@ -8,7 +8,7 @@ engine, sweep the decision threshold, and report precision / recall / F1 so the 
 from evidence, not guessed. We also flag duties whose exemplar separates positives from negatives
 poorly (candidates for a better exemplar).
 
-    python calibrate.py
+    python adhikaar_calibrate.py
 """
 from __future__ import annotations
 from app.rag import semantic

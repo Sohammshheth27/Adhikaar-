@@ -1,10 +1,10 @@
 """
-demo_precache.py -- warm the scan cache before a demo so targets return INSTANTLY on stage.
+adhikaar_precache.py -- warm the scan cache before a demo so targets return INSTANTLY on stage.
 
 Run this the night before (backend must already be running), against the SAME server the frontend
 uses. Each URL is scanned once and cached; on stage the UI replays it with zero risk of a live hang.
 
-    python demo_precache.py http://localhost:8000  https://siteA  https://siteB ...
+    python adhikaar_precache.py http://localhost:8000  https://siteA  https://siteB ...
 """
 import sys
 import json
@@ -23,7 +23,7 @@ def scan(base, url):
 
 def main():
     if len(sys.argv) < 3:
-        print("usage: python demo_precache.py <API_BASE> <url> [url ...]"); return
+        print("usage: python adhikaar_precache.py <API_BASE> <url> [url ...]"); return
     base, urls = sys.argv[1], sys.argv[2:]
     for u in urls:
         try:

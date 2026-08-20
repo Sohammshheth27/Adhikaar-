@@ -1,5 +1,5 @@
 """
-finetune.py -- fine-tune the local semantic model on the REAL-policy corpus from build_corpus.py.
+adhikaar_finetune.py -- fine-tune the local semantic model on the REAL-policy corpus from adhikaar_build_corpus.py.
 
 Inference in semantic.py scores each policy sentence by cosine to a per-duty exemplar. We fine-tune the
 same bi-encoder so real disclosure sentences sit close to their duty's exemplar and unrelated sentences
@@ -10,8 +10,8 @@ path stays identical (fast, offline, no API) but more accurate.
 Self-contained manual training loop: needs only torch + sentence-transformers (no HF Trainer / datasets
 / accelerate), so it is robust across library versions.
 
-    python finetune.py corpus.jsonl            # train, then it prints held-out metrics
-    python calibrate.py                        # re-check thresholds on the tuned model
+    python adhikaar_finetune.py adhikaar_corpus.jsonl            # train, then it prints held-out metrics
+    python adhikaar_calibrate.py                        # re-check thresholds on the tuned model
 
 No synthetic text: every training sentence is copied verbatim from a crawled real policy.
 """
@@ -54,7 +54,7 @@ def main():
 
     data = _load(args.corpus)
     if len(data) < 20:
-        print(f"only {len(data)} pairs -- crawl more real policies with build_corpus.py first."); return
+        print(f"only {len(data)} pairs -- crawl more real policies with adhikaar_build_corpus.py first."); return
 
     cut = max(1, int(len(data) * (1 - args.val_frac)))
     train, val = data[:cut], data[cut:]

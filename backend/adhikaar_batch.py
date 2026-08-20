@@ -1,8 +1,8 @@
 """
-batch.py -- portfolio mode. Assess a list of sites and emit per-site reports plus a
+adhikaar_batch.py -- portfolio mode. Assess a list of sites and emit per-site reports plus a
 cross-site summary (CSV + Markdown), for auditing a sector or a research campaign.
 
-    python batch.py sites.txt --out ../examples/portfolio [--static] [--budget 12]
+    python adhikaar_batch.py sites.txt --out ../examples/portfolio [--static] [--budget 12]
 
 sites.txt: one entry per line, "url" or "url,Org Name". Blank lines and # comments ignored.
 """

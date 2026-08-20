@@ -20,7 +20,7 @@ _reference/
 backend/app/rag/models/adhikaar-minilm_073/
 backend/app/rag/models/adhikaar-minilm_v1_backup/
 
-# --- Fine-tuning intermediates (keep corpus.jsonl; drop the working parts) ---
+# --- Fine-tuning intermediates (keep adhikaar_corpus.jsonl; drop the working parts) ---
 backend/corpus_part1.jsonl
 backend/corpus_part2.jsonl
 backend/corpus_full.jsonl

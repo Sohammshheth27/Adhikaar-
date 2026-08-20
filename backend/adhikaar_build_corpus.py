@@ -1,12 +1,12 @@
 """
-build_corpus.py -- build a fine-tuning corpus from REAL privacy policies (no synthetic text).
+adhikaar_build_corpus.py -- build a fine-tuning corpus from REAL privacy policies (no synthetic text).
 
 For each real site, crawl its policy, have the LLM judge label every duty with the verbatim evidence
 sentence, and emit (sentence, duty_id, label) training pairs:
   * positive: the evidence sentence for a duty the policy discloses;
   * negatives: that same sentence paired with OTHER duties, plus other policy sentences for the duty.
 
-    ADHIKAAR_LLM_JUDGE=1  ADHIKAAR_LLM_API_KEY=...  python build_corpus.py sites.txt --out corpus.jsonl
+    ADHIKAAR_LLM_JUDGE=1  ADHIKAAR_LLM_API_KEY=...  python adhikaar_build_corpus.py sites.txt --out adhikaar_corpus.jsonl
 
 sites.txt: one URL per line (site or a direct policy URL). Uses your API key only to LABEL real text.
 """
@@ -48,7 +48,7 @@ def _sentences(text: str) -> list[str]:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("sites")
-    ap.add_argument("--out", default="corpus.jsonl")
+    ap.add_argument("--out", default="adhikaar_corpus.jsonl")
     ap.add_argument("--neg-per-pos", type=int, default=3)
     args = ap.parse_args()
 

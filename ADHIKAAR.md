@@ -56,13 +56,13 @@ Each requirement in `catalog.json` carries: `id`, `category`, `requirement`, `fi
 
 ```
 backend/
-├── run.py                 CLI: crawl → probe → score → render (md+pdf+json)
-├── build_corpus.py        Build a fine-tuning corpus from REAL policies (LLM-labelled)
-├── finetune.py            Fine-tune the local semantic model on the real-policy corpus
-├── calibrate.py           Sweep thresholds on the GOLD set; report precision/recall/F1
-├── iterate.py             Convergence harness (crawl-cache + diff vs a reference report)
-├── batch.py               Portfolio mode (assess many sites)
-├── diff.py                Re-assessment diff (what changed since last scan)
+├── adhikaar_scan.py                 CLI: crawl → probe → score → render (md+pdf+json)
+├── adhikaar_build_corpus.py        Build a fine-tuning corpus from REAL policies (LLM-labelled)
+├── adhikaar_finetune.py            Fine-tune the local semantic model on the real-policy corpus
+├── adhikaar_calibrate.py           Sweep thresholds on the GOLD set; report precision/recall/F1
+├── adhikaar_iterate.py             Convergence harness (crawl-cache + diff vs a reference report)
+├── adhikaar_batch.py               Portfolio mode (assess many sites)
+├── adhikaar_diff.py                Re-assessment diff (what changed since last scan)
 ├── requirements.txt
 └── app/
     ├── main.py            FastAPI entrypoint
@@ -159,9 +159,9 @@ Per scan, in the output directory:
 
 The offline semantic model was fine-tuned on **actual published privacy policies**, with an LLM as the expert labeller:
 
-1. **`build_corpus.py`** — crawls a list of real strong policies; an LLM labels each of the 47 duties with the **verbatim** evidence sentence; emits `(sentence, duty, label)` training pairs (positive = evidence; negatives = that sentence vs other duties, and other sentences vs the duty).
-2. **`finetune.py`** — self-contained PyTorch loop (cosine + MSE), fine-tunes `all-MiniLM-L6-v2` so real disclosure sentences sit close to their duty exemplar. Saves to `app/rag/models/adhikaar-minilm/` (auto-loaded by `semantic.py`).
-3. **`calibrate.py`** — sweeps thresholds on an independent hand-written GOLD set; reports precision/recall/F1.
+1. **`adhikaar_build_corpus.py`** — crawls a list of real strong policies; an LLM labels each of the 47 duties with the **verbatim** evidence sentence; emits `(sentence, duty, label)` training pairs (positive = evidence; negatives = that sentence vs other duties, and other sentences vs the duty).
+2. **`adhikaar_finetune.py`** — self-contained PyTorch loop (cosine + MSE), fine-tunes `all-MiniLM-L6-v2` so real disclosure sentences sit close to their duty exemplar. Saves to `app/rag/models/adhikaar-minilm/` (auto-loaded by `semantic.py`).
+3. **`adhikaar_calibrate.py`** — sweeps thresholds on an independent hand-written GOLD set; reports precision/recall/F1.
 
 **Provider-agnostic labeller** (`llm_judge.py`): Anthropic, OpenAI, **Gemini**, **Groq**, or a **local** model (Ollama/llama.cpp) via `ADHIKAAR_LLM_BASE_URL`. Rate-limit-aware retry (honors `Retry-After` / "retry in Xs"); reasoning-model token handling (`ADHIKAAR_LLM_MAXTOK`, `ADHIKAAR_LLM_REASONING`).
 
@@ -183,7 +183,7 @@ The offline semantic model was fine-tuned on **actual published privacy policies
 **Generate a report (offline judging, no key needed):**
 ```powershell
 cd D:\Adhikaar\backend
-python run.py https://example.com --org "Example" --out reports\example --budget 12
+python adhikaar_scan.py https://example.com --org "Example" --out reports\example --budget 12
 ```
 
 **Maximum accuracy (add the LLM judge on top):**
@@ -191,23 +191,23 @@ python run.py https://example.com --org "Example" --out reports\example --budget
 $env:ADHIKAAR_LLM_JUDGE="1"; $env:ADHIKAAR_LLM_PROVIDER="openai"
 $env:ADHIKAAR_LLM_BASE_URL="https://generativelanguage.googleapis.com/v1beta/openai"
 $env:ADHIKAAR_LLM_API_KEY="<key>"; $env:ADHIKAAR_LLM_MODEL="gemini-3.6-flash"
-python run.py https://example.com --org "Example" --out reports\example
+python adhikaar_scan.py https://example.com --org "Example" --out reports\example
 ```
 
 **Improve the model further** (crawl real policies → label → fine-tune → calibrate):
 ```powershell
-python build_corpus.py policies_seed.txt --out corpus.jsonl   # run SOLO (free tiers rate-limit)
-python finetune.py corpus.jsonl
-python calibrate.py
+python adhikaar_build_corpus.py adhikaar_policies.txt --out adhikaar_corpus.jsonl   # run SOLO (free tiers rate-limit)
+python adhikaar_finetune.py adhikaar_corpus.jsonl
+python adhikaar_calibrate.py
 ```
 
-**`run.py` flags:** `--org`, `--out`, `--budget` (default 12), `--static` (httpx fallback), `--fuzz`, `--no-exposure`.
+**`adhikaar_scan.py` flags:** `--org`, `--out`, `--budget` (default 12), `--static` (httpx fallback), `--fuzz`, `--no-exposure`.
 
 ---
 
 ## 11. Operational notes
 
-- **Gemini free tier:** ~20 req/min, quota is **per Google account** (a new project on the same account shares it). Run `build_corpus.py` **solo** — concurrent calls starve its retries.
+- **Gemini free tier:** ~20 req/min, quota is **per Google account** (a new project on the same account shares it). Run `adhikaar_build_corpus.py` **solo** — concurrent calls starve its retries.
 - **Groq free tier:** fast, but tight tokens-per-minute; `gpt-oss` are *reasoning* models — set `ADHIKAAR_LLM_MAXTOK=8000` and `ADHIKAAR_LLM_REASONING=low` or they emit zero answer tokens.
 - **Offline training:** set `HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1` to skip HuggingFace network stalls (the base model is cached).
 - **Dependencies:** `pydantic`, `httpx`, `playwright`, `fastapi`, `uvicorn`, `reportlab`, `sentence-transformers`, `torch` (all installed). `subfinder` optional.

@@ -1,9 +1,9 @@
 """
-iterate.py -- convergence harness. Crawl once (cached), then repeatedly score+render and
+adhikaar_iterate.py -- convergence harness. Crawl once (cached), then repeatedly score+render and
 diff against the reference reports until they match.
 
-    python iterate.py crawl        # live-crawl cyberpeace.org -> crawl_cache.json (do once)
-    python iterate.py compare      # load cache -> engine -> render -> gap report vs reference
+    python adhikaar_iterate.py crawl        # live-crawl cyberpeace.org -> crawl_cache.json (do once)
+    python adhikaar_iterate.py compare      # load cache -> engine -> render -> gap report vs reference
 """
 from __future__ import annotations
 import sys, json, re

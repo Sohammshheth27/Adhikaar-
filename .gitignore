@@ -1,0 +1,47 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# --- Secrets / local env (never commit keys) ---
+.env
+*.key
+secrets.*
+
+# --- Third-party assessment outputs (do not publish other orgs' reports) ---
+backend/reports/
+_reference/
+
+# --- Redundant model backup (the deployed model app/rag/models/adhikaar-minilm/ IS committed) ---
+backend/app/rag/models/adhikaar-minilm_073/
+backend/app/rag/models/adhikaar-minilm_v1_backup/
+
+# --- Fine-tuning intermediates (keep corpus.jsonl; drop the working parts) ---
+backend/corpus_part1.jsonl
+backend/corpus_part2.jsonl
+backend/corpus_full.jsonl
+backend/failed_seed.txt
+backend/_test_*.txt
+backend/_test_*.jsonl
+backend/_razorpay.txt
+
+# --- HuggingFace / model cache ---
+.cache/
+*.output
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Third-party crawl screenshots
+_shots/
+backend/_shots/
+
+# Real-org assessment outputs (do not publish named third-party reports)
+examples/

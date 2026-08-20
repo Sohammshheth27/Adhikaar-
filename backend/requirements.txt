@@ -1,0 +1,8 @@
+pydantic>=2.0
+httpx>=0.24
+playwright>=1.40
+fastapi>=0.110
+uvicorn>=0.27
+reportlab>=4.0
+sentence-transformers>=2.2
+# Optional: subfinder (ProjectDiscovery) on PATH enables richer passive subdomain discovery

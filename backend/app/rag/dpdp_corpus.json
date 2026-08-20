@@ -1,0 +1,37 @@
+{
+  "_note": "DPDP provision corpus keyed by anchor. Text is a faithful representation of each provision of the Digital Personal Data Protection Act, 2023 (Act 22 of 2023) and the Digital Personal Data Protection Rules, 2025 (G.S.R. 846(E)). VERIFY against India Code / the Gazette before external publication (citation-integrity discipline).",
+  "act": {
+    "S.4": "A person may process the personal data of a Data Principal only in accordance with the provisions of this Act and for a lawful purpose for which the Data Principal has given her consent, or for certain legitimate uses.",
+    "S.5": "Every request for consent shall be, or shall be accompanied or preceded by, a notice given by the Data Fiduciary to the Data Principal informing her of the personal data proposed to be processed and the purpose of such processing, the manner in which she may exercise her rights, and the manner of making a complaint to the Board.",
+    "S.6": "The consent given by the Data Principal shall be free, specific, informed, unconditional and unambiguous with a clear affirmative action, and shall signify agreement to the processing of her personal data for the specified purpose and be limited to such personal data as is necessary for such specified purpose.",
+    "S.6(1)": "Consent shall be limited to such personal data as is necessary for the specified purpose.",
+    "S.6(4)": "The Data Principal may withdraw her consent at any time, with the ease of doing so being comparable to the ease with which such consent was given.",
+    "S.6(6)": "Every Data Principal shall have the right to access records relating to the consent given by her and the processing carried out on its basis.",
+    "S.6(7)": "The Data Principal may give, manage, review or withdraw her consent to the Data Fiduciary through a Consent Manager.",
+    "S.7": "A Data Fiduciary may process personal data of a Data Principal for the legitimate uses specified in this section, including where the Data Principal has voluntarily provided her personal data for a specified purpose and has not indicated that she does not consent to such use.",
+    "S.8(2)": "A Data Fiduciary may engage, appoint, use or otherwise involve a Data Processor to process personal data on its behalf only under a valid contract.",
+    "S.8(3)": "Where personal data is likely to be used to make a decision that affects the Data Principal, or to be disclosed to another Data Fiduciary, the Data Fiduciary shall ensure the completeness, accuracy and consistency of such personal data.",
+    "S.8(5)": "A Data Fiduciary shall protect personal data in its possession or under its control by taking reasonable security safeguards to prevent a personal data breach.",
+    "S.8(6)": "In the event of a personal data breach, the Data Fiduciary shall give the Board and each affected Data Principal intimation of such breach in such form and manner as may be prescribed.",
+    "S.8(7)": "A Data Fiduciary shall, unless retention is necessary for compliance with any law, erase personal data upon the Data Principal withdrawing her consent or as soon as it is reasonable to assume that the specified purpose is no longer being served, whichever is earlier.",
+    "S.8(7)-(8)": "A Data Fiduciary shall erase personal data as soon as the purpose is no longer served and retention is not necessary for legal compliance, and shall cause its Data Processor to do the same.",
+    "S.8(9)": "A Data Fiduciary shall publish, in such manner as may be prescribed, the business contact information of a Data Protection Officer, if applicable, or of a person able to answer on its behalf the questions of a Data Principal about the processing of her personal data.",
+    "S.8(9)-(10), S.13": "A Data Fiduciary shall publish the contact information of a Data Protection Officer or a person able to answer a Data Principal's questions, and shall establish a readily available means of grievance redressal.",
+    "S.9": "A Data Fiduciary shall, before processing any personal data of a child or a person with a disability who has a lawful guardian, obtain verifiable consent of the parent or lawful guardian, and shall not undertake tracking or behavioural monitoring of children or targeted advertising directed at children.",
+    "S.10": "The Central Government may notify any Data Fiduciary or class of Data Fiduciaries as a Significant Data Fiduciary, who shall appoint a Data Protection Officer, appoint an independent data auditor, and undertake a Data Protection Impact Assessment and periodic audit.",
+    "S.11": "A Data Principal shall have the right to obtain from a Data Fiduciary a summary of the personal data being processed and the processing activities undertaken, and the identities of other Data Fiduciaries with whom the data has been shared.",
+    "S.12": "A Data Principal shall have the right to correction, completion, updating and erasure of her personal data.",
+    "S.13": "A Data Principal shall have the right to have readily available means of grievance redressal provided by a Data Fiduciary or Consent Manager in respect of any act or omission regarding the performance of its obligations.",
+    "S.14": "A Data Principal shall have the right to nominate any other individual who shall, in the event of death or incapacity of the Data Principal, exercise her rights under this Act.",
+    "S.16": "A Data Fiduciary may transfer personal data for processing to a country or territory outside India, except to such country or territory as the Central Government may, by notification, restrict."
+  },
+  "rule": {
+    "Rule 3": "The notice given by a Data Fiduciary to a Data Principal shall be presented and be understandable independently of any other information, in clear and plain language, and shall give an itemised description of the personal data and the specified purpose, together with the means to withdraw consent and to exercise rights and make a complaint to the Board.",
+    "Rule 4": "A Consent Manager shall be registered with the Board subject to the conditions specified, and shall enable a Data Principal to give, manage, review and withdraw consent through an accessible, transparent and interoperable platform.",
+    "Rule 6": "A Data Fiduciary shall protect personal data by reasonable security safeguards which shall include appropriate measures such as encryption, obfuscation or masking, access control, logs and monitoring, and measures to continue processing in the event of a compromise.",
+    "Rule 7": "On becoming aware of a personal data breach, a Data Fiduciary shall intimate each affected Data Principal without delay, and shall intimate the Board with a description of the breach and, within seventy-two hours, the broad facts, mitigation measures and remedial actions.",
+    "Rule 8": "A Data Fiduciary shall erase personal data on the expiry of the specified retention period, unless retention is necessary for compliance with any law in force.",
+    "Rule 12": "A Significant Data Fiduciary shall observe additional obligations relating to the processing of personal data as specified.",
+    "Rule 13": "A Significant Data Fiduciary shall, once every twelve months, undertake a Data Protection Impact Assessment and an audit to ensure effective observance of the Act and Rules, cause the person carrying them out to furnish a report of significant observations to the Board, and observe due diligence to verify that algorithmic software used for processing is not likely to pose a risk to the rights of Data Principals."
+  }
+}

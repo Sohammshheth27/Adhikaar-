@@ -1,0 +1,1399 @@
+{
+  "framework": "DPDP Act 2023 + DPDP Rules 2025",
+  "version": "1.0-reconstructed",
+  "n_checks": 47,
+  "categories": [
+    "Consent & Notice",
+    "Lawful Basis & Purpose Limitation",
+    "Data Quality & Retention",
+    "Security & Breach Response",
+    "Consent Management",
+    "Child Data Protection",
+    "Data Principal Rights",
+    "Data Protection Officer / contact",
+    "Processor Accountability",
+    "Cross-border Transfers",
+    "Privacy Engineering",
+    "Privacy Documentation",
+    "Technical Controls",
+    "Governance & Training"
+  ],
+  "penalty_bands": {
+    "security": "up to 250 crore",
+    "breach_notify": "up to 200 crore",
+    "children": "up to 200 crore",
+    "sdf": "up to 150 crore",
+    "other_provision": "up to 50 crore",
+    "good_practice": "no statutory penalty (recommended practice)"
+  },
+  "checks": [
+    {
+      "id": 1,
+      "category": "Consent & Notice",
+      "requirement": "The notice itemises the categories of personal data collected, in plain language.",
+      "finding": "The notice does not itemise the personal data collected",
+      "dpdp_anchor": {
+        "rule": "Rule 3",
+        "act_section": "S.5"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 2,
+      "signals": {
+        "strong": [
+          "categories of personal data",
+          "information we collect",
+          "data we collect",
+          "personal data collected",
+          "name, email",
+          "types of information"
+        ],
+        "generic": []
+      },
+      "remediation": "Add a short notice and consent line at the point of collection, listing the data fields taken.",
+      "impact": "Individuals cannot know what data is taken from them.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 2,
+      "category": "Consent & Notice",
+      "requirement": "A specific purpose is stated for the data collected; generic 'business purposes' is only Partial.",
+      "finding": "No specific purpose is stated for the data collected",
+      "dpdp_anchor": {
+        "rule": "Rule 3",
+        "act_section": "S.6"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "purpose of collection",
+          "purpose for which",
+          "we use your data to",
+          "in order to",
+          "for the purpose of"
+        ],
+        "generic": []
+      },
+      "remediation": "State the purpose for each field and collect only what it needs.",
+      "impact": "Data may be used for purposes the individual never agreed to.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 3,
+      "category": "Consent & Notice",
+      "requirement": "The notice is clear, plain-language and understandable on its own.",
+      "finding": "The notice is not written in plain, self-contained language",
+      "dpdp_anchor": {
+        "rule": "Rule 3",
+        "act_section": "S.5"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "privacy policy",
+          "privacy notice",
+          "this policy explains",
+          "plain language"
+        ],
+        "generic": []
+      },
+      "remediation": "Publish a dated, plain-language privacy notice that stands on its own.",
+      "impact": "A notice that cannot be understood does not give real notice.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 4,
+      "category": "Lawful Basis & Purpose Limitation",
+      "requirement": "Processing is on a stated lawful basis (consent or a legitimate use).",
+      "finding": "No lawful basis is stated for the processing",
+      "dpdp_anchor": {
+        "act_section": "S.4"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "lawful basis",
+          "legal basis",
+          "with your consent",
+          "legitimate use",
+          "basis for processing"
+        ],
+        "generic": []
+      },
+      "remediation": "State the lawful basis (consent or a specific legitimate use) for each processing purpose.",
+      "impact": "Processing without a stated basis is unlawful under the Act.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 5,
+      "category": "Lawful Basis & Purpose Limitation",
+      "requirement": "Collection is limited to data necessary for the specified purpose (purpose/data limitation).",
+      "finding": "Data is collected without minimisation to the stated purpose",
+      "dpdp_anchor": {
+        "act_section": "S.6(1)"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "only collect",
+          "data minimisation",
+          "necessary for",
+          "limited to what",
+          "minimum necessary"
+        ],
+        "generic": []
+      },
+      "remediation": "Collect only the fields the stated purpose needs; drop the rest.",
+      "impact": "Excess collection increases the harm if the data is breached.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 6,
+      "category": "Lawful Basis & Purpose Limitation",
+      "requirement": "If legitimate uses are relied upon, they fall within the Act's Section 7 categories.",
+      "finding": "Any legitimate use relied upon is not mapped to Section 7",
+      "dpdp_anchor": {
+        "act_section": "S.7"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "legitimate use",
+          "section 7",
+          "specified purpose",
+          "voluntary provision"
+        ],
+        "generic": []
+      },
+      "remediation": "Map any legitimate use to a Section 7 category, or rely on consent instead.",
+      "impact": "A legitimate use outside Section 7 has no lawful footing.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 7,
+      "category": "Data Quality & Retention",
+      "requirement": "A commitment to keep personal data accurate, complete and up to date.",
+      "finding": "No commitment to keep personal data accurate and up to date",
+      "dpdp_anchor": {
+        "act_section": "S.8(3)"
+      },
+      "primary": "act",
+      "priority": "Medium",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "accurate",
+          "up to date",
+          "keep your information current",
+          "correct and complete"
+        ],
+        "generic": []
+      },
+      "remediation": "Commit to keep personal data accurate and offer a way to update it.",
+      "impact": "Decisions made on stale data can harm the individual.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 8,
+      "category": "Data Quality & Retention",
+      "requirement": "A retention period, or an 'erase when the purpose ends' commitment, is stated.",
+      "finding": "No retention or erasure schedule is stated",
+      "dpdp_anchor": {
+        "rule": "Rule 8",
+        "act_section": "S.8(7)-(8)"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "retention period",
+          "retain",
+          "how long we keep",
+          "erase when",
+          "data retention",
+          "delete your data",
+          "retention schedule"
+        ],
+        "generic": []
+      },
+      "remediation": "Publish retention periods per record type and erase when the purpose ends.",
+      "impact": "Data kept indefinitely is a standing liability.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 9,
+      "category": "Security & Breach Response",
+      "requirement": "Reasonable security safeguards (encryption, access control) are disclosed.",
+      "finding": "The security safeguards protecting personal data are not described",
+      "dpdp_anchor": {
+        "rule": "Rule 6",
+        "act_section": "S.8(5)"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "security",
+      "penalty_max": "up to 250 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "security measures",
+          "encryption",
+          "access control",
+          "safeguards",
+          "we protect your data",
+          "secure servers",
+          "reasonable security"
+        ],
+        "generic": []
+      },
+      "remediation": "Describe the reasonable security safeguards that protect personal data.",
+      "impact": "Undisclosed or absent safeguards leave personal data exposed.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 10,
+      "category": "Security & Breach Response",
+      "requirement": "A commitment to notify affected users and the Board of a personal-data breach.",
+      "finding": "No commitment to notify a personal-data breach",
+      "dpdp_anchor": {
+        "rule": "Rule 7",
+        "act_section": "S.8(6)"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "breach_notify",
+      "penalty_max": "up to 200 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "data breach",
+          "breach notification",
+          "notify you",
+          "inform the board",
+          "security incident",
+          "in the event of a breach"
+        ],
+        "generic": []
+      },
+      "remediation": "Commit to notify affected users and the Board within 72 hours of a breach.",
+      "impact": "Without a breach commitment, individuals may never learn their data leaked.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 11,
+      "category": "Consent Management",
+      "requirement": "Withdrawal of consent is offered and is as easy as giving it, with a route stated.",
+      "finding": "Consent cannot be withdrawn as easily as it was given",
+      "dpdp_anchor": {
+        "rule": "Rule 3",
+        "act_section": "S.6(4)"
+      },
+      "primary": "act",
+      "priority": "Medium",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "withdraw consent",
+          "withdraw your consent",
+          "opt out",
+          "unsubscribe",
+          "revoke consent"
+        ],
+        "generic": []
+      },
+      "remediation": "Offer a withdrawal route as easy as giving consent, and state it in the notice.",
+      "impact": "Consent that cannot be withdrawn is not real consent.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 12,
+      "category": "Consent Management",
+      "requirement": "Consent is a clear affirmative action, unbundled, not pre-ticked or implied.",
+      "finding": "Consent is implied, not a clear affirmative opt-in",
+      "dpdp_anchor": {
+        "act_section": "S.6"
+      },
+      "primary": "act",
+      "priority": "Medium",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "i agree",
+          "i consent",
+          "opt in",
+          "affirmative",
+          "tick to consent",
+          "by checking this box"
+        ],
+        "generic": []
+      },
+      "remediation": "Take consent by a clear affirmative, unbundled action; never pre-tick or imply it.",
+      "impact": "Implied or bundled consent is invalid under the Act.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 13,
+      "category": "Consent Management",
+      "requirement": "The Consent Manager route is acknowledged where relevant.",
+      "finding": "The Consent Manager route is not acknowledged",
+      "dpdp_anchor": {
+        "rule": "Rule 4",
+        "act_section": "S.6(7)"
+      },
+      "primary": "act",
+      "priority": "Medium",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "consent manager",
+          "manage your consent",
+          "consent dashboard"
+        ],
+        "generic": []
+      },
+      "remediation": "Acknowledge the registered Consent Manager route where relevant.",
+      "impact": "Individuals lose a channel the Act gives them to manage consent.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 14,
+      "category": "Consent Management",
+      "requirement": "Users can review consent given / records of consent are maintained.",
+      "finding": "People cannot review the consent they have given",
+      "dpdp_anchor": {
+        "act_section": "S.6(6)"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "review your consent",
+          "record of consent",
+          "consent history",
+          "manage preferences"
+        ],
+        "generic": []
+      },
+      "remediation": "Let users review the consent they gave and keep records of it.",
+      "impact": "Without records, neither side can prove what was agreed.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 15,
+      "category": "Child Data Protection",
+      "requirement": "Verifiable parental consent for under-18s, and no tracking, behavioural monitoring or targeted ads to children.",
+      "finding": "Children's data is not protected as the Act requires",
+      "dpdp_anchor": {
+        "act_section": "S.9"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "children",
+      "penalty_max": "up to 200 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "parental consent",
+          "under 18",
+          "children",
+          "guardian consent",
+          "age verification",
+          "minors"
+        ],
+        "generic": []
+      },
+      "remediation": "Take verifiable parental consent; never track, profile or target ads to minors.",
+      "impact": "Children's data carries the Act's highest protection and penalties.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 16,
+      "category": "Data Principal Rights",
+      "requirement": "The right to access a summary of personal data being processed is disclosed.",
+      "finding": "People cannot ask to see the data held about them",
+      "dpdp_anchor": {
+        "act_section": "S.11"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "right to access",
+          "request a copy",
+          "access your data",
+          "see the data we hold",
+          "summary of personal data"
+        ],
+        "generic": []
+      },
+      "remediation": "Add a rights section stating the exact route to request access.",
+      "impact": "Individuals cannot exercise a right they are not told they have.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 17,
+      "category": "Data Principal Rights",
+      "requirement": "The right to correction of personal data is disclosed.",
+      "finding": "People cannot ask for their data to be corrected",
+      "dpdp_anchor": {
+        "act_section": "S.12"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "right to correction",
+          "correct your data",
+          "rectify",
+          "update your information"
+        ],
+        "generic": []
+      },
+      "remediation": "State the right to correction and how to exercise it.",
+      "impact": "Uncorrectable errors persist and compound harm.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 18,
+      "category": "Data Principal Rights",
+      "requirement": "The right to erasure of personal data is disclosed.",
+      "finding": "People cannot ask for their data to be erased",
+      "dpdp_anchor": {
+        "act_section": "S.12"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "right to erasure",
+          "right to be forgotten",
+          "delete your data",
+          "erase your data",
+          "request deletion"
+        ],
+        "generic": []
+      },
+      "remediation": "State the right to erasure and how to exercise it.",
+      "impact": "Data that cannot be erased outlives its lawful purpose.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 19,
+      "category": "Data Principal Rights",
+      "requirement": "A readily available grievance-redressal route is disclosed.",
+      "finding": "There is no clear route to raise a grievance",
+      "dpdp_anchor": {
+        "act_section": "S.13"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "grievance",
+          "complaint",
+          "raise a concern",
+          "grievance officer",
+          "redressal",
+          "nodal officer",
+          "grievance redressal",
+          "ombudsman",
+          "raise a complaint",
+          "complaint officer",
+          "escalation matrix",
+          "how to complain",
+          "lodge a complaint",
+          "grievance mechanism"
+        ],
+        "generic": []
+      },
+      "remediation": "Publish a grievance-redressal route with a contact and a process.",
+      "impact": "Individuals have no path to challenge misuse.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 20,
+      "category": "Data Principal Rights",
+      "requirement": "The right to nominate is disclosed.",
+      "finding": "The right to nominate another person is not disclosed",
+      "dpdp_anchor": {
+        "act_section": "S.14"
+      },
+      "primary": "act",
+      "priority": "Medium",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "right to nominate",
+          "nominate",
+          "nominee"
+        ],
+        "generic": []
+      },
+      "remediation": "Disclose the right to nominate another person to exercise rights.",
+      "impact": "The nomination right the Act grants goes unused.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 21,
+      "category": "Data Protection Officer / contact",
+      "requirement": "A reachable grievance officer or business contact for data queries is published.",
+      "finding": "No data-protection contact is published on the site",
+      "dpdp_anchor": {
+        "act_section": "S.8(9)-(10), S.13"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "contact us",
+          "data protection officer",
+          "dpo",
+          "grievance officer",
+          "privacy@",
+          "email us",
+          "nodal officer",
+          "privacy officer",
+          "reach us",
+          "write to us",
+          "for any queries",
+          "customer care",
+          "support@",
+          "contact our"
+        ],
+        "generic": []
+      },
+      "remediation": "Publish a named DPO or grievance contact with a working email.",
+      "impact": "There is no one for an individual to reach about their data.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 22,
+      "category": "Data Protection Officer / contact",
+      "requirement": "A Data Protection Officer is appointed and published (Significant Data Fiduciary).",
+      "finding": "No Data Protection Officer is named",
+      "dpdp_anchor": {
+        "rule": "Rule 13",
+        "act_section": "S.10"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "sdf",
+      "penalty_max": "up to 150 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "data protection officer",
+          "dpo",
+          "appointed a"
+        ],
+        "generic": []
+      },
+      "remediation": "If designated an SDF, appoint and publish a Data Protection Officer.",
+      "impact": "SDF obligations require a named, reachable DPO.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 23,
+      "category": "Processor Accountability",
+      "requirement": "Processors engaged only under a valid contract.",
+      "finding": "Processors are not shown to be engaged under a written contract",
+      "dpdp_anchor": {
+        "act_section": "S.8(2)"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "data processing agreement",
+          "processor contract",
+          "under contract",
+          "bound by contract"
+        ],
+        "generic": []
+      },
+      "remediation": "Engage processors only under a written contract and state this.",
+      "impact": "Uncontracted processors handle personal data without duties.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 24,
+      "category": "Processor Accountability",
+      "requirement": "Third parties / recipients of data sharing are disclosed.",
+      "finding": "The categories of third parties receiving data are not disclosed",
+      "dpdp_anchor": {
+        "act_section": "S.8(2)"
+      },
+      "primary": "act",
+      "priority": "Medium",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "third parties",
+          "share your data with",
+          "recipients",
+          "we share with",
+          "service providers"
+        ],
+        "generic": []
+      },
+      "remediation": "Disclose the categories of third parties that receive personal data.",
+      "impact": "Individuals cannot see where their data flows.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 25,
+      "category": "Processor Accountability",
+      "requirement": "Sub-processor oversight is addressed.",
+      "finding": "Oversight of sub-processors is not addressed",
+      "dpdp_anchor": {
+        "rule": "Rule 6",
+        "act_section": "S.8(2)"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "security",
+      "penalty_max": "up to 250 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "sub-processor",
+          "sub processors",
+          "onward transfer oversight"
+        ],
+        "generic": []
+      },
+      "remediation": "Address oversight of any sub-processors your processors use.",
+      "impact": "Unsupervised sub-processors are an unmanaged risk.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 26,
+      "category": "Processor Accountability",
+      "requirement": "Security obligations flow down to processors.",
+      "finding": "Security obligations are not shown to flow down to processors",
+      "dpdp_anchor": {
+        "rule": "Rule 6",
+        "act_section": "S.8(2)"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "security",
+      "penalty_max": "up to 250 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "flow down",
+          "processor security",
+          "same security obligations",
+          "impose security"
+        ],
+        "generic": []
+      },
+      "remediation": "Flow your security obligations down to processors by contract.",
+      "impact": "A processor without security duties is a weak link.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 27,
+      "category": "Cross-border Transfers",
+      "requirement": "Transfers of personal data outside India are disclosed.",
+      "finding": "Overseas processing of personal data is not disclosed",
+      "dpdp_anchor": {
+        "act_section": "S.16"
+      },
+      "primary": "act",
+      "priority": "Medium",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "transfer outside india",
+          "international transfer",
+          "overseas",
+          "cross-border",
+          "stored outside india"
+        ],
+        "generic": []
+      },
+      "remediation": "Disclose whether and where personal data is transferred outside India.",
+      "impact": "Undisclosed overseas flows evade the Act's transfer controls.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 28,
+      "category": "Cross-border Transfers",
+      "requirement": "Compliance with any restricted-country notification is addressed.",
+      "finding": "Compliance with restricted-country notifications is not addressed",
+      "dpdp_anchor": {
+        "act_section": "S.16"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "restricted country",
+          "permitted countries",
+          "transfer restrictions"
+        ],
+        "generic": []
+      },
+      "remediation": "Address compliance with any restricted-country notification.",
+      "impact": "Transfers to restricted countries may be unlawful.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 29,
+      "category": "Cross-border Transfers",
+      "requirement": "Data storage location is disclosed.",
+      "finding": "Where personal data is stored is not disclosed",
+      "dpdp_anchor": {
+        "act_section": "S.16"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "data is stored",
+          "hosted in",
+          "servers located",
+          "storage location",
+          "data centre"
+        ],
+        "generic": []
+      },
+      "remediation": "Disclose where personal data is stored and hosted.",
+      "impact": "Individuals cannot judge the jurisdiction their data sits in.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 30,
+      "category": "Privacy Engineering",
+      "requirement": "A Data Protection Impact Assessment is undertaken (Significant Data Fiduciary).",
+      "finding": "No Data Protection Impact Assessment is evidenced for high-risk processing",
+      "dpdp_anchor": {
+        "rule": "Rule 13",
+        "act_section": "S.10"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "sdf",
+      "penalty_max": "up to 150 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "data protection impact assessment",
+          "dpia",
+          "impact assessment"
+        ],
+        "generic": []
+      },
+      "remediation": "If an SDF, undertake and evidence a Data Protection Impact Assessment.",
+      "impact": "High-risk processing without a DPIA is unassessed risk.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 31,
+      "category": "Privacy Engineering",
+      "requirement": "Privacy by design and periodic audit are addressed.",
+      "finding": "Privacy by design and periodic audit are not addressed",
+      "dpdp_anchor": {
+        "rule": "Rule 13",
+        "act_section": "S.8"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "sdf",
+      "penalty_max": "up to 150 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "privacy by design",
+          "data protection by design",
+          "periodic audit",
+          "independent audit"
+        ],
+        "generic": []
+      },
+      "remediation": "Address privacy by design and periodic independent audit.",
+      "impact": "Without design controls and audit, gaps go undetected.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 32,
+      "category": "Privacy Engineering",
+      "requirement": "Data-minimisation measures by design are addressed.",
+      "finding": "Data minimisation by design is not addressed",
+      "dpdp_anchor": {
+        "act_section": "S.8"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "minimisation by design",
+          "collect only",
+          "privacy defaults",
+          "data minimization"
+        ],
+        "generic": []
+      },
+      "remediation": "Build data minimisation into the collection design.",
+      "impact": "Over-collection by default multiplies breach harm.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 33,
+      "category": "Privacy Documentation",
+      "requirement": "A published privacy policy exists and is reachable.",
+      "finding": "There is no clear, reachable privacy notice on the site",
+      "dpdp_anchor": {
+        "rule": "Rule 3",
+        "act_section": "S.5"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "privacy policy",
+          "privacy notice",
+          "data protection policy"
+        ],
+        "generic": []
+      },
+      "remediation": "Publish a dated privacy policy and link it from every page.",
+      "impact": "There is no reliable public record of how personal data is handled.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 34,
+      "category": "Privacy Documentation",
+      "requirement": "A cookie policy / tracker disclosure is published.",
+      "finding": "No cookie or tracker disclosure is published",
+      "dpdp_anchor": {
+        "rule": "Rule 3",
+        "act_section": "S.5"
+      },
+      "primary": "act",
+      "priority": "Medium",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "cookie policy",
+          "cookies",
+          "tracking technologies",
+          "tracker disclosure",
+          "we use cookies"
+        ],
+        "generic": []
+      },
+      "remediation": "Publish a cookie/tracker disclosure listing what loads and why.",
+      "impact": "Trackers run without the disclosure the Act expects.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 35,
+      "category": "Privacy Documentation",
+      "requirement": "Terms of service are published.",
+      "finding": "No terms of service are published",
+      "dpdp_anchor": {
+        "act_section": "S.5"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "terms of service",
+          "terms and conditions",
+          "terms of use"
+        ],
+        "generic": []
+      },
+      "remediation": "Publish terms of service alongside the privacy notice.",
+      "impact": "The terms governing the relationship are undocumented.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 36,
+      "category": "Privacy Documentation",
+      "requirement": "Notice is available in an accessible form (and Indian languages where relevant).",
+      "finding": "The notice is not offered in an accessible form or in Indian languages",
+      "dpdp_anchor": {
+        "rule": "Rule 3",
+        "act_section": "S.5"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "available in",
+          "languages",
+          "accessible",
+          "hindi",
+          "regional language"
+        ],
+        "generic": []
+      },
+      "remediation": "Offer the notice in an accessible form and relevant Indian languages.",
+      "impact": "A notice only some can read excludes the rest.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 37,
+      "category": "Privacy Documentation",
+      "requirement": "Registered office / entity contact details are published.",
+      "finding": "The registered office and entity contact details are not published",
+      "dpdp_anchor": {
+        "act_section": "S.8(9)"
+      },
+      "primary": "act",
+      "priority": "Medium",
+      "penalty_band": "other_provision",
+      "penalty_max": "up to 50 crore",
+      "mandatory": false,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "registered office",
+          "registered address",
+          "cin",
+          "our address",
+          "head office"
+        ],
+        "generic": []
+      },
+      "remediation": "Publish the registered office and entity contact details.",
+      "impact": "The accountable legal entity is not identifiable.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 38,
+      "category": "Technical Controls",
+      "requirement": "The site serves over HTTPS (encryption in transit).",
+      "finding": "The site is not served over HTTPS",
+      "dpdp_anchor": {
+        "rule": "Rule 6",
+        "act_section": "S.8(5)"
+      },
+      "primary": "act",
+      "priority": "High",
+      "penalty_band": "security",
+      "penalty_max": "up to 250 crore",
+      "mandatory": true,
+      "disclosure_only": false,
+      "min_strong": 1,
+      "signals": {
+        "strong": [],
+        "generic": []
+      },
+      "remediation": "Serve the whole site over HTTPS with a valid certificate.",
+      "impact": "Data entered on plain HTTP can be read in transit.",
+      "in_force": "2027-05-14",
+      "observed": "https"
+    },
+    {
+      "id": 39,
+      "category": "Technical Controls",
+      "requirement": "Encryption at rest is disclosed.",
+      "finding": "Encryption of data at rest is not disclosed",
+      "dpdp_anchor": {
+        "rule": "Rule 6",
+        "act_section": "S.8(5)"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "security",
+      "penalty_max": "up to 250 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "encryption at rest",
+          "encrypted storage",
+          "data encrypted"
+        ],
+        "generic": []
+      },
+      "remediation": "Disclose that personal data is encrypted at rest.",
+      "impact": "Stored data without disclosed encryption is a gap.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 40,
+      "category": "Technical Controls",
+      "requirement": "Access controls and logging are disclosed.",
+      "finding": "Access controls and logging are not disclosed",
+      "dpdp_anchor": {
+        "rule": "Rule 6",
+        "act_section": "S.8(5)"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "security",
+      "penalty_max": "up to 250 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "access control",
+          "access logging",
+          "audit log",
+          "role-based access"
+        ],
+        "generic": []
+      },
+      "remediation": "Disclose access controls and logging over personal data.",
+      "impact": "Unlogged, unrestricted access cannot be held to account.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 41,
+      "category": "Governance & Training",
+      "requirement": "An internal data-protection policy / governance is in place.",
+      "finding": "No internal data-protection governance is evidenced",
+      "dpdp_anchor": {
+        "act_section": "S.8"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "good_practice",
+      "penalty_max": "no statutory penalty (recommended practice)",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "internal policy",
+          "governance",
+          "data protection policy",
+          "privacy programme"
+        ],
+        "generic": []
+      },
+      "remediation": "Put an internal data-protection policy and governance in place.",
+      "impact": "Without governance, compliance is ad hoc.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 42,
+      "category": "Governance & Training",
+      "requirement": "Staff are trained on data protection.",
+      "finding": "Staff handling personal data are not shown to be trained",
+      "dpdp_anchor": {
+        "act_section": "Rule 13"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "good_practice",
+      "penalty_max": "no statutory penalty (recommended practice)",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "staff training",
+          "trained on data protection",
+          "awareness training",
+          "employee training"
+        ],
+        "generic": []
+      },
+      "remediation": "Train staff who handle personal data and evidence it.",
+      "impact": "Untrained staff are the most common cause of breaches.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 43,
+      "category": "Governance & Training",
+      "requirement": "Records of processing activities are maintained.",
+      "finding": "No records of processing activities are evidenced",
+      "dpdp_anchor": {
+        "act_section": "S.8"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "good_practice",
+      "penalty_max": "no statutory penalty (recommended practice)",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "records of processing",
+          "ropa",
+          "processing register"
+        ],
+        "generic": []
+      },
+      "remediation": "Maintain records of processing activities.",
+      "impact": "Without records, the organisation cannot show what it does.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 44,
+      "category": "Governance & Training",
+      "requirement": "An incident-response plan exists.",
+      "finding": "No incident-response plan is evidenced",
+      "dpdp_anchor": {
+        "rule": "Rule 7",
+        "act_section": "S.8(6)"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "breach_notify",
+      "penalty_max": "up to 200 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "incident response",
+          "incident response plan",
+          "breach response",
+          "security incident plan"
+        ],
+        "generic": []
+      },
+      "remediation": "Maintain an incident-response plan for personal-data breaches.",
+      "impact": "An unrehearsed breach response fails when it is needed.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 45,
+      "category": "Governance & Training",
+      "requirement": "Vendor / third-party risk management is addressed.",
+      "finding": "Vendor and third-party risk management is not addressed",
+      "dpdp_anchor": {
+        "act_section": "Rule 6"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "security",
+      "penalty_max": "up to 250 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "vendor risk",
+          "third-party risk",
+          "supplier assessment",
+          "vendor management"
+        ],
+        "generic": []
+      },
+      "remediation": "Assess and manage vendor and third-party risk.",
+      "impact": "Unmanaged vendors inherit access without scrutiny.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 46,
+      "category": "Governance & Training",
+      "requirement": "Significant-Data-Fiduciary obligations / Board reporting are addressed where applicable.",
+      "finding": "Significant Data Fiduciary obligations are not addressed",
+      "dpdp_anchor": {
+        "rule": "Rule 13",
+        "act_section": "S.10"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "sdf",
+      "penalty_max": "up to 150 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "significant data fiduciary",
+          "board reporting",
+          "sdf obligations"
+        ],
+        "generic": []
+      },
+      "remediation": "If designated an SDF, address the enhanced obligations and Board reporting.",
+      "impact": "SDF duties left unaddressed are a direct breach.",
+      "in_force": "2027-05-14"
+    },
+    {
+      "id": 47,
+      "category": "Governance & Training",
+      "requirement": "A periodic compliance review / audit is performed.",
+      "finding": "No periodic compliance review or audit is evidenced",
+      "dpdp_anchor": {
+        "act_section": "Rule 13"
+      },
+      "primary": "act",
+      "priority": "Low",
+      "penalty_band": "sdf",
+      "penalty_max": "up to 150 crore",
+      "mandatory": false,
+      "disclosure_only": true,
+      "min_strong": 1,
+      "signals": {
+        "strong": [
+          "periodic review",
+          "compliance audit",
+          "annual review",
+          "compliance review"
+        ],
+        "generic": []
+      },
+      "remediation": "Perform and evidence a periodic compliance review or audit.",
+      "impact": "Compliance drifts without periodic review.",
+      "in_force": "2027-05-14"
+    }
+  ]
+}

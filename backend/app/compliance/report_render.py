@@ -146,6 +146,26 @@ def render_compliance(rep: ComplianceReport, org: str | None = None,
         A(f"- **Impact:** {f.impact}")
         A(f"- **Recommendation:** {f.recommendation}\n")
 
+    # --- Detected data-processing technology (from Nuclei tech-detect) ---
+    _trk = rep.coverage.get("observed_trackers") or []
+    _col = rep.coverage.get("observed_collectors") or []
+    if _trk or _col:
+        A("## 3. Detected Data-Processing Technology\n")
+        A("Fingerprinted on the live site, independent of what the policy discloses — concrete "
+          "data-flow evidence for the DPDP duties noted below.\n")
+        if _trk:
+            A("**Third-party trackers / analytics** (external processors; data leaves the site) — "
+              "relevant to third-party sharing (s.8) and cookie/consent disclosure (Rule 4):\n")
+            for t in _trk:
+                A(f"- {t}")
+            A("")
+        if _col:
+            A("**Personal-data collection tools** (the site collects & stores personal data) — "
+              "relevant to notice (s.5), retention (s.8(7)-(8)) and security (s.8(5)):\n")
+            for c in _col:
+                A(f"- {c}")
+            A("")
+
     # --- Appendices ---
     A("## Appendix A — Assessment Method\n")
     A("External, unauthenticated assessment of published disclosures and observable behaviour. "

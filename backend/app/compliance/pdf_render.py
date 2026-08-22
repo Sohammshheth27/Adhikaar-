@@ -517,6 +517,23 @@ def build_compliance_pdf(rep, org=None, submitted_to="The Board of Trustees", ou
             E.append(Spacer(1, 5 * mm))
     E.append(PageBreak())
 
+    # 2A Detected data-processing technology (Nuclei tech-detect)
+    _trk = rep.coverage.get("observed_trackers") or []
+    _col = rep.coverage.get("observed_collectors") or []
+    if _trk or _col:
+        E.append(Paragraph("2A  Detected Data-Processing Technology", ss["H2"]))
+        E.append(Paragraph("Fingerprinted on the live site, independent of what the policy discloses - "
+                           "concrete data-flow evidence for the DPDP duties noted.", ss["Val"]))
+        if _trk:
+            E.append(Paragraph("Third-party trackers / analytics (external processors; data leaves the "
+                               "site) - third-party sharing (s.8), cookie/consent (Rule 4):", ss["Lab"]))
+            E.append(Paragraph(", ".join(_trk), ss["Val"]))
+        if _col:
+            E.append(Paragraph("Personal-data collection tools (the site collects & stores personal "
+                               "data) - notice (s.5), retention (s.8(7)-(8)), security (s.8(5)):", ss["Lab"]))
+            E.append(Paragraph(", ".join(_col), ss["Val"]))
+        E.append(PageBreak())
+
     # 3 Appendices
     E.append(Paragraph("3  Appendices", ss["H1"]))
     E.append(Paragraph("3.1  Appendix A - Assessment Method in Detail", ss["H2"]))

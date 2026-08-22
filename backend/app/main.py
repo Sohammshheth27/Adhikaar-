@@ -62,15 +62,24 @@ def _smart_crawl(url: str, budget: int, static: bool):
         return cr
 
 
-@app.post("/assess")
-def assess(req: AssessRequest):
-    key = req.url.rstrip("/").lower()
-    if not req.force and key in _CACHE:                  # instant, deterministic replay for the demo
-        return {**_CACHE[key], "cached": True}
-    crawl = _smart_crawl(req.url, req.budget, req.static)
+_CRAWL_CACHE: dict[str, dict] = {}
+
+
+def _cached_crawl(url: str, budget: int, static: bool, force: bool = False):
+    """Cache the crawl per URL so /scan and /report.pdf don't crawl the same site twice."""
+    key = url.rstrip("/").lower()
+    if not force and key in _CRAWL_CACHE:
+        return _CRAWL_CACHE[key]
+    cr = _smart_crawl(url, budget, static)
+    _CRAWL_CACHE[key] = cr
+    return cr
+
+
+def _build_report(req: "AssessRequest"):
+    """Crawl (cached) + full engine -> a ComplianceReport, shared by /assess, /scan and /report.pdf."""
+    crawl = _cached_crawl(req.url, req.budget, req.static, req.force)
     exp = exposure.probe(req.url) if req.exposure else []
     site = re.sub(r"^https?://(www\.)?", "", req.url).split("/")[0]
-    # Full upgraded engine (same call the CLI uses): multi-source governance + observable-technical.
     rep = compliance_report(url=req.url, pages=crawl["pages"], exposure_findings=exp,
                             is_https=req.url.startswith("https"), site=site, page_budget=req.budget,
                             platform=crawl.get("platform", "Unknown"),
@@ -80,6 +89,15 @@ def assess(req: AssessRequest):
                             sec_headers=crawl.get("sec_headers"))
     rep.tracker_inventory = crawl.get("trackers", [])
     rep.cookie_inventory = crawl.get("cookies", [])
+    return rep, crawl
+
+
+@app.post("/assess")
+def assess(req: AssessRequest):
+    key = req.url.rstrip("/").lower()
+    if not req.force and key in _CACHE:                  # instant, deterministic replay for the demo
+        return {**_CACHE[key], "cached": True}
+    rep, crawl = _build_report(req)
     result = {
         "grade": rep.overall.grade, "adequacy": rep.overall.adequacy,
         "counts": rep.overall.counts,
@@ -105,20 +123,26 @@ def scan(req: AssessRequest):
     key = req.url.rstrip("/").lower()
     if not req.force and key in _UI_CACHE:
         return {**_UI_CACHE[key], "cached": True}
-    crawl = _smart_crawl(req.url, req.budget, req.static)
-    exp = exposure.probe(req.url) if req.exposure else []
-    site = re.sub(r"^https?://(www\.)?", "", req.url).split("/")[0]
-    rep = compliance_report(url=req.url, pages=crawl["pages"], exposure_findings=exp,
-                            is_https=req.url.startswith("https"), site=site, page_budget=req.budget,
-                            platform=crawl.get("platform", "Unknown"),
-                            archived_policy=crawl.get("archived_policy"),
-                            policy_found=crawl.get("policy_found"),
-                            subdomains=crawl.get("subdomains"),
-                            sec_headers=crawl.get("sec_headers"))
+    rep, crawl = _build_report(req)
     out = ui_report(rep, crawl, org=req.org)
     out["cached"] = False
     _UI_CACHE[key] = out
     return out
+
+
+@app.post("/report.pdf")
+def report_pdf(req: AssessRequest):
+    """Generate the detailed Compliance PDF for a URL and return it as a file download."""
+    from app.compliance.pdf_render import build_compliance_pdf
+    from fastapi.responses import FileResponse
+    import tempfile
+    rep, _ = _build_report(req)
+    site = re.sub(r"^https?://(www\.)?", "", req.url).split("/")[0]
+    name = (req.org or site).replace(" ", "-") + "-Compliance.pdf"
+    tmp = tempfile.NamedTemporaryFile(suffix=".pdf", delete=False)
+    tmp.close()
+    build_compliance_pdf(rep, org=req.org, out_path=tmp.name)
+    return FileResponse(tmp.name, media_type="application/pdf", filename=name)
 
 
 # --- Serve the static site from the same origin (one container hosts site + engine) ---

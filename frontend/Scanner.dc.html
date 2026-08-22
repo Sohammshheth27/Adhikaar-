@@ -110,6 +110,7 @@
             <button onClick="{{ viewForYou }}" style="{{ forYouTabStyle }}">{{ tabYou }}</button>
             <button onClick="{{ viewForSite }}" style="{{ forSiteTabStyle }}">{{ tabSite }}</button>
           </div>
+          <button onClick="{{ downloadPdf }}" style="background: #1A1A1A; color: #F3EEE4; font-weight: 700; font-size: 14px; padding: 11px 20px; border-radius: 99px; border: none; cursor: pointer; font-family: inherit; white-space: nowrap" style-hover="background: #333">{{ pdfLabel }}</button>
         </div>
 
         <div style="background: rgba(240,162,75,0.12); border-radius: 16px; padding: 14px 20px; font-size: 14px; line-height: 1.55; color: rgba(26,26,26,0.75)">
@@ -316,6 +317,32 @@ class Component extends DCLogic {
     }
   }
 
+  async downloadPdf() {
+    if (this.state.pdfBusy) return;
+    let target = (this.state.scanTarget || this.state.url || '').trim();
+    if (!target) return;
+    if (!/^https?:\/\//i.test(target)) target = 'https://' + target;
+    const host = this.state.scanTarget || target;
+    this.setState({ pdfBusy: true });
+    try {
+      const res = await fetch(ADHIKAAR_API + '/report.pdf', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: target, org: host })
+      });
+      if (!res.ok) throw new Error('server ' + res.status);
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = (host || 'Adhikaar') + '-Compliance.pdf';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    } catch (e) {
+      alert('Could not generate the PDF (' + ADHIKAAR_API + '/report.pdf): ' + (e.message || e));
+    } finally {
+      this.setState({ pdfBusy: false });
+    }
+  }
+
   _runTextScan() {
     const t = (this.state.policyText || '').trim();
     if (t.length < 200) {
@@ -435,6 +462,8 @@ class Component extends DCLogic {
       coverageNote: coverageNote,
       viewForYou: () => this.setState({ view: 'you' }),
       viewForSite: () => this.setState({ view: 'site' }),
+      downloadPdf: () => this.downloadPdf(),
+      pdfLabel: st.pdfBusy ? 'Preparing PDF...' : 'Download PDF',
       isForYou: st.view === 'you', isForSite: st.view === 'site',
       forYouTabStyle: this.tab(st.view === 'you'),
       forSiteTabStyle: this.tab(st.view === 'site'),

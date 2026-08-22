@@ -46,13 +46,28 @@ def catalog():
     return {"n_checks": len(CHECKS), "checks": CHECKS}
 
 
+def _smart_crawl(url: str, budget: int, static: bool):
+    """Static-first for reliability: the httpx crawler is fast and doesn't hang, and today it out-
+    performed the browser on every real site. Force static when asked; otherwise run static and only
+    fall back to the browser if static comes back thin (a true JS SPA)."""
+    if static:
+        return crawler.crawl_static(url, budget)
+    cr = crawler.crawl_static(url, budget)
+    if len(cr.get("pages", [])) >= 3:
+        return cr
+    try:
+        cb = crawler.crawl(url, budget)
+        return cb if len(cb.get("pages", [])) > len(cr.get("pages", [])) else cr
+    except Exception:
+        return cr
+
+
 @app.post("/assess")
 def assess(req: AssessRequest):
     key = req.url.rstrip("/").lower()
     if not req.force and key in _CACHE:                  # instant, deterministic replay for the demo
         return {**_CACHE[key], "cached": True}
-    crawl = (crawler.crawl_static(req.url, req.budget) if req.static
-             else crawler.crawl(req.url, req.budget))
+    crawl = _smart_crawl(req.url, req.budget, req.static)
     exp = exposure.probe(req.url) if req.exposure else []
     site = re.sub(r"^https?://(www\.)?", "", req.url).split("/")[0]
     # Full upgraded engine (same call the CLI uses): multi-source governance + observable-technical.
@@ -90,8 +105,7 @@ def scan(req: AssessRequest):
     key = req.url.rstrip("/").lower()
     if not req.force and key in _UI_CACHE:
         return {**_UI_CACHE[key], "cached": True}
-    crawl = (crawler.crawl_static(req.url, req.budget) if req.static
-             else crawler.crawl(req.url, req.budget))
+    crawl = _smart_crawl(req.url, req.budget, req.static)
     exp = exposure.probe(req.url) if req.exposure else []
     site = re.sub(r"^https?://(www\.)?", "", req.url).split("/")[0]
     rep = compliance_report(url=req.url, pages=crawl["pages"], exposure_findings=exp,

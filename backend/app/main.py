@@ -78,7 +78,10 @@ def _cached_crawl(url: str, budget: int, static: bool, force: bool = False):
 def _build_report(req: "AssessRequest"):
     """Crawl (cached) + full engine -> a ComplianceReport, shared by /assess, /scan and /report.pdf."""
     crawl = _cached_crawl(req.url, req.budget, req.static, req.force)
-    exp = exposure.probe(req.url, pages=crawl.get("pages"), subdomains=crawl.get("subdomains")) if req.exposure else []
+    exp, tech = [], {}
+    if req.exposure:
+        exp = exposure.probe(req.url, pages=crawl.get("pages"), subdomains=crawl.get("subdomains"))
+        tech = exposure.tech_signals(req.url, pages=crawl.get("pages"), subdomains=crawl.get("subdomains"))
     site = re.sub(r"^https?://(www\.)?", "", req.url).split("/")[0]
     rep = compliance_report(url=req.url, pages=crawl["pages"], exposure_findings=exp,
                             is_https=req.url.startswith("https"), site=site, page_budget=req.budget,
@@ -86,8 +89,15 @@ def _build_report(req: "AssessRequest"):
                             archived_policy=crawl.get("archived_policy"),
                             policy_found=crawl.get("policy_found"),
                             subdomains=crawl.get("subdomains"),
-                            sec_headers=crawl.get("sec_headers"))
-    rep.tracker_inventory = crawl.get("trackers", [])
+                            sec_headers=crawl.get("sec_headers"),
+                            observed_tech=tech)
+    # merge Nuclei-detected trackers into the inventory (feeds duty 24/34 evidence)
+    trk = list(crawl.get("trackers", []))
+    known = {t.get("name") for t in trk if isinstance(t, dict)}
+    for t in (tech.get("trackers") or []):
+        if t not in known:
+            trk.append({"name": t, "domain": "", "country": "", "source": "nuclei"})
+    rep.tracker_inventory = trk
     rep.cookie_inventory = crawl.get("cookies", [])
     return rep, crawl
 

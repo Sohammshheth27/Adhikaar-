@@ -46,14 +46,16 @@ def main():
     pages = crawl["pages"]
     print(f"      {len(pages)} page(s) rendered; {len(crawl.get('trackers', []))} tracker(s) seen.")
 
-    exp = []
+    exp, tech = [], {}
     if not args.no_exposure:
-        print("[2/4] Probing for exposed files (signal-only) ...")
+        print("[2/4] Probing for exposures + tech (Nuclei if present, else built-in) ...")
         try:
             exp = exposure.probe(args.url, pages=crawl.get("pages"), subdomains=crawl.get("subdomains"))
+            tech = exposure.tech_signals(args.url, pages=crawl.get("pages"), subdomains=crawl.get("subdomains"))
         except Exception as e:
             print(f"      exposure probe skipped: {e}")
-    print(f"      {len(exp)} exposure finding(s).")
+    print(f"      {len(exp)} exposure finding(s); "
+          f"{len(tech.get('trackers', []))} tracker(s), {len(tech.get('collectors', []))} collector(s) detected.")
 
     print("[3/4] Scoring against the 47 DPDP requirements ...")
     site = re.sub(r"^https?://(www\.)?", "", args.url).split("/")[0]
@@ -64,8 +66,14 @@ def main():
                             archived_policy=crawl.get("archived_policy"),
                             policy_found=crawl.get("policy_found"),
                             subdomains=crawl.get("subdomains"),
-                            sec_headers=crawl.get("sec_headers"))
-    rep.tracker_inventory = crawl.get("trackers", [])
+                            sec_headers=crawl.get("sec_headers"),
+                            observed_tech=tech)
+    _trk = list(crawl.get("trackers", []))
+    _known = {t.get("name") for t in _trk if isinstance(t, dict)}
+    for _t in (tech.get("trackers") or []):
+        if _t not in _known:
+            _trk.append({"name": _t, "domain": "", "country": "", "source": "nuclei"})
+    rep.tracker_inventory = _trk
     rep.cookie_inventory = crawl.get("cookies", [])
     print(f"      Grade {rep.overall.grade} (adequacy {rep.overall.adequacy:.2f}); "
           f"{len(rep.findings)} finding(s).")

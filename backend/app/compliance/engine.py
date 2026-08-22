@@ -233,7 +233,8 @@ def compliance_report(url: str | None = None, policy_text: str | None = None,
                       platform: str = "Unknown", archived_policy: dict | None = None,
                       policy_found: bool | None = None,
                       subdomains: list[str] | None = None,
-                      sec_headers: dict | None = None) -> ComplianceReport:
+                      sec_headers: dict | None = None,
+                      observed_tech: dict | None = None) -> ComplianceReport:
     """Judge all 47 requirements against retrieved text + observed behaviour.
 
     `pages` is the crawler output (each: {url, text, is_policy, data_collected, ...}). If only
@@ -267,7 +268,12 @@ def compliance_report(url: str | None = None, policy_text: str | None = None,
     source_url = next((p["url"] for p in pages if p.get("is_policy") and p.get("url")), "")
     if is_https is None:
         is_https = all(str(p.get("url", "")).startswith("https") for p in pages if p.get("url")) or bool(policy_text)
-    site_collects = any(p.get("data_collected") for p in pages)
+    observed_tech = observed_tech or {}
+    _obs_trackers = observed_tech.get("trackers") or []
+    _obs_collectors = observed_tech.get("collectors") or []
+    # Nuclei tech-detect is observed evidence: a form-DB/newsletter plugin means the site collects
+    # personal data even if no <form> was crawled; trackers mean third-party data flows exist.
+    site_collects = any(p.get("data_collected") for p in pages) or bool(_obs_collectors)
     evaluated = [p["url"] for p in pages if p.get("url")]
     # Personal records exposed on a public page (should be behind a login) -> Critical exposure.
     try:
@@ -402,6 +408,7 @@ def compliance_report(url: str | None = None, policy_text: str | None = None,
 
     coverage = {"policy_found": policy_found, "platform": platform,
                 "archived_policy": archived_policy, "site_collects": site_collects,
+                "observed_trackers": _obs_trackers, "observed_collectors": _obs_collectors,
                 "n_pages": len(pages), "n_collecting": len(collecting),
                 "collecting_pages": [p["url"] for p in collecting],
                 "serious_pages": serious_pages,

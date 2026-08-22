@@ -130,6 +130,10 @@ _TRACKER_RX = _re.compile(r"hotjar|google-analytics|googletagmanager|google-tag|
 _COLLECTOR_RX = _re.compile(r"contact-form|cfdb|form-db|formidable|gravityforms|gravity-forms|ninja-form|"
                             r"wpforms|forminator|mailchimp|newsletter", _re.I)
 
+# security posture signals (observable Rule 6 / s.8(5) safeguards): TLS in transit + a protecting WAF
+_SECURITY_RX = _re.compile(r"waf-detect|dns-waf-detect|tls-version|ssl-issuer|ssl-dns-names|"
+                           r"hsts|strict-transport|http-missing-security-headers|content-security-policy", _re.I)
+
 _SCAN_CACHE = {}
 
 
@@ -167,7 +171,7 @@ def _run_nuclei(base_url, pages=None, subdomains=None):
            "-tags", _NUCLEI_TAGS, "-exclude-tags", _NUCLEI_EXCLUDE,
            "-severity", "info,low,medium,high,critical",
            "-timeout", "8", "-retries", "1", "-rate-limit", "40", "-disable-update-check"]
-    findings, trackers, collectors = [], set(), set()
+    findings, trackers, collectors, security = [], set(), set(), set()
     try:
         subprocess.run(cmd, capture_output=True, timeout=300)
         with open(tout.name, encoding="utf-8") as fh:
@@ -194,6 +198,8 @@ def _run_nuclei(base_url, pages=None, subdomains=None):
                         trackers.add(_pretty(tid))
                     elif _COLLECTOR_RX.search(tid):
                         collectors.add(_pretty(tid))
+                    elif _SECURITY_RX.search(tid):
+                        security.add(_pretty(tid))
     except Exception:
         findings = _heuristic_probe(base_url)           # nuclei errored -> safe fallback
     finally:
@@ -202,7 +208,7 @@ def _run_nuclei(base_url, pages=None, subdomains=None):
                 os.unlink(f)
             except Exception:
                 pass
-    result = {"findings": findings, "trackers": sorted(trackers), "collectors": sorted(collectors)}
+    result = {"findings": findings, "trackers": sorted(trackers), "collectors": sorted(collectors), "security": sorted(security)}
     _SCAN_CACHE[key] = result
     return result
 
@@ -218,5 +224,5 @@ def tech_signals(base_url, pages=None, subdomains=None):
     """DPDP data-flow signals from Nuclei tech-detect: {trackers:[], collectors:[]}. Empty without nuclei."""
     if _nuclei_available():
         r = _run_nuclei(base_url, pages, subdomains)
-        return {"trackers": r["trackers"], "collectors": r["collectors"]}
-    return {"trackers": [], "collectors": []}
+        return {"trackers": r["trackers"], "collectors": r["collectors"], "security": r["security"]}
+    return {"trackers": [], "collectors": [], "security": []}

@@ -370,8 +370,11 @@ def compliance_report(url: str | None = None, policy_text: str | None = None,
     _ctrls = [n for n, k in (("HSTS", "hsts"), ("CSP", "csp"),
                              ("X-Content-Type-Options", "x_content_type_options"),
                              ("X-Frame-Options", "x_frame_options")) if sh.get(k)]
+    # Nuclei-observed TLS + WAF are externally-verifiable Rule 6 / s.8(5) safeguards too.
+    _ctrls += [t for t in (observed_tech.get("security") or [])]
     if _ctrls:
-        _assert(9, "Partial", "Observed transport-security controls: " + ", ".join(_ctrls))
+        _assert(9, "Partial", "Observed security controls (encryption in transit / WAF / headers): "
+                              + ", ".join(dict.fromkeys(_ctrls)))
 
     findings = [f for f in (_finding(c, ptext, source_url, pages, site, site_collects, is_https,
                                      evaluated, exposure, collecting_urls, sem_all.get(c["id"]))

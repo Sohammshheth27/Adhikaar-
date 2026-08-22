@@ -110,7 +110,7 @@ def judge_all(policy_text: str, t_high: float = T_HIGH, t_partial: float = T_PAR
     """Return {check_id: (verdict, score)} judged semantically against the policy text."""
     sents = _sentences(policy_text)
     if not sents:
-        return {i: ("Not disclosed", 0.0) for i in EXEMPLARS}
+        return {i: ("Not disclosed", 0.0, "") for i in EXEMPLARS}  # 3-tuple, consistent with below
     from sentence_transformers import util
     model = _model()
     sent_emb = model.encode(sents, convert_to_tensor=True, normalize_embeddings=True)

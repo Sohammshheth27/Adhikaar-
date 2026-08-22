@@ -127,7 +127,7 @@ def _call_anthropic(system: str, user: str) -> str:
             "https://api.anthropic.com/v1/messages",
             headers={"x-api-key": _key(), "anthropic-version": "2023-06-01",
                      "content-type": "application/json"},
-            json={"model": _model(), "max_tokens": 4096, "system": system,
+            json={"model": _model(), "max_tokens": _maxtok(), "system": system,
                   "messages": [{"role": "user", "content": user}]},
             timeout=120,
         )
@@ -137,10 +137,11 @@ def _call_anthropic(system: str, user: str) -> str:
 
 
 def _maxtok() -> int:
+    # 16000 by default: the 47-duty JSON with verbatim evidence needs headroom or it truncates.
     try:
-        return max(512, int(os.environ.get("ADHIKAAR_LLM_MAXTOK", "8000")))
+        return max(512, int(os.environ.get("ADHIKAAR_LLM_MAXTOK", "16000")))
     except ValueError:
-        return 8000
+        return 16000
 
 
 def _call_openai(system: str, user: str) -> str:
@@ -169,7 +170,20 @@ def _call_openai(system: str, user: str) -> str:
 
 def _extract_json(s: str) -> dict:
     m = re.search(r"\{.*\}", s, re.S)
-    return json.loads(m.group(0)) if m else {}
+    if not m:
+        return {}
+    blob = m.group(0)
+    try:
+        return json.loads(blob)
+    except Exception:
+        # Salvage a truncated response: keep every complete '"id": { ... }' entry we can parse.
+        out = {}
+        for mm in re.finditer(r'"(\d+)"\s*:\s*(\{[^{}]*\})', blob):
+            try:
+                out[mm.group(1)] = json.loads(mm.group(2))
+            except Exception:
+                continue
+        return out
 
 
 def judge_policy(policy_text: str) -> dict[int, tuple[str, str]]:

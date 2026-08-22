@@ -256,8 +256,12 @@ def compliance_report(url: str | None = None, policy_text: str | None = None,
     # about the grievances it helps with) -- this avoids both false negatives and false positives.
     _LEGAL_URL = re.compile(r"privacy|cookie[-_ ]?polic|/terms|/legal|grievance[-_ ]?redress|"
                             r"nodal[-_ ]?officer|data[-_ ]?protection|/gdpr|/dpdp", re.I)
-    ptext = "\n\n".join(p.get("text", "") for p in pages
-                        if p.get("is_policy") or _LEGAL_URL.search(p.get("url", "")))[:24000]
+    # Order the compliance-relevant pages so the ACTUAL policy document leads: is_policy pages first,
+    # then legal/grievance/terms pages. This prevents a giant marketing page from consuming the char
+    # budget and truncating the real policy out of what the model judges.
+    _legal_pages = [p for p in pages if p.get("is_policy") or _LEGAL_URL.search(p.get("url", ""))]
+    _legal_pages.sort(key=lambda p: (0 if p.get("is_policy") else 1))
+    ptext = "\n\n".join(p.get("text", "") for p in _legal_pages)[:24000]
     if policy_text and not ptext:                     # pasted-policy mode
         ptext = policy_text[:24000]
     source_url = next((p["url"] for p in pages if p.get("is_policy") and p.get("url")), "")
@@ -308,8 +312,12 @@ def compliance_report(url: str | None = None, policy_text: str | None = None,
     try:
         from ..rag import semantic as _sem
         if _sem.available():
+            # Lead with policy/legal pages so a huge marketing page can't push the real policy past
+            # the char cap; then the rest of the site (footer, forms, FAQ) fills the remaining budget.
+            _ordered = sorted(pages, key=lambda p: (0 if p.get("is_policy") else
+                                                    1 if _LEGAL_URL.search(p.get("url", "")) else 2))
             _seen, _parts = set(), []
-            for _p in pages:
+            for _p in _ordered:
                 _t = _p.get("text", "")
                 if _t and _t not in _seen:
                     _seen.add(_t)

@@ -551,7 +551,38 @@ def crawl(url: str, budget: int = DEFAULT_BUDGET, screenshot_dir: str | None = N
     }
 
 
-def crawl_static(url: str, budget: int = 8) -> dict:
+def _robots_disallows(client, base: str) -> list:
+    """Fetch robots.txt and return Disallow path-prefixes that apply to our UA (or '*'). Polite mode
+    honours these; a compliance officer respects a site's stated crawl wishes."""
+    try:
+        from urllib.parse import urlparse as _up
+        root = f"{_up(base).scheme}://{_up(base).netloc}"
+        r = client.get(root + "/robots.txt")
+        if r.status_code >= 400 or not r.text:
+            return []
+    except Exception:
+        return []
+    disallows, applies = [], False
+    for line in r.text.splitlines():
+        line = line.split("#", 1)[0].strip()
+        if not line:
+            continue
+        k, _, v = line.partition(":")
+        k, v = k.strip().lower(), v.strip()
+        if k == "user-agent":
+            applies = v == "*" or "adhikaar" in v.lower()
+        elif k == "disallow" and applies and v:
+            disallows.append(v)
+    return disallows
+
+
+def _path_blocked(url: str, disallows: list) -> bool:
+    from urllib.parse import urlparse as _up
+    path = _up(url).path or "/"
+    return any(path.startswith(d) for d in disallows)
+
+
+def crawl_static(url: str, budget: int = 8, polite: bool = False, delay: float = 1.5) -> dict:
     """httpx fallback (no JS) -- multi-page. Follows ranked on-site links from the landing page.
 
     Used when a real browser is blocked (e.g. bot-managed sites that reject HTTP/2). It reads the
@@ -563,14 +594,23 @@ def crawl_static(url: str, budget: int = 8) -> dict:
     origin = _registrable(urlparse(base).netloc)
     ua = {"User-Agent": _UA_STRING, "X-Adhikaar-Scanner": _SCANNER_HEADER}
     client = httpx.Client(headers=ua, timeout=20, follow_redirects=True, http2=False)
+    disallows = _robots_disallows(client, base) if polite else []
+    robots_skipped = []
 
+    import time as _time
     def fetch(u):
-        try:
-            r = client.get(u)
-            if r.status_code < 400 and r.text:
-                return r.text
-        except Exception:
-            return None
+        for attempt in range(3):
+            try:
+                r = client.get(u)
+                if r.status_code == 429:                # rate limited -> honour Retry-After / back off
+                    ra = r.headers.get("retry-after")
+                    _time.sleep(min(20.0, float(ra)) if (ra and ra.isdigit()) else 2.0 * (attempt + 1))
+                    continue
+                if r.status_code < 400 and r.text:
+                    return r.text
+                return None
+            except Exception:
+                return None
         return None
 
     subdomains = {urlparse(base).netloc.lower()}
@@ -598,10 +638,18 @@ def crawl_static(url: str, budget: int = 8) -> dict:
         if len(pages) >= budget or u in seen:
             continue
         seen.add(u)
+        if polite and u != base and _path_blocked(u, disallows):
+            robots_skipped.append(u)                    # honour robots.txt Disallow
+            continue
         html = landing if u == base else fetch(u)
+        if polite and u != base:
+            time.sleep(delay)                           # pace requests like a considerate visitor
         if not html:
             continue
-        text = re.sub(r"<[^>]+>", " ", html)
+        text = re.sub(r"<script[^>]*>.*?</script>", " ", html, flags=re.S | re.I)
+        text = re.sub(r"<style[^>]*>.*?</style>", " ", text, flags=re.S | re.I)
+        text = re.sub(r"<noscript[^>]*>.*?</noscript>", " ", text, flags=re.S | re.I)
+        text = re.sub(r"<[^>]+>", " ", text)            # strip tags AFTER removing script/style CONTENT
         text = re.sub(r"\s+", " ", text)
         for dom in _TRACKER_DOMAINS:
             if dom in html:
@@ -620,4 +668,5 @@ def crawl_static(url: str, budget: int = 8) -> dict:
     return {"pages": pages, "site_third_parties": [], "subdomains": sorted(subdomains),
             "trackers": _classify_trackers(trackers_seen), "cookies": [],
             "platform": _detect_platform(landing or ""), "policy_found": policy_found,
-            "archived_policy": None if policy_found else archive_policy(origin)}
+            "archived_policy": None if policy_found else archive_policy(origin),
+            "robots_skipped": robots_skipped, "polite": polite}

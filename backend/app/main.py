@@ -78,7 +78,7 @@ def _cached_crawl(url: str, budget: int, static: bool, force: bool = False):
 def _build_report(req: "AssessRequest"):
     """Crawl (cached) + full engine -> a ComplianceReport, shared by /assess, /scan and /report.pdf."""
     crawl = _cached_crawl(req.url, req.budget, req.static, req.force)
-    exp = exposure.probe(req.url) if req.exposure else []
+    exp = exposure.probe(req.url, pages=crawl.get("pages"), subdomains=crawl.get("subdomains")) if req.exposure else []
     site = re.sub(r"^https?://(www\.)?", "", req.url).split("/")[0]
     rep = compliance_report(url=req.url, pages=crawl["pages"], exposure_findings=exp,
                             is_https=req.url.startswith("https"), site=site, page_budget=req.budget,

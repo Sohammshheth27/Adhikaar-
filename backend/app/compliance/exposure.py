@@ -44,8 +44,9 @@ def _reachable(base: str, path: str, timeout: float = 8.0) -> bool:
     return bool(r is not None and r.status_code in (200, 206) and r.content)
 
 
-def probe(base_url: str) -> list[dict]:
-    """Return exposure findings (paths only, never content).
+def _heuristic_probe(base_url: str) -> list[dict]:
+    """Built-in signal-only fallback (used when the nuclei binary is not installed).
+    Return exposure findings (paths only, never content).
 
     Catch-all / soft-404 guard: many sites (SPAs behind a CDN, wildcard routers) answer HTTP 200
     with their index page for ANY path. On such a site a file-existence probe is meaningless and
@@ -100,3 +101,99 @@ def probe(base_url: str) -> list[dict]:
             "provision": "Act S.8(5); Rule 6",
         })
     return findings
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Nuclei-powered exposure + security-posture engine (primary path).
+# Runs SAFE, detection-only templates over the crawl's discovered URL + subdomain
+# surface. No active exploitation / fuzzing / brute-force / DoS. Falls back to the
+# built-in _heuristic_probe when the `nuclei` binary is not installed.
+# ─────────────────────────────────────────────────────────────────────────────
+import os
+import json
+import shutil
+import subprocess
+import tempfile
+from urllib.parse import urlparse
+
+# detection-only template tags; intrusive/active classes are explicitly excluded
+_NUCLEI_TAGS = "exposure,exposures,misconfig,misconfiguration,ssl,tech"
+_NUCLEI_EXCLUDE = "intrusive,dos,fuzz,fuzzing,brute-force,bruteforce,sqli,rce,xss"
+_PROVISION = "Act S.8(5); Rule 6"
+_SEV = {"critical": "Critical", "high": "High", "medium": "Medium", "low": "Low", "info": "Info"}
+
+
+def _nuclei_available() -> bool:
+    return shutil.which("nuclei") is not None
+
+
+def _target_list(base_url: str, pages, subdomains) -> list[str]:
+    urls = {base_url}
+    for p in (pages or []):
+        u = p.get("url") if isinstance(p, dict) else p
+        if u:
+            urls.add(u)
+    scheme = urlparse(base_url).scheme or "https"
+    for s in (subdomains or []):
+        if s:
+            urls.add(f"{scheme}://{s}")
+    return sorted(urls)
+
+
+def _nuclei_probe(base_url: str, pages=None, subdomains=None) -> list[dict]:
+    """Run Nuclei (safe templates) over the crawl surface and map JSONL hits to exposure findings."""
+    targets = _target_list(base_url, pages, subdomains)
+    tin = tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8")
+    tin.write("\n".join(targets))
+    tin.close()
+    tout = tempfile.NamedTemporaryFile(suffix=".jsonl", delete=False)
+    tout.close()
+    cmd = ["nuclei", "-silent", "-jsonl", "-o", tout.name, "-l", tin.name,
+           "-tags", _NUCLEI_TAGS, "-exclude-tags", _NUCLEI_EXCLUDE,
+           "-severity", "low,medium,high,critical",
+           "-timeout", "8", "-retries", "1", "-rate-limit", "30", "-disable-update-check"]
+    try:
+        subprocess.run(cmd, capture_output=True, timeout=180)
+    except Exception:
+        return _heuristic_probe(base_url)                # nuclei errored -> safe fallback
+    findings = []
+    try:
+        with open(tout.name, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.strip()
+                if not line:
+                    continue
+                d = json.loads(line)
+                info = d.get("info", {}) or {}
+                desc = (". " + info["description"]) if info.get("description") else ""
+                findings.append({
+                    "id": d.get("template-id", "nuclei"),
+                    "severity": _SEV.get((info.get("severity") or "").lower(), "Medium"),
+                    "found": [d.get("matched-at") or d.get("host") or base_url],
+                    "detail": (info.get("name", "") + desc).strip(),
+                    "recommendation": info.get("remediation")
+                        or "Review and remediate the exposure/misconfiguration this check identified.",
+                    "provision": _PROVISION,
+                    "engine": "nuclei",
+                })
+    except Exception:
+        pass
+    finally:
+        for f in (tin.name, tout.name):
+            try:
+                os.unlink(f)
+            except Exception:
+                pass
+    return findings
+
+
+def probe(base_url: str, pages=None, subdomains=None) -> list[dict]:
+    """Exposure + security-posture probe.
+
+    Primary: Nuclei with safe, detection-only templates over the crawl's discovered URL + subdomain
+    surface (when the `nuclei` binary is installed). Fallback: the built-in signal-only file probe.
+    Same finding shape either way, so the engine/report consume it unchanged.
+    """
+    if _nuclei_available():
+        return _nuclei_probe(base_url, pages, subdomains)
+    return _heuristic_probe(base_url)

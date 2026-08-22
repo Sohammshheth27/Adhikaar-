@@ -50,7 +50,7 @@ def main():
     if not args.no_exposure:
         print("[2/4] Probing for exposed files (signal-only) ...")
         try:
-            exp = exposure.probe(args.url)
+            exp = exposure.probe(args.url, pages=crawl.get("pages"), subdomains=crawl.get("subdomains"))
         except Exception as e:
             print(f"      exposure probe skipped: {e}")
     print(f"      {len(exp)} exposure finding(s).")

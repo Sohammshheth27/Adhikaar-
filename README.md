@@ -65,6 +65,16 @@ backend/
   adhikaar_build_corpus.py / adhikaar_finetune.py / adhikaar_calibrate.py   the real-policy fine-tuning pipeline
 ```
 
+## Exposure scanning (optional Nuclei)
+
+Exposure + security-posture detection is powered by **Nuclei** (ProjectDiscovery) when the `nuclei`
+binary is on PATH — it runs **safe, detection-only** templates (`exposures`, `ssl`, `misconfiguration`,
+`tech`; intrusive/exploitation/fuzzing tags excluded) over the crawl's discovered URL + subdomain
+surface, and maps hits to the engine's exposure findings + security duties (s.8(5)). If `nuclei` is not
+installed, it falls back to the built-in signal-only file probe automatically. Install (optional):
+<https://github.com/projectdiscovery/nuclei> — the crawler still handles page discovery + policy-text
+extraction; Nuclei only scans what the crawler finds.
+
 ## Responsible use
 
 Adhikaar assesses **publicly published** pages for **compliance** purposes and behaves like an ordinary

@@ -17,14 +17,8 @@ cd D:\Adhikaar\backend
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
-**Terminal 2 — serve the frontend** (so it's http://, not file://):
-```powershell
-cd "E:\Markdown file implementation"
-python -m http.server 5500
-```
-Open **http://localhost:5500/Scanner.dc.html**
-
-That's it — type a URL, hit Scan, the real engine runs and the UI fills in.
+The backend now **serves the site too** (same origin), so there is no second server:
+Open **http://localhost:8000/Scanner.dc.html** — type a URL, hit Scan, the real engine runs and the UI fills in.
 
 ## The night before — pre-cache your demo targets (do this!)
 With the backend running:

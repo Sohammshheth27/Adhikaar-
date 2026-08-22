@@ -220,7 +220,7 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
-const ADHIKAAR_API = (window.ADHIKAAR_API || 'http://localhost:8000');
+const ADHIKAAR_API = (window.ADHIKAAR_API !== undefined ? window.ADHIKAAR_API : '');  // '' = same-origin; set window.ADHIKAAR_API for a split (GitHub Pages -> HF) deploy
 class Component extends DCLogic {
   state = {
     url: '', policyText: '', showPaste: false,

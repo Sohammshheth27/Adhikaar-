@@ -105,3 +105,21 @@ def scan(req: AssessRequest):
     out["cached"] = False
     _UI_CACHE[key] = out
     return out
+
+
+# --- Serve the static site from the same origin (one container hosts site + engine) ---
+import os as _os
+from fastapi.responses import RedirectResponse
+from fastapi.staticfiles import StaticFiles
+
+_FRONTEND = _os.path.join(_os.path.dirname(__file__), "..", "..", "frontend")
+
+
+@app.get("/")
+def _root():
+    return RedirectResponse(url="/Scanner.dc.html")
+
+
+if _os.path.isdir(_FRONTEND):
+    # Mounted last so the API routes (/assess, /scan, /catalog, /health) take precedence.
+    app.mount("/", StaticFiles(directory=_FRONTEND, html=True), name="site")

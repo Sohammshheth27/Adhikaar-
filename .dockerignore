@@ -1,0 +1,13 @@
+.git
+__pycache__
+**/__pycache__
+*.pyc
+backend/reports
+examples
+_shots
+backend/_shots
+backend/app/rag/models/adhikaar-minilm_073
+backend/app/rag/models/adhikaar-minilm_v1_backup
+backend/corpus_part1.jsonl
+backend/corpus_part2.jsonl
+backend/corpus_full.jsonl

@@ -69,3 +69,6 @@ deep_casestudies*
 demo_campaign*.log
 backend/cloudflared.exe
 *.exe
+
+# Runtime translation cache (regenerated on demand)
+backend/app/rag/i18n_cache/

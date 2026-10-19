@@ -50,6 +50,7 @@ class AssessRequest(BaseModel):
     force: bool = False          # re-scan even if cached (default: serve cache when present)
     scan_minutes: int | None = None   # wall-clock budget for a deep scan (e.g. 30); overrides the page cap
     fuzz: bool = False           # passive subdomain discovery (CT logs / subfinder) + seed live subdomains into the crawl
+    lang: str = "en"             # report display language; non-English (e.g. hi, mr, ta) machine-translates the prose
 
 
 class AuthStartRequest(BaseModel):
@@ -272,11 +273,20 @@ def scan(req: AssessRequest):
     from app.compliance.ui_map import ui_report
     key = req.url.rstrip("/").lower()
     if not req.force and key in _UI_CACHE:
-        return {**_UI_CACHE[key], "cached": True}
-    rep, crawl = _build_report(req)
-    out = ui_report(rep, crawl, org=req.org)
-    out["cached"] = False
-    _UI_CACHE[key] = out
+        out = {**_UI_CACHE[key], "cached": True}
+    else:
+        rep, crawl = _build_report(req)
+        out = ui_report(rep, crawl, org=req.org)
+        out["cached"] = False
+        _UI_CACHE[key] = out
+    # Output-side multilingual: translate the display prose into the requested language. The English
+    # judge and its verdicts are untouched; quoted clauses and citations stay in the original.
+    try:
+        from app.rag import translate
+        if translate.is_supported(req.lang):
+            return translate.translate_report(out, req.lang)
+    except Exception:
+        pass
     return out
 
 

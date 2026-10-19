@@ -1,0 +1,71 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# --- Secrets / local env (never commit keys) ---
+.env
+*.key
+secrets.*
+
+# --- Third-party assessment outputs (do not publish other orgs' reports) ---
+backend/reports/
+_reference/
+
+# --- Redundant model backup (the deployed model app/rag/models/adhikaar-minilm/ IS committed) ---
+backend/app/rag/models/adhikaar-minilm_073/
+backend/app/rag/models/adhikaar-minilm_v1_backup/
+
+# --- Fine-tuning intermediates (keep adhikaar_corpus.jsonl; drop the working parts) ---
+backend/corpus_part1.jsonl
+backend/corpus_part2.jsonl
+backend/corpus_full.jsonl
+backend/failed_seed.txt
+backend/_test_*.txt
+backend/_test_*.jsonl
+backend/_razorpay.txt
+
+# --- HuggingFace / model cache ---
+.cache/
+*.output
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Third-party crawl screenshots
+_shots/
+backend/_shots/
+
+# Real-org assessment outputs (do not publish named third-party reports)
+examples/
+
+# Recovered: never commit named third-party assessment outputs
+reports/
+
+# LLM credentials (never commit)
+backend/.llm_env
+.llm_env
+*.bak_predpo
+
+# Loose local logs / errors / third-party assessment PDFs (NEVER publish named orgs' reports)
+*.log
+*.err
+backend/_*.pdf
+backend/_*.log
+backend/_*.err
+_amazon_*
+_infosys_*
+_razorpay*
+# Per-org demonstration result dumps (named orgs' grades; release gold_set/ instead)
+demo_results*.jsonl
+deep_casestudies*
+demo_campaign*.log
+backend/cloudflared.exe
+*.exe

@@ -1,0 +1,23 @@
+# 15 STRONG, comprehensive privacy notices -- chosen to teach what a genuinely complete
+# DPDP-aligned disclosure looks like. Mix of GDPR-grade global notices (rights, retention,
+# legal basis, breach, DPO, cross-border) + leading Indian data fiduciaries that name
+# grievance/nodal officers + DPO (the DPDP-specific duties). No synthetic text.
+
+# -- Global, GDPR-grade (very comprehensive) --
+https://policies.google.com/privacy?hl=en-IN
+https://privacy.microsoft.com/en-us/privacystatement
+https://www.apple.com/legal/privacy/en-ww/
+https://www.linkedin.com/legal/privacy-policy
+https://www.ibm.com/privacy
+
+# -- Indian leaders (grievance officer / DPO / India nexus) --
+https://www.zoho.com/privacy.html
+https://www.infosys.com/privacy-statement.html
+https://www.tcs.com/privacy-notice
+https://www.wipro.com/privacy-statement/
+https://www.hdfcbank.com/personal/useful-links/privacy
+https://www.icicibank.com/privacy
+https://razorpay.com/privacy/
+https://www.jio.com/en-in/privacy-policy
+https://www.flipkart.com/pages/privacypolicy
+https://www.tataneu.com/privacy-policy

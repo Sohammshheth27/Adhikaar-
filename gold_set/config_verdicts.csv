@@ -1,0 +1,424 @@
+site,sector,duty_id,verdict_rules,verdict_semantic,verdict_nli,conf_nli,evidence_nli
+du.ac.in,edu,1,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,2,Compliant,Not disclosed,Compliant,0.9,"HOW THE UNIVERSITY USES YOUR DATA We process your data for the purpose of processing and assessing your application for study, and for purposes related to your application, such as assessing your eligibility for different programs.&nbsp;We set out below those circumstances where it is necessary for "
+du.ac.in,edu,3,Compliant,Partial,Compliant,0.9,This privacy policy describes how we collect and use your personal data during the admissions process.
+du.ac.in,edu,4,Not disclosed,Partial,Compliant,0.89,We permit them to process your data only for specified purposes and in accordance with our instructions.
+du.ac.in,edu,5,Compliant,Partial,Compliant,0.89,We permit them to process your data only for specified purposes and in accordance with our instructions.
+du.ac.in,edu,6,Compliant,Partial,Not disclosed,0.55,
+du.ac.in,edu,7,Compliant,Compliant,Compliant,0.9,&nbsp; KEEPING YOUR DATA UP-TO-DATE It is important that the data we hold about you is accurate and current.
+du.ac.in,edu,8,Compliant,Compliant,Compliant,0.9,"RETENTION PERIOD We will retain your data only for as long as we need it to meet academic and institutional purposes, including any relating to legal, accounting, or reporting requirements."
+du.ac.in,edu,9,Compliant,Partial,Compliant,0.9,All third-party service providers that process data on our behalf are required to take appropriate security measures to protect your data in line with our policies.
+du.ac.in,edu,10,Compliant,Compliant,Partial,0.79,We may also notify you in other ways from time to time about the processing of your personal data.
+du.ac.in,edu,11,Compliant,Compliant,Compliant,0.9,"&nbsp;However, where you have consented to the processing (for example, where you have asked us to send you certain types of communication), you can withdraw your consent at any time, by contacting your principal/head of the department."
+du.ac.in,edu,12,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,13,Not disclosed,Compliant,Partial,0.74,"&nbsp;However, where you have consented to the processing (for example, where you have asked us to send you certain types of communication), you can withdraw your consent at any time, by contacting your principal/head of the department."
+du.ac.in,edu,14,Not disclosed,Partial,Not disclosed,0.55,
+du.ac.in,edu,15,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,16,Not disclosed,Not disclosed,Partial,0.9,"You can access, amend and delete your data yourself until the point at which you submit your application to the University."
+du.ac.in,edu,17,Not disclosed,Partial,Compliant,0.9,"You can access, amend and delete your data yourself until the point at which you submit your application to the University."
+du.ac.in,edu,18,Compliant,Partial,Compliant,0.9,"You can access, amend and delete your data yourself until the point at which you submit your application to the University."
+du.ac.in,edu,19,Compliant,Not disclosed,Compliant,0.87,"R&amp;P/318/2026 for the post of Professor posted on Jul 8, 2026 Notification regarding re-appointment of Prof."
+du.ac.in,edu,20,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,21,Compliant,Partial,Partial,0.73,"R&amp;P/318/2026 for the post of Professor posted on Jul 8, 2026 Notification regarding re-appointment of Prof."
+du.ac.in,edu,22,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,23,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,24,Compliant,Compliant,Compliant,0.77,"Third parties including your former employer(s) or educational establishment(s) &nbsp;to obtain a reference or to verify the accuracy of a reference or other information you have submitted with or in support of your application; Where information is shared with third parties, we will seek to share t"
+du.ac.in,edu,25,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,26,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,27,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,28,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,29,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,30,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,31,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,32,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,33,Compliant,Compliant,Compliant,0.9,
+du.ac.in,edu,34,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,35,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,36,Compliant,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,37,Compliant,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,38,Compliant,Compliant,Compliant,0.9,
+du.ac.in,edu,39,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,40,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,41,Not externally verifiable,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,42,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,43,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,44,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,45,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,All third-party service providers that process data on our behalf are required to take appropriate security measures to protect your data in line with our policies.
+du.ac.in,edu,46,Not disclosed,Not disclosed,Not disclosed,0.55,
+du.ac.in,edu,47,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,1,Partial,Compliant,Compliant,0.81,"It does not contain your name, address, telephone number, or email address."
+iima.ac.in,edu,2,Not disclosed,Not disclosed,Compliant,0.89,A cookie may also be used to deliver customizable and personalized services for information by tracking already visited pages.
+iima.ac.in,edu,3,Compliant,Compliant,Compliant,0.87,This privacy statement informs you about the types of information gathered and disseminated on the website.
+iima.ac.in,edu,4,Not disclosed,Not disclosed,Partial,0.89,"IIMA prohibits the reproduction of material in this website, its modification or distribution, without prior written permission of the authorities of IIMA."
+iima.ac.in,edu,5,Not disclosed,Compliant,Partial,0.77,Such information will be utilized only for the purpose stated.
+iima.ac.in,edu,6,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,7,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,8,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,9,Compliant,Compliant,Compliant,0.89,"Security Precautions This site has security measures in place to protect the loss, misuse and alteration of the information under our control."
+iima.ac.in,edu,10,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,11,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,12,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,13,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,14,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,15,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,16,Not disclosed,Compliant,Partial,0.75,"IIMA also reserves the right to disclose this information under special circumstances, including disclosures required by law, court order or circumstances under which disclosure, in the sole discretion of IIMA, is necessary to protect the legal rights, including the intellectual property rights, of "
+iima.ac.in,edu,17,Not disclosed,Compliant,Partial,0.74,IIMA also reserves the right to make changes to the technical aspects of this website without any prior notice.
+iima.ac.in,edu,18,Not disclosed,Partial,Partial,0.74,"IIMA reserves the right to periodically update, add to, delete or revise the content in this website, without any prior notice."
+iima.ac.in,edu,19,Not disclosed,Compliant,Compliant,0.89,"Contacting Us If you have any questions about this privacy statement, the practices of this site, or your dealings with this Website, you may contact the official functionaries of the institute whose contact details are provided in ""Contact Us"" page."
+iima.ac.in,edu,20,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,21,Compliant,Compliant,Compliant,0.9,"Contacting Us If you have any questions about this privacy statement, the practices of this site, or your dealings with this Website, you may contact the official functionaries of the institute whose contact details are provided in ""Contact Us"" page."
+iima.ac.in,edu,22,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,23,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,24,Compliant,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,25,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,26,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,27,Compliant,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,28,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,29,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,30,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,31,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,32,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,33,Compliant,Compliant,Compliant,0.9,
+iima.ac.in,edu,34,Compliant,Compliant,Compliant,0.9,
+iima.ac.in,edu,35,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,36,Not disclosed,Partial,Compliant,0.9,Policies IIM Act and Rules HR Policy (Staff) Privacy Policy-T&amp;C Whistleblower Policy Useful Links RTI NIRF Sitemap ESS Portal IIMA Mail Get In Touch Work with Us For Recruiters Tenders Maps &amp; Directions English हिंदी A+ A A- Screen Reader Access © 1961-2026 Indian Institute of Management Ahm
+iima.ac.in,edu,37,Compliant,Compliant,Compliant,0.9,
+iima.ac.in,edu,38,Compliant,Compliant,Compliant,0.9,
+iima.ac.in,edu,39,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,40,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,41,Not externally verifiable,Not disclosed,Not externally verifiable,0.62,Policies IIM Act and Rules HR Policy (Staff) Privacy Policy-T&amp;C Whistleblower Policy Useful Links RTI NIRF Sitemap ESS Portal IIMA Mail Get In Touch Work with Us For Recruiters Tenders Maps &amp; Directions English हिंदी A+ A A- Screen Reader Access © 1961-2026 Indian Institute of Management Ahm
+iima.ac.in,edu,42,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,43,Not disclosed,Not disclosed,Not externally verifiable,0.62,"The staff of IIMA uses such information to diagnose problems, to administer and improve our website and to generate aggregate statistical reports that analyze general user information and demographics."
+iima.ac.in,edu,44,Not disclosed,Not disclosed,Not externally verifiable,0.62,"Security Precautions This site has security measures in place to protect the loss, misuse and alteration of the information under our control."
+iima.ac.in,edu,45,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,46,Not disclosed,Not disclosed,Not disclosed,0.55,
+iima.ac.in,edu,47,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,1,Not disclosed,Compliant,Partial,0.74,"&nbsp; Privacy Policy JNU-Website does not automatically capture any specific personal information from you, (like name, phone number or e-mail address), that allows us to identify you individually."
+jnu.ac.in,edu,2,Compliant,Not disclosed,Partial,0.89,"We gather certain information about the User, such as Internet protocol (IP) addresses, domain name, browser type, operating system, the date and time of the visit and the pages visited."
+jnu.ac.in,edu,3,Compliant,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,4,Not disclosed,Not disclosed,Compliant,0.85,Content is used to engage in or solicit any illegal activity in violation of Government laws or official University &nbsp; policy.
+jnu.ac.in,edu,5,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,6,Not disclosed,Partial,Not disclosed,0.55,
+jnu.ac.in,edu,7,Compliant,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,8,Not disclosed,Partial,Partial,0.73,The details published on the prominent places of main web pages of the website(s) will be archived generally after a week time.
+jnu.ac.in,edu,9,Compliant,Not disclosed,Partial,0.71,"Any information provided to this website will be protected from loss, misuse, unauthorized access or disclosure, alteration, or destruction."
+jnu.ac.in,edu,10,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,11,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,12,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,13,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,14,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,15,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,16,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,17,Not disclosed,Partial,Partial,0.73,&nbsp; Right to Appeal Content owners or developers who have their web content removed or modified may appeal the decision in writing to the Competent Authority.
+jnu.ac.in,edu,18,Not disclosed,Partial,Partial,0.74,&nbsp; Right to Appeal Content owners or developers who have their web content removed or modified may appeal the decision in writing to the Competent Authority.
+jnu.ac.in,edu,19,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,20,Compliant,Partial,Not disclosed,0.55,
+jnu.ac.in,edu,21,Compliant,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,22,Not disclosed,Not externally verifiable,Not disclosed,0.55,
+jnu.ac.in,edu,23,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,24,Not disclosed,Partial,Partial,0.73,We do not sell or share any personally identifiable information volunteered on the JNU-Website to any third party (public/private).
+jnu.ac.in,edu,25,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,26,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,27,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,28,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,29,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,30,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,31,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,32,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,33,Compliant,Partial,Compliant,0.9,
+jnu.ac.in,edu,34,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,35,Compliant,Partial,Compliant,0.9,
+jnu.ac.in,edu,36,Not disclosed,Not disclosed,Partial,0.73,आपात सेवाएं खोज A - A A + Blue Black Theme Dark Grey Theme Default Theme English Main menu ☰ मुख्य पृष्ठ जे.एन.यू.
+jnu.ac.in,edu,37,Compliant,Partial,Not disclosed,0.55,
+jnu.ac.in,edu,38,Compliant,Compliant,Compliant,0.9,
+jnu.ac.in,edu,39,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,40,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,41,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,42,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,43,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,44,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,45,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,46,Not disclosed,Not disclosed,Not disclosed,0.55,
+jnu.ac.in,edu,47,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,&nbsp; All approved exemptions will be reviewed annually by CIS in consultation with content/data owners.
+akshayapatra.org,ngo,1,Compliant,Compliant,Compliant,0.81,"A visitor must provide contact information (such as name, e-mail and mailing address) and payment information (such as credit card number and expiration date)."
+akshayapatra.org,ngo,2,Compliant,Partial,Compliant,0.89,This information is used for billing purposes and for sending receipt of the donation.
+akshayapatra.org,ngo,3,Compliant,Partial,Not disclosed,0.55,
+akshayapatra.org,ngo,4,Not disclosed,Not disclosed,Partial,0.89,"Other Disclosures We may disclose information when required by law; when needed to protect our rights, privacy, safety, property, donors, or users; and when necessary to enforce our terms of service."
+akshayapatra.org,ngo,5,Not disclosed,Partial,Compliant,0.76,Data Retention We seek to retain donor-related information only as needed to fulfil the purposes described in this policy unless a longer retention period is required by law or regulations.
+akshayapatra.org,ngo,6,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,7,Not disclosed,Not disclosed,Partial,0.89,"Upon request, we will tell you what information we hold about you and correct any incorrect information."
+akshayapatra.org,ngo,8,Compliant,Compliant,Compliant,0.88,Data Retention We seek to retain donor-related information only as needed to fulfil the purposes described in this policy unless a longer retention period is required by law or regulations.
+akshayapatra.org,ngo,9,Compliant,Compliant,Compliant,0.9,"In order to prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online."
+akshayapatra.org,ngo,10,Not disclosed,Partial,Partial,0.72,"If, however, we are going to use visitors&#39; personally identifiable information in a manner significantly different from that stated at the time of collection we will notify visitors via e-mail and won&#39;t disclose this information unless express information is granted."
+akshayapatra.org,ngo,11,Compliant,Partial,Compliant,0.9,The User can unsubscribe/opt-out from receiving communications through SMS and e-mail anytime by e-mailing to [email&#160;protected] .
+akshayapatra.org,ngo,12,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,13,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,14,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,15,Compliant,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,16,Not disclosed,Compliant,Partial,0.83,Rights You have certain rights with respect to the information we collect about you.
+akshayapatra.org,ngo,17,Not disclosed,Compliant,Compliant,0.78,"Upon request, we will tell you what information we hold about you and correct any incorrect information."
+akshayapatra.org,ngo,18,Not disclosed,Compliant,Compliant,0.9,"We will also make reasonable efforts to delete your information if you ask us to do so, unless we are otherwise required to keep it."
+akshayapatra.org,ngo,19,Compliant,Partial,Compliant,0.9,The friend may contact Akshaya Patra at unsubscribe ( [email&#160;protected] ) to request the removal of this information from our database.
+akshayapatra.org,ngo,20,Not disclosed,Compliant,Partial,0.75,Rights You have certain rights with respect to the information we collect about you.
+akshayapatra.org,ngo,21,Compliant,Compliant,Compliant,0.9,"Contact us If you have questions about this Donor Privacy Policy or requests about the status and correctness of your donor data, please contact The Akshaya Patra Foundation #72, 3rd Floor, 3rd Main Road, 1st &amp; 2nd Stage Yeshwantpur Industrial Suburb, Rajajinagar Ward No."
+akshayapatra.org,ngo,22,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,23,Not disclosed,Not externally verifiable,Not disclosed,0.55,
+akshayapatra.org,ngo,24,Compliant,Compliant,Compliant,0.83,We will not share personally identifiable information with third parties unless authorized by the person submitting the information or required by law.
+akshayapatra.org,ngo,25,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,26,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,27,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,28,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,29,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,30,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,31,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,32,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,33,Compliant,Compliant,Compliant,0.9,
+akshayapatra.org,ngo,34,Compliant,Compliant,Compliant,0.9,
+akshayapatra.org,ngo,35,Compliant,Not disclosed,Compliant,0.9,
+akshayapatra.org,ngo,36,Compliant,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,37,Compliant,Compliant,Not disclosed,0.55,
+akshayapatra.org,ngo,38,Compliant,Compliant,Compliant,0.9,
+akshayapatra.org,ngo,39,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,Credit Card Information Security Akshaya Patra uses industry-standard Secure Sockets Layer (SSL) encryption to protect the security of your transaction and the confidentiality of your personal information.
+akshayapatra.org,ngo,40,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,41,Not externally verifiable,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,42,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,43,Not disclosed,Not disclosed,Not externally verifiable,0.62,Akshaya Patra stores this information for the sole purpose of sending this one-time e-mail and tracking the success of our referral program.
+akshayapatra.org,ngo,44,Not disclosed,Not disclosed,Not externally verifiable,0.62,"In order to prevent unauthorised access or disclosure, we have put in place suitable physical, electronic and managerial procedures to safeguard and secure the information we collect online."
+akshayapatra.org,ngo,45,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,46,Not disclosed,Not disclosed,Not disclosed,0.55,
+akshayapatra.org,ngo,47,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,1,Compliant,Partial,Partial,0.72,"As per the provisions of Indian Income Tax, a donor is required to give its Full Name, Complete Address (not merely Pin Code and City) to ensure the maximum benefit to the cause by avoiding diversion of a good part of the donation towards taxes."
+savethechildren.in,ngo,2,Compliant,Not disclosed,Partial,0.89,"These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source, etc."
+savethechildren.in,ngo,3,Compliant,Not disclosed,Compliant,0.88,Please carefully read the General Terms and Conditions and our privacy policy before using our website.
+savethechildren.in,ngo,4,Not disclosed,Partial,Compliant,0.78,"By using our website the user consents to all the said terms, conditions, policies and notices."
+savethechildren.in,ngo,5,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,6,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,7,Compliant,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,8,Compliant,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,9,Not disclosed,Partial,Compliant,0.9,"Data Security: We take utmost precautions with your data, we will never share your information."
+savethechildren.in,ngo,10,Compliant,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,11,Not disclosed,Not disclosed,Partial,0.9,Bal Raksha Bharat reserves the right to restrict or terminate any user/s access to the website or any feature or any part thereof at any time.
+savethechildren.in,ngo,12,Compliant,Not disclosed,Compliant,0.9,"By clicking ""Accept All"", you consent to our use of cookies."
+savethechildren.in,ngo,13,Not disclosed,Partial,Partial,0.73,"By using our website the user consents to all the said terms, conditions, policies and notices."
+savethechildren.in,ngo,14,Not disclosed,Compliant,Compliant,0.89,Customize Reject All Accept All Customize Consent Preferences We use cookies to help you navigate efficiently and perform certain functions.
+savethechildren.in,ngo,15,Compliant,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,16,Not disclosed,Partial,Not disclosed,0.55,
+savethechildren.in,ngo,17,Not disclosed,Partial,Not disclosed,0.55,
+savethechildren.in,ngo,18,Not disclosed,Partial,Partial,0.73,Bal Raksha Bharat reserves the right to restrict or terminate any user/s access to the website or any feature or any part thereof at any time.
+savethechildren.in,ngo,19,Not disclosed,Not disclosed,Compliant,0.81,🍂 Sign up for the newsletter here: Subscribe Follow us on Follow us on About us Overview Mission &#038; Vision Governing Council Our Team Award and Recognition Certificates Financials What we do?
+savethechildren.in,ngo,20,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,21,Compliant,Compliant,Partial,0.75,HOW DO I CONTACT YOU REGARDING MY DONATION?
+savethechildren.in,ngo,22,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,23,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,24,Compliant,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,25,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,26,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,27,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,28,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,29,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,30,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,31,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,32,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,33,Compliant,Not disclosed,Compliant,0.9,
+savethechildren.in,ngo,34,Compliant,Compliant,Compliant,0.9,
+savethechildren.in,ngo,35,Compliant,Compliant,Compliant,0.9,
+savethechildren.in,ngo,36,Not disclosed,Partial,Not disclosed,0.55,
+savethechildren.in,ngo,37,Compliant,Compliant,Compliant,0.9,
+savethechildren.in,ngo,38,Compliant,Compliant,Compliant,0.9,
+savethechildren.in,ngo,39,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,"All online transactions are done on a secure server, and the information you provide on the donation transaction page is encrypted using SSL."
+savethechildren.in,ngo,40,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,41,Not externally verifiable,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,42,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,43,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,44,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,45,Not disclosed,Not externally verifiable,Not disclosed,0.55,
+savethechildren.in,ngo,46,Not disclosed,Not disclosed,Not disclosed,0.55,
+savethechildren.in,ngo,47,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,1,Compliant,Compliant,Partial,0.75,"We may collect information such as Name, email ID, Country, State, City, Occupation, etc., from Users who are visitors on the Website, interested in navigating the Website and/ or downloading reports/ films and other knowledge assets from the Website."
+tatatrusts.org,ngo,2,Compliant,Compliant,Compliant,0.9,"Purpose of collecting your information: 3.1 We collect your information to operate, provide, develop, and improve the initiatives available on our Website and provide functionality, analyse performance, fix errors, and improve the usability, effectiveness, reach and content of Our Website."
+tatatrusts.org,ngo,3,Compliant,Partial,Compliant,0.89,"By way of this Privacy Policy, we want our users (&ldquo; You ,&rdquo; &ldquo; Your ,&rdquo; and/or &ldquo; User &rdquo;) to know the nature of personal information collected from the Users and how Your personal information is collected, used, processed, stored, shared, disclosed or transferred by U"
+tatatrusts.org,ngo,4,Compliant,Compliant,Partial,0.75,"Explicit consent for collection: &nbsp;&nbsp; 5.1 You explicitly consent to providing and processing (inducing necessary disclosure and/ or transfer) of Your personal information, as described in this Privacy Policy once You register with the Website, opt in to receive newsletter, and /or raise enqu"
+tatatrusts.org,ngo,5,Not disclosed,Compliant,Partial,0.75,"In our User registration form and other forms available on the Website, we indicate which fields are mandatory and others which are optional."
+tatatrusts.org,ngo,6,Not disclosed,Not disclosed,Partial,0.76,"4.3 The disclosure of Your personal information may be required in certain instances to provide You access to our Website, to comply with our legal obligations, to facilitate our marketing and advertising activities, or to prevent, detect, mitigate, and investigate any fraudulent or illegal activiti"
+tatatrusts.org,ngo,7,Compliant,Compliant,Compliant,0.89,We will take reasonable steps to accurately record the personal information that You provide to Us and any subsequent updates.
+tatatrusts.org,ngo,8,Compliant,Compliant,Compliant,0.9,Retention of Data 8.1 We will retain Your information and any data only for the period necessary to fulfil the purposes outlined in this Privacy Policy unless a longer retention period is required or permitted by Indian law.
+tatatrusts.org,ngo,9,Compliant,Compliant,Compliant,0.9,"Data Security&nbsp; 7.1 We take reasonable steps to ensure that appropriate physical, access control, technical and managerial safeguards are put in place to protect Your information from unauthorized access, alteration, transmission, and/or deletion."
+tatatrusts.org,ngo,10,Compliant,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,11,Compliant,Compliant,Compliant,0.87,You may withdraw your consent by writing to us at talktous@tatatrusts.org.
+tatatrusts.org,ngo,12,Compliant,Partial,Compliant,0.9,"Explicit consent for collection: &nbsp;&nbsp; 5.1 You explicitly consent to providing and processing (inducing necessary disclosure and/ or transfer) of Your personal information, as described in this Privacy Policy once You register with the Website, opt in to receive newsletter, and /or raise enqu"
+tatatrusts.org,ngo,13,Not disclosed,Compliant,Partial,0.77,You may withdraw your consent by writing to us at talktous@tatatrusts.org.
+tatatrusts.org,ngo,14,Not disclosed,Compliant,Partial,0.75,You may withdraw your consent by writing to us at talktous@tatatrusts.org.
+tatatrusts.org,ngo,15,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,16,Not disclosed,Compliant,Compliant,0.76,"6.3 You have the right to withdraw your consent previously given for the collection, use or processing of all and/or any part of the information collected by Us, however, please note that this may disrupt Your user experience on Our Website."
+tatatrusts.org,ngo,17,Not disclosed,Partial,Compliant,0.89,"6.2 You have a right to request for unsubscribing to newsletter and/or deactivation of your account, and post such deactivation, Your personal information shall not be collected, processed or disclosed or transferred to a third party."
+tatatrusts.org,ngo,18,Not disclosed,Compliant,Partial,0.77,"6.2 You have a right to request for unsubscribing to newsletter and/or deactivation of your account, and post such deactivation, Your personal information shall not be collected, processed or disclosed or transferred to a third party."
+tatatrusts.org,ngo,19,Compliant,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,20,Not disclosed,Partial,Partial,0.73,"6.2 You have a right to request for unsubscribing to newsletter and/or deactivation of your account, and post such deactivation, Your personal information shall not be collected, processed or disclosed or transferred to a third party."
+tatatrusts.org,ngo,21,Compliant,Compliant,Compliant,0.9,"Grievance Officer 10.1 For the purpose of grievance redressal or in the event you have any questions regarding our privacy practices or this Privacy Policy, the name and contact details of our Grievance Officer are provided below: Name: Ms."
+tatatrusts.org,ngo,22,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,23,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,24,Compliant,Compliant,Compliant,0.82,We may share Your information on a need-to-know basis with these third-party agencies only to enable them to perform their services.
+tatatrusts.org,ngo,25,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,26,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,27,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,28,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,29,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,30,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,31,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,32,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,33,Compliant,Compliant,Compliant,0.9,
+tatatrusts.org,ngo,34,Compliant,Compliant,Compliant,0.9,
+tatatrusts.org,ngo,35,Not disclosed,Partial,Not disclosed,0.55,
+tatatrusts.org,ngo,36,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,37,Compliant,Compliant,Compliant,0.9,
+tatatrusts.org,ngo,38,Compliant,Compliant,Compliant,0.9,
+tatatrusts.org,ngo,39,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,40,Not externally verifiable,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,41,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,42,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,43,Not disclosed,Not disclosed,Not externally verifiable,0.62,We will take reasonable steps to accurately record the personal information that You provide to Us and any subsequent updates.
+tatatrusts.org,ngo,44,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,45,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,"We may share some of this with advertisers, sponsors, investors, strategic partners, and other third-party vendors in order to help grow our Website and projects/ initiatives."
+tatatrusts.org,ngo,46,Not disclosed,Not disclosed,Not disclosed,0.55,
+tatatrusts.org,ngo,47,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,"Our data collection, handling and processing practices are continually reviewed to ensure compliance with the applicable data protection and privacy laws and regulations in India."
+networkintelligence.ai,sme,1,Compliant,Compliant,Compliant,0.78,"Communications: If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message or attachments you may send us, and any other information you may choose to provide."
+networkintelligence.ai,sme,2,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,3,Compliant,Partial,Compliant,0.9,"This Privacy Policy explains our practices regarding the collection, use, disclosure, and protection of information that applies to our service, as well as your choices about the collection and use of your information."
+networkintelligence.ai,sme,4,Not disclosed,Not disclosed,Compliant,0.86,"By clicking ""Accept All"", you consent to our use of cookies."
+networkintelligence.ai,sme,5,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,6,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,7,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,8,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,9,Not disclosed,Compliant,Compliant,0.9,Network Intelligence takes the security of your information seriously and employs a variety of measures designed to protect your information from unauthorized access and disclosure.
+networkintelligence.ai,sme,10,Compliant,Partial,Not disclosed,0.55,
+networkintelligence.ai,sme,11,Compliant,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,12,Not disclosed,Not disclosed,Compliant,0.9,"By clicking ""Accept All"", you consent to our use of cookies."
+networkintelligence.ai,sme,13,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,14,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,15,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,16,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,17,Not disclosed,Not disclosed,Compliant,0.9,"Access, update or delete the information:"
+networkintelligence.ai,sme,18,Compliant,Partial,Compliant,0.89,"Access, update or delete the information:"
+networkintelligence.ai,sme,19,Not disclosed,Compliant,Partial,0.76,"To initiate a refund, please contact our customer service team with your order details and reason for the refund request."
+networkintelligence.ai,sme,20,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,21,Compliant,Compliant,Compliant,0.9,"If you have any questions about this Privacy Policy, please contact us at contact@networkintelligence.ai ."
+networkintelligence.ai,sme,22,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,23,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,24,Compliant,Compliant,Compliant,0.82,"We may share your information with third-party vendors and service providers that provide services on our behalf, such as helping to host our service or assist us in providing the service."
+networkintelligence.ai,sme,25,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,26,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,27,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,28,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,29,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,30,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,31,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,32,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,33,Compliant,Compliant,Compliant,0.9,
+networkintelligence.ai,sme,34,Compliant,Compliant,Compliant,0.9,
+networkintelligence.ai,sme,35,Not disclosed,Compliant,Not disclosed,0.55,
+networkintelligence.ai,sme,36,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,37,Compliant,Compliant,Compliant,0.9,
+networkintelligence.ai,sme,38,Compliant,Compliant,Compliant,0.9,
+networkintelligence.ai,sme,39,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,40,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,"Log data: Our servers automatically record information when you use our services, including your IP address, browser type, operating system, device information, pages viewed, and interactions with content."
+networkintelligence.ai,sme,41,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,42,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,43,Not disclosed,Not disclosed,Not externally verifiable,0.62,Information we collect when you use our platform:
+networkintelligence.ai,sme,44,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,45,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,"We may share your information with third-party vendors and service providers that provide services on our behalf, such as helping to host our service or assist us in providing the service."
+networkintelligence.ai,sme,46,Not disclosed,Not disclosed,Not disclosed,0.55,
+networkintelligence.ai,sme,47,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,1,Compliant,Compliant,Compliant,0.85,"This is generally information including the contents of your purchase, your name, email address, telephone number, billing address and payment details (e.g."
+powersoft.in,sme,2,Compliant,Partial,Compliant,0.8,"Purchase Data: You give your Personal Information when you purchase on the App (for example, when you purchase a membership plan on the App)."
+powersoft.in,sme,3,Compliant,Partial,Partial,0.74,In any other way we may describe when you provide the information.
+powersoft.in,sme,4,Compliant,Compliant,Compliant,0.89,"By agreeing to these Terms, you consent for Powersoft and/or its assignees and licensees to collect, receive, possess, store, deal and handle all information as provided herein for its own purposes in accordance with applicable laws."
+powersoft.in,sme,5,Compliant,Partial,Not disclosed,0.55,
+powersoft.in,sme,6,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,7,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,8,Compliant,Compliant,Compliant,0.89,We may hold on to your Personal Information for as long as we need to for the purposes for which it is processed or as is otherwise required by applicable law.
+powersoft.in,sme,9,Compliant,Compliant,Compliant,0.89,"protect the rights, property or safety of us, our users, a third party or the public as required or permitted by law (including exchanging information with other companies and organisations for the purposes of fraud protection and credit risk reduction)."
+powersoft.in,sme,10,Compliant,Compliant,Partial,0.77,Notify affected users within 72 hours.
+powersoft.in,sme,11,Compliant,Partial,Compliant,0.9,"You can opt-out of receiving our communications at any time by selecting the unsubscribe link in any email we send, following the instructions in any SMS we send or by emailing us at Legal@powersoft.in."
+powersoft.in,sme,12,Not disclosed,Partial,Compliant,0.88,"By agreeing to these Terms, you consent for Powersoft and/or its assignees and licensees to collect, receive, possess, store, deal and handle all information as provided herein for its own purposes in accordance with applicable laws."
+powersoft.in,sme,13,Not disclosed,Partial,Partial,0.73,"By agreeing to these Terms, you consent for Powersoft and/or its assignees and licensees to collect, receive, possess, store, deal and handle all information as provided herein for its own purposes in accordance with applicable laws."
+powersoft.in,sme,14,Not disclosed,Partial,Partial,0.74,You also consent to our use and disclosure of your personal information in the manner described in this Policy.
+powersoft.in,sme,15,Not disclosed,Partial,Partial,0.74,"Further, this App is only intended to be used by Users above the age of 18 years."
+powersoft.in,sme,16,Not disclosed,Compliant,Partial,0.82,You have rights and choices when it comes to your information.
+powersoft.in,sme,17,Not disclosed,Compliant,Partial,0.77,You have rights and choices when it comes to your information.
+powersoft.in,sme,18,Compliant,Compliant,Compliant,0.9,"Once processing has been completed, we may securely delete or anonymise your personal data."
+powersoft.in,sme,19,Compliant,Compliant,Compliant,0.9,"If you have any queries or complaints about how we handle your personal information, please contact us at legal@powersoft.in"
+powersoft.in,sme,20,Not disclosed,Compliant,Partial,0.77,You have rights and choices when it comes to your information.
+powersoft.in,sme,21,Compliant,Compliant,Compliant,0.9,"If you have any queries or complaints about how we handle your personal information, please contact us at legal@powersoft.in"
+powersoft.in,sme,22,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,23,Not disclosed,Not externally verifiable,Not disclosed,0.55,
+powersoft.in,sme,24,Compliant,Compliant,Compliant,0.83,"Third Party Please note that when you access or use our services through third-party websites, we may share some information with them when you perform certain actions in the purchase flow."
+powersoft.in,sme,25,Not disclosed,Not disclosed,Not externally verifiable,0.62,We conduct regular security assessments.
+powersoft.in,sme,26,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,Third-party service providers must maintain appropriate security measures.
+powersoft.in,sme,27,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,28,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,29,Not disclosed,Compliant,Partial,0.75,"We collect information about your approximate location, including location information based on your SIM card and/or IP address."
+powersoft.in,sme,30,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,DATA PROTECTION AND SECURITY MEASURES
+powersoft.in,sme,31,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,We perform audits to identify and address potential vulnerabilities in our systems and processes.
+powersoft.in,sme,32,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,33,Compliant,Compliant,Compliant,0.9,
+powersoft.in,sme,34,Compliant,Compliant,Compliant,0.9,
+powersoft.in,sme,35,Compliant,Compliant,Compliant,0.9,
+powersoft.in,sme,36,Compliant,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,37,Not disclosed,Partial,Compliant,0.9,
+powersoft.in,sme,38,Compliant,Compliant,Compliant,0.9,
+powersoft.in,sme,39,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,Sensitive data stored on our servers is encrypted at rest using AES-256 encryption.
+powersoft.in,sme,40,Not externally verifiable,Not externally verifiable,Not externally verifiable,0.62,"For example, we log when you’re using and have last used our App."
+powersoft.in,sme,41,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,42,Not externally verifiable,Not externally verifiable,Not externally verifiable,0.62,All Powersoft employees who handle user data are trained on data protection practices.
+powersoft.in,sme,43,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,44,Not externally verifiable,Not externally verifiable,Not externally verifiable,0.62,Report the breach to relevant authorities as required by applicable law.
+powersoft.in,sme,45,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,Third-party service providers must maintain appropriate security measures.
+powersoft.in,sme,46,Not disclosed,Not disclosed,Not disclosed,0.55,
+powersoft.in,sme,47,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,We perform audits to identify and address potential vulnerabilities in our systems and processes.
+robu.in,sme,1,Partial,Compliant,Compliant,0.82,"When you purchase something from our store, as part of tester the buying and selling process, we collect the personal information you give us such as your name, address and email address."
+robu.in,sme,2,Compliant,Not disclosed,Not disclosed,0.55,
+robu.in,sme,3,Compliant,Partial,Compliant,0.89,"For these providers, we recommend that you read their privacy policies so you can understand the manner in which your personal information will be handled by these providers."
+robu.in,sme,4,Not disclosed,Compliant,Compliant,0.9,"If we ask for your personal information for a secondary reason, like marketing, we will either ask you directly for your expressed consent or provide you with an opportunity to say no."
+robu.in,sme,5,Compliant,Not disclosed,Compliant,0.9,"In general, the third-party providers used by us will only collect, use and disclose your information to the extent necessary to allow them to perform the services they provide to us."
+robu.in,sme,6,Compliant,Not disclosed,Not disclosed,0.55,
+robu.in,sme,7,Not disclosed,Not disclosed,Compliant,0.83,"If we make material changes to this policy, we will notify you here that it has been updated, so that you are aware of what information we collect, how we use it, and under what circumstances, if any, we use and/or disclose it."
+robu.in,sme,8,Not disclosed,Compliant,Compliant,0.9,Your purchase transaction data is stored only as long as is necessary to complete your purchase transaction.
+robu.in,sme,9,Compliant,Partial,Compliant,0.9,"To protect your personal information, we take reasonable precautions and follow industry best practices to make sure it is not inappropriately lost, misused, accessed, disclosed, altered or destroyed."
+robu.in,sme,10,Compliant,Partial,Not disclosed,0.55,
+robu.in,sme,11,Compliant,Compliant,Compliant,0.9,"If after you opt-in, you change your mind, you may withdraw your consent for us to contact you, for the continued collection, use or disclosure of your information, at anytime, by contacting us at info@robu.in or mailing us at: MACFOS LIMITED Sumant Building, Dynamic Logistics Trade Park, Bhosari Al"
+robu.in,sme,12,Not disclosed,Partial,Compliant,0.9,"If we ask for your personal information for a secondary reason, like marketing, we will either ask you directly for your expressed consent or provide you with an opportunity to say no."
+robu.in,sme,13,Not disclosed,Compliant,Partial,0.76,How do you get my consent?
+robu.in,sme,14,Not disclosed,Compliant,Partial,0.76,How do you get my consent?
+robu.in,sme,15,Not disclosed,Compliant,Partial,0.78,"By using this site, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site."
+robu.in,sme,16,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,17,Not disclosed,Not disclosed,Partial,0.9,"If you would like to: access, correct, amend or delete any personal information we have about you, register a complaint, or simply want more information contact our Privacy Compliance Officer at info@robu.in or by mail at MACFOS LIMITED"
+robu.in,sme,18,Not disclosed,Not disclosed,Compliant,0.9,"After that is complete, your purchase transaction information is deleted."
+robu.in,sme,19,Compliant,Compliant,Compliant,0.9,"If you would like to: access, correct, amend or delete any personal information we have about you, register a complaint, or simply want more information contact our Privacy Compliance Officer at info@robu.in or by mail at MACFOS LIMITED"
+robu.in,sme,20,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,21,Compliant,Compliant,Compliant,0.9,"If you would like to: access, correct, amend or delete any personal information we have about you, register a complaint, or simply want more information contact our Privacy Compliance Officer at info@robu.in or by mail at MACFOS LIMITED"
+robu.in,sme,22,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,"If you would like to: access, correct, amend or delete any personal information we have about you, register a complaint, or simply want more information contact our Privacy Compliance Officer at info@robu.in or by mail at MACFOS LIMITED"
+robu.in,sme,23,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,24,Compliant,Compliant,Partial,0.74,"In general, the third-party providers used by us will only collect, use and disclose your information to the extent necessary to allow them to perform the services they provide to us."
+robu.in,sme,25,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,26,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,27,Not disclosed,Partial,Not disclosed,0.55,
+robu.in,sme,28,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,29,Compliant,Compliant,Partial,0.75,"In particular, remember that certain providers may be located in or have facilities that are located a different jurisdiction than either you or us."
+robu.in,sme,30,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,31,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,32,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,33,Compliant,Compliant,Compliant,0.9,
+robu.in,sme,34,Compliant,Compliant,Compliant,0.9,
+robu.in,sme,35,Compliant,Compliant,Compliant,0.9,
+robu.in,sme,36,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,37,Not disclosed,Partial,Compliant,0.9,
+robu.in,sme,38,Compliant,Compliant,Compliant,0.9,
+robu.in,sme,39,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,"If you provide us with your credit card information, the information is encrypted using secure socket layer technology (SSL) and stored with a AES-256 encryption."
+robu.in,sme,40,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,41,Not disclosed,Not disclosed,Not externally verifiable,0.62,SECTION 8 – CHANGES TO THIS PRIVACY POLICY
+robu.in,sme,42,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,43,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,44,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,45,Not disclosed,Not externally verifiable,Not externally verifiable,0.62,"In general, the third-party providers used by us will only collect, use and disclose your information to the extent necessary to allow them to perform the services they provide to us."
+robu.in,sme,46,Not disclosed,Not disclosed,Not disclosed,0.55,
+robu.in,sme,47,Not disclosed,Not disclosed,Not disclosed,0.55,

@@ -1,0 +1,125 @@
+SITE: networkintelligence.ai  SECTOR: sme  (JS-rendered, case study)
+POLICY PAGES FOUND: ['https://www.networkintelligence.ai/privacy-policy/']
+
+
+===== PAGE: https://www.networkintelligence.ai/privacy-policy/ =====
+
+We value your privacy
+We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.
+Customize
+Reject All
+Accept All
+Skip to navigation
+Skip to content
+Practices
+Services
+Resources
+Partnerships
+About Us
+Contact Us
+Transilience Talk to an Expert
+Home » Privacy and Fulfilment Policy
+Home
+Privacy and Fulfilment Policy
+Privacy and Fulfilment Policy
+Introduction
+Welcome to Network Intelligence! We are committed to protecting the privacy and security of our users’ data. This Privacy Policy explains our practices regarding the collection, use, disclosure, and protection of information that applies to our service, as well as your choices about the collection and use of your information.
+Information We Collect
+We collect the following types of information about you:
+Information you provide us directly:
+User credentials: such as your username, password, email address when you register for a Network Intelligence account.
+Profile information: including your name, job title, company details, and other information you choose to provide.
+Communications: If you contact us directly, we may receive additional information about you such as your name, email address, phone number, the contents of the message or attachments you may send us, and any other information you may choose to provide.
+Information we collect when you use our platform:
+Log data: Our servers automatically record information when you use our services, including your IP address, browser type, operating system, device information, pages viewed, and interactions with content.
+Network and connectivity data: including information on the devices and networks you use to access our services, as well as information gathered by our network intelligence solutions.
+Use of Your Information
+We may use the information collected from you to:
+Provide, operate, and maintain our service;
+Improve, personalize, and expand our service;
+Understand and analyze how you use our service;
+Develop new products, services, features, and functionality;
+Communicate with you, either directly or through one of our partners, for customer service, to provide you with updates and other information relating to the service, and for marketing and promotional purposes;
+Send you emails;
+Find and prevent fraud.
+Sharing Your Information
+We may share the information we collect in various ways:
+With service providers:
+We may share your information with third-party vendors and service providers that provide services on our behalf, such as helping to host our service or assist us in providing the service.
+For legal reasons:
+To comply with the law or to protect the rights, property, or safety of Network Intelligence, our users, or others, including to prevent fraud or other illegal activity.
+In the case of a business transfer:
+We may share or transfer your information in connection with any merger, sale of company assets, financing, or acquisition of all or a portion of our business to another company.
+Your Choices
+You have choices regarding the collection and use of your information by Network Intelligence:
+Opt-out of communications:
+You may opt-out of receiving promotional communications from us by following the unsubscribe instructions included in those communications.
+Access, update or delete the information:
+You may access, update, or request deletion of your information by contacting us.
+Security
+Network Intelligence takes the security of your information seriously and employs a variety of measures designed to protect your information from unauthorized access and disclosure.
+Fulfilment Policy:
+At Network Intelligence, we are dedicated to providing high-quality digital training services and ensuring customer satisfaction. This Fulfillment Policy outlines the processes and standards we adhere to in delivering our digital training courses. Please review the following details to understand how we manage and process your requests.
+Order Processing
+Order Confirmation
+Once an order for a digital training course is placed, you will receive an email confirmation with the course details and access information.
+Please review the confirmation carefully and contact us immediately if any discrepancies are found.
+Order Processing Time
+Our standard processing time for digital training orders is 1 business day. Orders placed on weekends or holidays will begin processing the next business day.
+You will receive access to the training materials and any necessary instructions via email.
+Access and Delivery
+Digital Delivery
+All digital training courses are delivered online Platform. Like MS teams, Zoom etc.
+Access details, including login credentials and course materials, will be provided via email
+ Access Timeframes
+You will have access to the digital training materials immediately upon receiving your access details.
+The duration of access to the course materials will vary based on the specific course purchased and will be clearly stated in the course description.
+Technical Requirements
+To access our digital training courses, you will need a reliable internet connection and a compatible device (computer, tablet, or smartphone).
+Specific technical requirements, if any, will be provided in the course description.
+Course Delivery and Support
+Course Content
+Our digital training courses include a combination of video lectures, reading materials, quizzes, and interactive activities.
+Courses are designed to be self-paced, allowing you to learn at your own convenience.
+Instructor Support
+Some courses may include access to live sessions or instructor support. Details of any live sessions or instructor availability will be provided in the course description.
+You can contact our support team for assistance with course content or technical issues.
+Returns and Refunds
+Refund Policy
+We offer a 7-day refund policy for digital training courses. If you are not satisfied with the course, you can request a refund within 7 days of purchase.
+To initiate a refund, please contact our customer service team with your order details and reason for the refund request.
+Customer Support
+Our customer support team is available to assist you with any questions or concerns regarding your digital training order.
+You can reach us via email at nii_training@networkintelligence.ai
+Changes to This Policy
+Network Intelligence reserves the right to update or modify this Fulfillment Policy at any time. Any changes will be effective immediately upon posting on our website.
+Changes to the Privacy Policy
+We may amend this Privacy Policy from time to time. If we make changes, we will notify you by revising the date at the top of the policy and, in some cases, we may provide you with additional notice.
+Contact Us
+If you have any questions about this Privacy Policy, please contact us at contact@networkintelligence.ai .
+By using our service, you acknowledge that you have read and understood this Privacy Policy.
+Protecting enterprises with intelligent cybersecurity: the power of technology, the precision of human insight.
+Facebook-square
+Linkedin
+Instagram
+Youtube
+Company
+Work with us
+Practices
+Services
+Partnerships
+About Us
+Policies
+Leadership
+Blogs
+Subsidiaries
+Transilience
+Ilantus
+IISecurity
+Trainings
+NI Training
+BCI Training
+Contact us
+contact@networkintelligence.ai
+Subscribe To Our Newsletter
+© Network Intelligence - All rights reserved | Terms & Conditions | Privacy Policy

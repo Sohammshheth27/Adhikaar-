@@ -1,0 +1,42 @@
+{
+  "n_sites": 9,
+  "n_duties": 47,
+  "total_judgements": 423,
+  "verdict_distribution": {
+    "rules": {
+      "Compliant": 128,
+      "Partial": 2,
+      "Gap": 0,
+      "Not disclosed": 285,
+      "Not externally verifiable": 8
+    },
+    "semantic": {
+      "Compliant": 101,
+      "Partial": 57,
+      "Gap": 0,
+      "Not disclosed": 241,
+      "Not externally verifiable": 24
+    },
+    "nli": {
+      "Compliant": 116,
+      "Partial": 52,
+      "Gap": 0,
+      "Not disclosed": 226,
+      "Not externally verifiable": 29
+    }
+  },
+  "evidence_grounding_rate_pct": {
+    "rules": 30.5,
+    "semantic": 40.9,
+    "nli": 38.1
+  },
+  "nli_vs_semantic": {
+    "retracted_compliant": 28,
+    "upgraded_to_compliant": 43
+  },
+  "latency_sec_per_site": {
+    "semantic_build_mean": 2.64,
+    "nli_build_mean": 14.5
+  },
+  "note": "Behaviour deltas only; no human labels used. LLM judge OFF (optional overlay). Accuracy (P/R/F1, macro-F1, FPR) computes after gold_labels are filled, joining on site+duty_id."
+}

@@ -1,0 +1,20 @@
+# ============================================================
+#  Cloudflare Named Tunnel config for Adhikaar  ->  adhikaar.services
+#  Serves the local DPDP engine (http://localhost:8010) over HTTPS.
+#
+#  FILL IN the two values below AFTER you run:
+#      cloudflared tunnel create adhikaar
+#  which prints:  "Created tunnel adhikaar with id <UUID>"  and a credentials
+#  file path like:  C:\Users\Sohamm Shheth\.cloudflared\<UUID>.json
+# ============================================================
+
+tunnel: 639584e0-a61b-4b6b-8924-5e8509efcb50
+credentials-file: C:\Users\Sohamm Shheth\.cloudflared\639584e0-a61b-4b6b-8924-5e8509efcb50.json
+
+# Route the domain (and www) to the local server; everything else -> 404.
+ingress:
+  - hostname: adhikaar.services
+    service: http://localhost:8010
+  - hostname: www.adhikaar.services
+    service: http://localhost:8010
+  - service: http_status:404

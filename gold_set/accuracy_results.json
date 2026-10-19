@@ -1,0 +1,127 @@
+{
+  "scorable": 395,
+  "not_applicable_excluded": 28,
+  "rules": {
+    "exact_accuracy": 0.428,
+    "macro_f1": 0.298,
+    "cohen_kappa_tool_vs_human": 0.21,
+    "per_class_PRF_support": {
+      "Compliant": [
+        0.375,
+        0.75,
+        0.5,
+        64
+      ],
+      "Partial": [
+        1.0,
+        0.014,
+        0.027,
+        145
+      ],
+      "Gap": [
+        0.455,
+        0.88,
+        0.6,
+        133
+      ],
+      "NotVerifiable": [
+        0.25,
+        0.038,
+        0.066,
+        53
+      ]
+    },
+    "binary_gap_detection": {
+      "precision": 0.753,
+      "recall": 0.701,
+      "f1": 0.726,
+      "false_positive_rate": 0.547,
+      "tp": 195,
+      "fp": 64,
+      "fn": 83,
+      "tn": 53
+    }
+  },
+  "semantic": {
+    "exact_accuracy": 0.423,
+    "macro_f1": 0.354,
+    "cohen_kappa_tool_vs_human": 0.192,
+    "per_class_PRF_support": {
+      "Compliant": [
+        0.426,
+        0.672,
+        0.521,
+        64
+      ],
+      "Partial": [
+        0.518,
+        0.2,
+        0.289,
+        145
+      ],
+      "Gap": [
+        0.424,
+        0.692,
+        0.526,
+        133
+      ],
+      "NotVerifiable": [
+        0.143,
+        0.057,
+        0.081,
+        53
+      ]
+    },
+    "binary_gap_detection": {
+      "precision": 0.758,
+      "recall": 0.745,
+      "f1": 0.751,
+      "false_positive_rate": 0.564,
+      "tp": 207,
+      "fp": 66,
+      "fn": 71,
+      "tn": 51
+    }
+  },
+  "nli": {
+    "exact_accuracy": 0.448,
+    "macro_f1": 0.402,
+    "cohen_kappa_tool_vs_human": 0.238,
+    "per_class_PRF_support": {
+      "Compliant": [
+        0.414,
+        0.75,
+        0.533,
+        64
+      ],
+      "Partial": [
+        0.423,
+        0.152,
+        0.223,
+        145
+      ],
+      "Gap": [
+        0.48,
+        0.722,
+        0.577,
+        133
+      ],
+      "NotVerifiable": [
+        0.407,
+        0.208,
+        0.275,
+        53
+      ]
+    },
+    "binary_gap_detection": {
+      "precision": 0.79,
+      "recall": 0.716,
+      "f1": 0.751,
+      "false_positive_rate": 0.453,
+      "tp": 199,
+      "fp": 53,
+      "fn": 79,
+      "tn": 64
+    }
+  }
+}

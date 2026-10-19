@@ -1,0 +1,228 @@
+SITE: powersoft.in  SECTOR: sme  (JS-rendered, case study)
+POLICY PAGES FOUND: ['https://www.powersoft.in/privacy-policy/']
+
+
+===== PAGE: https://www.powersoft.in/privacy-policy/ =====
+
+RealtyOne
+Overview
+Products
+Services
+Blogs
+Let's Talk
+Privacy Policy
+Home
+Privacy Policy
+Welcome to QUI (the “App”), which is provided by Powersoft IT Private Limited (“Powersoft”, “we” or “us”).
+Powersoft owns and operates the App to provide Services as defined in the https://www.Powersoft.in/Termsofuse.html “Terms”) and act as a work flow coordinating software for professionals in the real estate industry.
+Powersoft is concerned about the privacy of its users (hereinafter referred to as “you”, “your” “User”) accessing its App and has provided this Privacy Policy (“Policy”) to familiarise you with the manner in which Powersoft collects, uses and discloses your information collected through the App.
+The Policy is subject to change without intimation and you shall be required to review the same regularly. The protection and security of your personal information is one of Powersoft’s top priorities. This Policy discloses Powersoft’s practice with respect to the information collected from you on this App.
+This Policy is a part of and is to be read with the Terms. By using this App, you agree to the terms and conditions of this Policy. You also consent to our use and disclosure of your personal information in the manner described in this Policy. The capitalized words used in this Policy but not defined herein, shall have the meaning given to such words in the Terms. If you do not agree with the terms and conditions of this Policy, please do not use this App.
+Further, this App is only intended to be used by Users above the age of 18 years. We do not knowingly collect personally identifiable information from persons under this age.
+WHAT KINDS OF INFORMATION DO WE COLLECT?
+Your Personal Information: You may share information such as your name, username, password, date of birth, email address and/or telephone number, in order to avail the Services provided by Powersoft.
+Purchase Information: Powersoft and its assignees and/or licensees, may collect certain information (including but not limited to personally identifiable information) from the Users such as name, e-mail address or telephone number at the time of registration/payment. By agreeing to these Terms, you consent for Powersoft and/or its assignees and licensees to collect, receive, possess, store, deal and handle all information as provided herein for its own purposes in accordance with applicable laws.
+Information in correspondence you send to us, including when you contact us for support or feedback.
+Information through surveys, research, promotion, contests, marketing campaigns, challenges, competitions or events conducted or sponsored by us, in which you participate.
+Things others do and information they provide about you: We also receive and analyse tasks, communication, and information that other users provide when they use the App. This can include information about you, such as when others share or comment on any task uploaded by you, send a message to you or upload, sync or import your contact information.
+Your Usage: We collect information about how you use the App, such as the features you use, the actions you take, the people or Users you interact with and the time, frequency and duration of your activities. For example, we log when you’re using and have last used our App.
+Messages: We collect information you provide when you compose, send, or receive messages through the App’s messaging functionalities. They include messages you send or receive through our chat functionality when communicating with other Users who you are transacting with, when purchasing items through the App. That information includes the content of the message and information about the message, such as when it was sent, received, or read, and message participants. Please be aware that messages you choose to send to other users of the App will be accessible by those users and that we are not responsible for the manner in which those users use or share the messages. (App is not responsible for the content shared in the messages)
+User Content: We process the tasks, notes, checklists, deadlines, and any other information you input into the App, including, feedback, reviews, and the associated metadata, such as when, where, and by whom the content was created (“User Content”). Even if you are not a user, information about you may appear in User Content created or published by users on the App. We may access content, including text, found in your device’s clipboard, with your permission.
+AUTOMATICALLY COLLECTED INFORMATION
+This data helps us understand how our users interact with the App and to improve its performance and functionality.
+Usage Information: Information about how you use the App, such as the features you access, the time and duration of your use, and the frequency of your activities.
+Location/Device Information: Information about the device you use to access the App, including your device’s unique ID, IP address, operating system, and mobile browser type. We collect information about your approximate location, including location information based on your SIM card and/or IP address. With your permission, we may also collect precise location data (such as GPS).
+Analytics Data: We may use third-party analytics tools to collect and analyse information about your usage of the App. This data is typically aggregated and anonymized.
+Technical Information we collect about you: We collect certain information about the device you use to access the App, such as your IP address, user agent, mobile carrier, time zone settings, identifiers for advertising purposes, model of your device, the device system, network type, device IDs, your screen resolution and operating system, app and file names and types, keystroke patterns or rhythms, and battery state. Where you log-in from multiple devices, we will be able to use your profile information to identify your activity across devices.
+Inferred Information: We also infer your attributes, including your interests, gender and age range for the purpose of personalising advertisements.
+COOKIES
+Our App uses cookies to distinguish you from other users of the App. This helps us to provide you with a good experience when you browse the App and when you use our app and allows us to improve our site. Cookies are small pieces of text used to store information in web browsers (if you consent). Cookies contain information that is transferred to the hard drive of your device.
+Advertising, Recommendations, Insights and Measurement
+We use Cookies to help us show advertisements and to make recommendations for businesses and other organisations to people who may be interested in the products, services or causes they promote.
+We also use Cookies to help measure the performance of advertisement campaigns for businesses that use the App.
+Cookies help us serve and measure advertisements across different browsers and devices used by the same person.
+Cookies also allow us to provide insights about the people who use the App, as well as the people who interact with the advertisements, websites and apps of our advertisers and the businesses that use the App.
+Performance We use Cookies to provide you with the best experience possible.
+Analytics and Research We use Cookies to better understand how people use the App so that we can improve them.
+Third Party Please note that when you access or use our services through third-party websites, we may share some information with them when you perform certain actions in the purchase flow. We will not use any Cookies or pixels for these purposes. We may not be able to erase your data in new sessions if there is no way for us to identify you. They serve the same purposes as Cookies set in the App, which are to personalise content (including advertisements), measure advertisements, produce analytics and provide a safer experience, as set out in this Policy.
+INFORMATION FROM OTHER SOURCES
+We may receive the information described in this Policy from other sources, such as:
+Advertisers, measurement and other partners share information with us about you and the actions you have taken outside of the App, such as your activities on other websites and apps or in stores, including the products or services you purchased, online.
+Purchase Data: You give your Personal Information when you purchase on the App (for example, when you purchase a membership plan on the App). This is generally information including the contents of your purchase, your name, email address, telephone number, billing address and payment details (e.g. credit/debit card/UPI).
+HOW WE USE THE INFORMATION WE COLLECT?
+We use the information we collect from and about you for a variety of purposes, including to:
+Operate and manage the App and its core features, such as task creation, synchronization, and storage.
+Allow you to create an account, log in, and access the App’s functionalities.
+Analyse usage trends, troubleshoot technical issues, and improve the user interface and functionality of the App.
+Send you service updates, security alerts, and support messages, as well as to respond to your inquiries.
+Detect, prevent, and address technical issues, fraud, or illegal activity.
+Send you general, marketing communications that you have requested or that may be of interest to you by way of emails, or courier, or registered post, or telephone calls, or any other mode of communication.
+Enable us to show you ads that are relevant to you.
+Generate and review reports and data about, and to conduct research on, our user base and Service usage patterns.
+Provide you with rules, updates and notices about the Service.
+Carry out our obligations and enforce our rights arising from any contracts entered into between you and us, including for billing and collection.
+Notify you about changes to our Services.
+In any other way we may describe when you provide the information.
+For any other purpose, with your consent.
+Log Files: Powersoft follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services’ analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users’ movement on the website, and gathering demographic information.
+HOW WE SHARE THIS INFORMATION
+Advertisers, Advertising Networks and Measurement Partners We share information with advertisers and third-party measurement companies to show how users of the App have viewed or clicked on an advertisement.
+Analytics Providers: We use analytics providers to help us in the optimisation and improvement of the App. Our third-party analytics providers also help us serve targeted advertisements.
+Affiliates We share your Personal Information, user activity, links you have interacted with and/or information of your participation and use of the App with affiliates of the App.
+For Legal Reasons We will share your information with law enforcement agencies, public authorities or other organisations if legally required to do so, or if such use is reasonably necessary to:
+comply with legal obligation, process or request;
+enforce our Terms and other agreements, policies, and standards, including investigation of any potential violation thereof;
+detect, prevent or otherwise address security, fraud or technical issues; or
+protect the rights, property or safety of us, our users, a third party or the public as required or permitted by law (including exchanging information with other companies and organisations for the purposes of fraud protection and credit risk reduction).
+Third Parties
+We may integrate with other third party products and services to enable certain features of the App. We do not share your Personal Information with them except as is necessary in order to allow them to perform the features requiring their integration. For instance we may share yout information for cloud hosting, analytics services and customer support.
+If we sell, buy, merge, are acquired by, or partner with other companies or businesses, or sell some or all of our assets. In such transactions, user information, including your Personal Information, may be among the transferred assets.
+When you make a purchase through our App, we share the information related to the transaction with the merchant, payment and transaction fulfilment providers, and other service providers.
+YOUR RIGHTS AND CHOICES
+You have rights and choices when it comes to your information. You can opt-out of receiving our communications at any time by selecting the unsubscribe link in any email we send, following the instructions in any SMS we send or by emailing us at Legal@powersoft.in.
+You may be able to refuse or disable Cookies by adjusting your device browser settings. Because each browser is different, please consult the instructions provided by your browser. Please note that you may need to take additional steps to refuse or disable certain types of Cookies. For example, due to differences in how browsers and mobile apps function, you may need to take different steps to opt out of Cookies used for targeted advertising in a browser and to opt out of targeted advertising for a mobile application, which you may control through your device settings or mobile app permissions. In addition, your opt-out selection is specific to the particular browser or device that you are using when you opt out, so you may need to opt-out separately for each of the browser or device.
+DATA RETENTION
+We may hold on to your Personal Information for as long as we need to for the purposes for which it is processed or as is otherwise required by applicable law.
+We calculate the appropriate retention period for your data by considering the nature and sensitivity of the data, the purposes for which we are processing the data, and any applicable statutory retention periods. Using these criteria, we regularly review the Personal Information that we hold and the purposes for which it is held and processed. Once processing has been completed, we may securely delete or anonymise your personal data.
+LINKS FROM OUR APP
+We may have pages containing external links. You are advised to verify the privacy practices of such externally linked websites. Powersoft is not responsible for the manner of use or misuse of information made available by you at such other websites. We encourage you not to provide personal information, without assuring yourselves of the privacy policy of external linked websites.
+DATA PROTECTION AND SECURITY MEASURES
+Powersoft IT Private Limited is committed to protecting your personal data and implements the following security measures:
+Encryption
+All data transmitted between your device and our servers is encrypted using industry-standard TLS/HTTPS protocols.
+Sensitive data stored on our servers is encrypted at rest using AES-256 encryption.
+Access Controls
+Access to user data is strictly limited to authorized personnel only.
+We implement role-based access controls (RBAC) to ensure employees can only access data necessary for their specific job functions.
+All internal access to sensitive data is logged and monitored.
+Google API Data Protection
+Our Gmail Add-on accesses Gmail data (email subject, body, attachments) and Google Contacts solely for task creation purposes.
+Data is transmitted only over encrypted HTTPS connections.
+Data is never stored independently on our servers.
+Data is never used for advertising or profiling.
+Data is processed only at the moment of task submission.
+Data processing complies with the Google API Services User Data Policy, including Limited Use requirements.
+Infrastructure Security
+Our servers are protected by industry-standard firewalls.
+Intrusion detection systems are implemented.
+Regular security patches and updates are applied.
+Continuous monitoring is performed for suspicious activity.
+Data Breach Response
+Notify affected users within 72 hours.
+Take immediate steps to contain the breach.
+Report the breach to relevant authorities as required by applicable law.
+Provide clear information about the breach and the steps taken.
+Third Party Security
+Third-party service providers must maintain appropriate security measures.
+They may process data only as instructed by us.
+They must not share data with unauthorized parties.
+They must comply with applicable data protection laws.
+Employee Training
+All Powersoft employees who handle user data are trained on data protection practices.
+Employees are bound by confidentiality agreements.
+Regular Security Audits
+We conduct regular security assessments.
+We perform audits to identify and address potential vulnerabilities in our systems and processes.
+CONTACT AND COMPLAINTS
+If you have any queries or complaints about how we handle your personal information, please contact us at legal@powersoft.in
+Our partners
+Let’s get started on something great
+Schedule a free discovery call for consulting services or book a product demo today.
+Free Discovery Call Book A Product Demo
+13
+Products
+9
+Services
+100%
+Success Rate
+Products
+RealtyOne©
+On Oracle NetSuite
+RehabPro
+Building Automation
+QUI
+WarehousePro
+FinTax
+On Oracle NetSuite
+India Tax Automation
+On Oracle NetSuite
+Bank Connect
+On Oracle NetSuite
+Vendor Relationship Management
+On Oracle NetSuite
+Vendor Onboarding
+On Oracle NetSuite
+Vendor Insights
+On Oracle NetSuite
+Vendor Portal
+On Oracle NetSuite
+Services
+Consulting
+Business Process & Re-engineering
+Enterprise Solutions
+Digital Transformation Strategy
+Cloud Strategy
+Data Analytics and Business Intelligence
+ERP Implementation
+Oracle NetSuite ERP Implementation
+Oracle NetSuite Integrations
+Oracle NetSuite Customisation
+Oracle EBS Customisation
+Know Us
+About Us
+Case Studies
+Career
+Contact Us
+Blogs
+Policy
+Terms of Use
+Privacy Policy
+Contact Us
+7th Floor, Akruti Trade Centre, Road
+No. 7, MIDC, Andheri - East Mumbai Suburban,
+Maharashtra, 400093
+enquiry[at]powersoft.in
++91 22 65431700
+© 2026 Powersoft All rights reserved. Terms & Conditions | Site Experience | Sitemap
+Made with by C Com Digital
+Book A Free Discovery Call
+Step 1: Enter your personal details
+Your Name *
+Your Email *
+Your Phone *
+Select a Service *
+Select Service
+Business Process Re-engineering
+Solutions Architecture
+Digital Transformation Strategy
+Cloud Strategy
+Data Analytics and Business Intelligence
+Oracle NetSuite Implementation
+Oracle NetSuite Integrations
+Oracle NetSuite Customisation
+Oracle EBS Customisation
+Next
+Book A Product Demo
+Your Name *
+Your Email *
+Your Phone *
+Select a Products *
+Select product
+RealtyOne
+RehabPro
+Building Automation
+ProjectBrain
+ComplyPro
+FinTax
+India Tax Automation
+Bank Connect
+FinaLytics
+Vendor Relationship Management
+Vendor Onboarding
+Vendor Insights
+Vendor Portal
+Captcha Code
+DbBas#
+Submit
+×
+IS NOW

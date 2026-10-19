@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<script src="i18n.js"></script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: #F3EEE4; font-family: 'Archivo', Helvetica, Arial, sans-serif; color: #1A1A1A; -webkit-font-smoothing: antialiased; }
+  a { color: #1A1A1A; text-decoration: none; }
+  a:hover { color: #1f9e57; }
+  ::selection { background: #33C06D; color: #fff; }
+  @keyframes scanpulse { 0%, 100% { opacity: 0.35 } 50% { opacity: 1 } }
+  details > summary::-webkit-details-marker { display: none; }
+</style>
+</helmet>
+
+<div style="background: #F3EEE4; min-height: 100vh" data-screen-label="Scanner">
+
+  <!-- ============ NAV ============ -->
+  <header style="position: sticky; top: 0; z-index: 50; padding: 18px 28px; background: rgba(243,238,228,0.88); backdrop-filter: blur(12px)">
+    <nav style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 28px">
+      <a href="Adhikar Landing.dc.html" style="display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 20px; letter-spacing: -0.02em">
+        <img src="uploads/adhikar-logo.png" alt="" style="width: 30px; height: 31px; display: block" />
+        Adhikaar
+      </a>
+      <div style="flex: 1; display: flex; justify-content: center; gap: 6px">
+        <a href="Adhikar Landing.dc.html#what" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navWhat }}</a>
+        <a href="Scanner.dc.html" style="font-size: 14.5px; font-weight: 600; padding: 8px 14px; border-radius: 99px; background: rgba(26,26,26,0.06); white-space: nowrap">{{ navScan }}</a>
+        <a href="The DPDP Act.dc.html" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navAct }}</a>
+        <a href="Managing Permissions.dc.html" style="font-size: 14.5px; font-weight: 500; padding: 8px 14px; border-radius: 99px; white-space: nowrap" style-hover="background: rgba(26,26,26,0.06); color: #1A1A1A">{{ navGuide }}</a>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px">
+        <select value="{{ locale }}" onChange="{{ onLocaleChange }}" aria-label="Choose language" style="border: 1.5px solid rgba(26,26,26,0.25); background: transparent; border-radius: 99px; padding: 10px 14px; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer; color: #1A1A1A; max-width: 116px">
+          <sc-for list="{{ languages }}" as="lg" hint-placeholder-count="1"><option value="{{ lg.code }}">{{ lg.native }}</option></sc-for>
+        </select>
+        <a href="Adhikar Landing.dc.html#cta" style="background: #33C06D; color: #0d2a19; font-weight: 700; font-size: 15px; padding: 12px 24px; border-radius: 99px; display: inline-block" style-hover="background: #2bae61; color: #0d2a19">{{ navAdd }}</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ============ HERO + INPUT ============ -->
+  <section data-screen-label="Scanner input" style="padding: 56px 28px 56px; text-align: center">
+    <div style="max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 22px">
+      <span style="display: inline-block; padding: 8px 18px; border-radius: 99px; border: 1.5px solid rgba(26,26,26,0.22); font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase">{{ tScanBadge }}</span>
+      <h1 style="margin: 0; font-weight: 900; letter-spacing: -0.035em; line-height: 1.03; font-size: clamp(42px, 6vw, 80px)">{{ tScanH1 }}</h1>
+      <p style="margin: 0; max-width: 560px; font-size: 18px; line-height: 1.6; color: rgba(26,26,26,0.72)">{{ tScanSub }}</p>
+
+      <div style="width: 100%; max-width: 640px; display: flex; flex-direction: column; gap: 12px; margin-top: 10px">
+        <div style="display: flex; gap: 10px; background: #FBF8F1; border: 1.5px solid rgba(26,26,26,0.15); border-radius: 99px; padding: 8px 8px 8px 24px; align-items: center">
+          <input value="{{ url }}" onChange="{{ onUrlChange }}" onKeyDown="{{ onUrlKey }}" placeholder="https://example.com" style="flex: 1; border: none; outline: none; background: transparent; font-family: inherit; font-size: 16px; color: #1A1A1A; min-width: 0" />
+          <button onClick="{{ scanUrl }}" style="background: #33C06D; color: #0d2a19; font-weight: 700; font-size: 15.5px; padding: 13px 26px; border-radius: 99px; border: none; cursor: pointer; font-family: inherit; white-space: nowrap" style-hover="background: #2bae61">{{ tScanBtn }}</button>
+        </div>
+        <button onClick="{{ toggleDeep }}" style="align-self: center; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 13.5px; font-weight: 600; color: {{ deepColor }}; text-align: center">{{ deepLabel }}</button>
+        <button onClick="{{ togglePaste }}" style="align-self: center; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600; color: rgba(26,26,26,0.6); text-decoration: underline; text-underline-offset: 3px" style-hover="color: #1f9e57">{{ pasteToggleLabel }}</button>
+        <sc-if value="{{ showPaste }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 10px">
+            <textarea value="{{ policyText }}" onChange="{{ onPolicyChange }}" placeholder="Paste the privacy policy text here" rows="8" style="width: 100%; box-sizing: border-box; border: 1.5px solid rgba(26,26,26,0.15); border-radius: 20px; padding: 18px 20px; font-family: inherit; font-size: 14.5px; line-height: 1.6; background: #FBF8F1; color: #1A1A1A; outline: none; resize: vertical"></textarea>
+            <button onClick="{{ scanText }}" style="align-self: center; background: #1A1A1A; color: #F3EEE4; font-weight: 700; font-size: 15px; padding: 13px 28px; border-radius: 99px; border: none; cursor: pointer; font-family: inherit" style-hover="background: #333">{{ tAnalyse }}</button>
+          </div>
+        </sc-if>
+
+        <button onClick="{{ toggleAuth }}" style="align-self: center; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600; color: rgba(26,26,26,0.6); text-decoration: underline; text-underline-offset: 3px" style-hover="color: #1f9e57">{{ authToggleLabel }}</button>
+        <sc-if value="{{ showAuth }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 12px; background: #FBF8F1; border: 1.5px solid rgba(26,26,26,0.15); border-radius: 20px; padding: 20px; text-align: left">
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: rgba(26,26,26,0.72)">Assess pages that only appear after sign-in (rights, consent, data download, nomination). A browser window opens; you log in and clear any OTP or CAPTCHA yourself. The scan is read-only and your login is never stored.</p>
+            <sc-if value="{{ authIdle }}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <input value="{{ authLoginUrl }}" onChange="{{ onAuthLoginChange }}" placeholder="Login page URL (optional; defaults to the site above)" style="width: 100%; box-sizing: border-box; border: 1.5px solid rgba(26,26,26,0.15); border-radius: 14px; padding: 12px 16px; font-family: inherit; font-size: 14.5px; background: #fff; color: #1A1A1A; outline: none" />
+                <div style="display: flex; flex-direction: column; gap: 8px; border-top: 1px solid rgba(26,26,26,0.1); padding-top: 10px">
+                  <p style="margin: 0; font-size: 12.5px; font-weight: 700; color: rgba(26,26,26,0.6); letter-spacing: 0.03em; text-transform: uppercase">Assisted sign-in (optional)</p>
+                  <input value="{{ authUser }}" onChange="{{ onAuthUserChange }}" placeholder="Username or email" style="width: 100%; box-sizing: border-box; border: 1.5px solid rgba(26,26,26,0.15); border-radius: 14px; padding: 11px 16px; font-family: inherit; font-size: 14.5px; background: #fff; color: #1A1A1A; outline: none" />
+                  <input value="{{ authPass }}" onChange="{{ onAuthPassChange }}" type="password" placeholder="Password" style="width: 100%; box-sizing: border-box; border: 1.5px solid rgba(26,26,26,0.15); border-radius: 14px; padding: 11px 16px; font-family: inherit; font-size: 14.5px; background: #fff; color: #1A1A1A; outline: none" />
+                  <input value="{{ authTotp }}" onChange="{{ onAuthTotpChange }}" placeholder="2FA / TOTP secret (auto-generates the 6-digit code)" style="width: 100%; box-sizing: border-box; border: 1.5px solid rgba(26,26,26,0.15); border-radius: 14px; padding: 11px 16px; font-family: inherit; font-size: 14.5px; background: #fff; color: #1A1A1A; outline: none" />
+                  <p style="margin: 0; font-size: 12px; line-height: 1.5; color: rgba(26,26,26,0.5)">If provided, the tool fills these for you and generates the TOTP code. They are used once, never stored, and it always pauses for you to clear any CAPTCHA or SMS code.</p>
+                </div>
+                <button onClick="{{ toggleAuthorized }}" style="align-self: flex-start; background: none; border: none; cursor: pointer; font-family: inherit; font-size: 13.5px; font-weight: 600; color: rgba(26,26,26,0.78); text-align: left">{{ authAuthLabel }}</button>
+                <button onClick="{{ startAuthLogin }}" style="align-self: flex-start; background: #1A1A1A; color: #F3EEE4; font-weight: 700; font-size: 14.5px; padding: 11px 22px; border-radius: 99px; border: none; cursor: pointer; font-family: inherit" style-hover="background: #333">Open remote login</button>
+              </div>
+            </sc-if>
+            <sc-if value="{{ authStreaming }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 10px">
+                <p style="margin: 0; font-size: 14px; font-weight: 700; color: #1A1A1A">Log in below (or let assisted sign-in fill it). Clear any CAPTCHA/OTP yourself. When you have reached your account, click Capture &amp; scan.</p>
+                <div id="adhikaarStatus" style="min-height: 18px; font-size: 13px; font-weight: 600; color: #1f9e57"></div>
+                <canvas id="adhikaarStream" width="1280" height="800" tabindex="0" style="width: 100%; aspect-ratio: 16 / 10; border-radius: 12px; border: 1.5px solid rgba(26,26,26,0.25); background: #0b0b0b; cursor: crosshair; outline: none"></canvas>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap">
+                  <button onClick="{{ captureStream }}" style="background: #33C06D; color: #0d2a19; font-weight: 700; font-size: 14.5px; padding: 11px 22px; border-radius: 99px; border: none; cursor: pointer; font-family: inherit" style-hover="background: #2bae61">Capture &amp; scan logged-in area</button>
+                  <button onClick="{{ cancelStream }}" style="background: none; border: none; cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600; color: rgba(26,26,26,0.55); text-decoration: underline">Cancel</button>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ authScanning }}" hint-placeholder-val="{{ false }}">
+              <p style="margin: 0; font-size: 14.5px; font-weight: 700; color: #1A1A1A">Session captured. Scanning the logged-in area read-only&hellip;</p>
+            </sc-if>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATUS ============ -->
+  <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+    <section style="padding: 0 28px 80px; text-align: center">
+      <div style="max-width: 560px; margin: 0 auto; background: #FBF8F1; border-radius: 32px; padding: 40px; display: flex; flex-direction: column; align-items: center; gap: 16px">
+        <div style="display: flex; gap: 8px">
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #33C06D; animation: scanpulse 1.2s ease-in-out infinite"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #33C06D; animation: scanpulse 1.2s ease-in-out 0.2s infinite"></span>
+          <span style="width: 12px; height: 12px; border-radius: 50%; background: #33C06D; animation: scanpulse 1.2s ease-in-out 0.4s infinite"></span>
+        </div>
+        <p style="margin: 0; font-size: 16px; font-weight: 600">{{ statusLine }}</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ HONEST HANDOFF ============ -->
+  <sc-if value="{{ showHandoff }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Handoff" style="padding: 0 28px 80px">
+      <div style="max-width: 640px; margin: 0 auto; background: #FBF8F1; border: 1.5px solid rgba(240,162,75,0.5); border-radius: 32px; padding: 40px; display: flex; flex-direction: column; gap: 14px">
+        <span style="align-self: flex-start; padding: 6px 14px; border-radius: 99px; background: rgba(240,162,75,0.15); color: #b06f1e; font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase">{{ tHandoffChip }}</span>
+        <h2 style="margin: 0; font-weight: 800; letter-spacing: -0.02em; font-size: 26px">{{ tHandoffTitle }}</h2>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(26,26,26,0.72)">{{ handoffReason }}</p>
+        <p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: rgba(26,26,26,0.72)">Open the site's privacy policy, copy the text, and paste it above. The analysis will run on the real text, not on assumptions.</p>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ RESULTS ============ -->
+  <sc-if value="{{ showResult }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="Scan result" style="background: #FBF8F1; border-radius: 64px 64px 0 0; padding: 64px 28px 90px">
+      <div style="max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+
+        <!-- Result header -->
+        <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap">
+          <div>
+            <p style="margin: 0 0 4px; font-size: 14px; color: rgba(26,26,26,0.5)">Compliance assessment</p>
+            <h2 style="margin: 0; font-weight: 900; letter-spacing: -0.025em; font-size: clamp(26px, 3.4vw, 38px); overflow-wrap: anywhere">{{ scanTarget }}</h2>
+          </div>
+          <button onClick="{{ downloadPdf }}" style="background: #1A1A1A; color: #F3EEE4; font-weight: 700; font-size: 14px; padding: 12px 22px; border-radius: 99px; border: none; cursor: pointer; font-family: inherit; white-space: nowrap" style-hover="background: #333">{{ pdfLabel }}</button>
+        </div>
+
+        <!-- Tabs -->
+        <div style="display: inline-flex; gap: 6px; background: #EFE7D8; border-radius: 99px; padding: 5px; align-self: flex-start; max-width: 100%; flex-wrap: wrap">
+          <button onClick="{{ viewDpdp }}" style="{{ tabDpdpStyle }}">DPDP</button>
+          <button onClick="{{ viewItact }}" style="{{ tabItactStyle }}">IT Act</button>
+          <button onClick="{{ viewTrackers }}" style="{{ tabTrackersStyle }}">Trackers</button>
+          <button onClick="{{ viewSitemap }}" style="{{ tabSitemapStyle }}">Site map</button>
+        </div>
+
+        <div style="font-size: 13px; line-height: 1.55; color: rgba(26,26,26,0.48)">{{ coverageNote }}</div>
+
+        <!-- ======== DPDP COMPLIANCE ======== -->
+        <sc-if value="{{ isDpdp }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 26px">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap">
+              <div style="font-size: clamp(84px, 15vw, 142px); font-weight: 900; line-height: 0.8; letter-spacing: -0.05em; {{ dpdpGradeInk }}">{{ dpdpGrade }}</div>
+              <div style="flex: 1; min-width: 220px">
+                <div style="font-size: 23px; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 5px">{{ dpdpGradeMeaning }}</div>
+                <div style="font-size: 15px; color: rgba(26,26,26,0.6); line-height: 1.6">{{ dpdpScore }} / 100 DPDP-readiness across 47 duties. Grades run A (best) to E (weakest).</div>
+              </div>
+            </div>
+
+            <div>
+              <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em">Needs attention <span style="color: rgba(26,26,26,0.4); font-weight: 700; margin-left: 4px">{{ nNonComp }}</span></h3>
+              <div style="display: flex; flex-direction: column">
+                <sc-for list="{{ nonCompDuties }}" as="d" hint-placeholder-count="6">
+                  <div style="display: flex; gap: 14px; align-items: flex-start; padding: 15px 0; border-top: 1px solid rgba(26,26,26,0.09)">
+                    <span style="width: 9px; height: 9px; border-radius: 99px; margin-top: 6px; flex-shrink: 0; {{ d.dotStyle }}"></span>
+                    <div style="flex: 1">
+                      <div style="font-size: 15.5px; font-weight: 600; line-height: 1.5">{{ d.requirement }}</div>
+                      <div style="font-size: 12.5px; color: rgba(26,26,26,0.45); margin-top: 3px">{{ d.label }}  ·  {{ d.meta }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <details style="border-top: 1px solid rgba(26,26,26,0.09); padding-top: 16px">
+              <summary style="cursor: pointer; font-size: 19px; font-weight: 800; letter-spacing: -0.01em; list-style: none">Met <span style="color: #1F7A47; font-weight: 700; margin-left: 4px">{{ nComp }}</span></summary>
+              <div style="display: flex; flex-direction: column; margin-top: 12px">
+                <sc-for list="{{ compDuties }}" as="d" hint-placeholder-count="3">
+                  <div style="display: flex; gap: 14px; align-items: flex-start; padding: 11px 0; border-top: 1px solid rgba(26,26,26,0.06)">
+                    <span style="color: #1F7A47; font-weight: 800; margin-top: 1px; flex-shrink: 0">&#10003;</span>
+                    <div style="flex: 1; font-size: 14.5px; color: rgba(26,26,26,0.7); line-height: 1.5">{{ d.requirement }} <span style="color: rgba(26,26,26,0.38); font-size: 12px">{{ d.anchor }}</span></div>
+                  </div>
+                </sc-for>
+              </div>
+            </details>
+
+            <div style="background: #FBF8F1; border: 1.5px solid rgba(26,26,26,0.1); border-radius: 20px; padding: 22px 26px; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap">
+              <div style="font-size: 15px; color: rgba(26,26,26,0.7); line-height: 1.5; flex: 1; min-width: 220px">The full report has the evidence quote, statutory basis and a fix for every finding.</div>
+              <button onClick="{{ downloadPdf }}" style="background: #33C06D; color: #0d2a19; font-weight: 800; font-size: 15px; padding: 13px 24px; border: none; border-radius: 99px; cursor: pointer; font-family: inherit; white-space: nowrap">{{ pdfLabel }}</button>
+            </div>
+          </div>
+        </sc-if>
+
+        <!-- ======== IT ACT (present law) ======== -->
+        <sc-if value="{{ isItact }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 26px">
+            <div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap">
+              <div style="font-size: clamp(84px, 15vw, 142px); font-weight: 900; line-height: 0.8; letter-spacing: -0.05em; {{ itActGradeInk }}">{{ itActGrade }}</div>
+              <div style="flex: 1; min-width: 220px">
+                <div style="font-size: 23px; font-weight: 800; letter-spacing: -0.015em; margin-bottom: 5px">{{ itActGradeMeaning }}</div>
+                <div style="font-size: 15px; color: rgba(26,26,26,0.6); line-height: 1.6">{{ itActScore }} / 100 against the duties already in force under the IT Act 2000 &amp; SPDI Rules 2011.</div>
+              </div>
+            </div>
+            <div style="background: #FBF8F1; border: 1px solid rgba(26,26,26,0.08); border-radius: 16px; padding: 16px 20px; font-size: 14px; line-height: 1.6; color: rgba(26,26,26,0.72)">{{ itActApplicableNote }}</div>
+            <div>
+              <h3 style="margin: 0 0 4px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em">Enforceable today <span style="color: rgba(26,26,26,0.4); font-weight: 700; margin-left: 4px">{{ nInForceMet }}/{{ nInForce }} met</span></h3>
+              <p style="margin: 0 0 14px; font-size: 13px; color: rgba(26,26,26,0.5); line-height: 1.55">These {{ nInForce }} duties are already law under the IT Act 2000 &amp; SPDI Rules 2011 — a subset of the 47 the grade above scores.</p>
+              <div style="display: flex; flex-direction: column">
+                <sc-for list="{{ inForceDuties }}" as="d" hint-placeholder-count="6">
+                  <div style="display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid rgba(26,26,26,0.09)">
+                    <span style="width: 9px; height: 9px; border-radius: 99px; margin-top: 6px; flex-shrink: 0; {{ d.dotStyle }}"></span>
+                    <div style="flex: 1">
+                      <div style="font-size: 15px; font-weight: 600; line-height: 1.5">{{ d.requirement }}</div>
+                      <div style="font-size: 12.5px; color: rgba(26,26,26,0.45); margin-top: 3px">{{ d.label }}  ·  {{ d.anchor }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <sc-if value="{{ hasExposure }}" hint-placeholder-val="{{ false }}">
+              <div style="background: #FBECEA; border: 1.5px solid rgba(217,83,79,0.35); border-radius: 20px; padding: 24px">
+                <h3 style="margin: 0 0 12px; font-size: 18px; font-weight: 800; color: #b13a36">Exposed files &amp; records</h3>
+                <div style="display: flex; flex-direction: column; gap: 10px">
+                  <sc-for list="{{ exposureItems }}" as="ex" hint-placeholder-count="1">
+                    <div style="display: flex; gap: 12px; align-items: flex-start">
+                      <span style="{{ ex.chipStyle }}">{{ ex.severity }}</span>
+                      <p style="margin: 0; font-size: 14px; line-height: 1.6; color: rgba(26,26,26,0.78)">{{ ex.detail }}</p>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ hasDataCategories }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <h3 style="margin: 0 0 12px; font-size: 18px; font-weight: 800">Sensitive data handled</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                  <sc-for list="{{ dataCategories }}" as="dc" hint-placeholder-count="2">
+                    <span style="padding: 8px 15px; border-radius: 99px; background: #FBF8F1; border: 1px solid rgba(26,26,26,0.1); font-size: 14px; font-weight: 600">{{ dc.label }}</span>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- ======== TRACKERS & COOKIES ======== -->
+        <sc-if value="{{ isTrackers }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 24px">
+            <div style="display: flex; gap: 14px; flex-wrap: wrap">
+              <div style="flex: 1; min-width: 180px; background: #FBF8F1; border: 1.5px solid rgba(26,26,26,0.1); border-radius: 20px; padding: 20px 24px">
+                <div style="font-size: 42px; font-weight: 900; letter-spacing: -0.03em; line-height: 1">{{ nTrackers }}</div>
+                <div style="font-size: 13.5px; color: rgba(26,26,26,0.55); margin-top: 5px">third-party trackers</div>
+              </div>
+              <div style="flex: 1; min-width: 180px; background: #FBF8F1; border: 1.5px solid rgba(26,26,26,0.1); border-radius: 20px; padding: 20px 24px">
+                <div style="font-size: 42px; font-weight: 900; letter-spacing: -0.03em; line-height: 1">{{ nCookiesPreConsent }}</div>
+                <div style="font-size: 13.5px; color: rgba(26,26,26,0.55); margin-top: 5px">cookies before consent</div>
+              </div>
+            </div>
+            <sc-if value="{{ hasTrackerCats }}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; gap: 8px; flex-wrap: wrap">
+                <sc-for list="{{ trackerCats }}" as="tc" hint-placeholder-count="3">
+                  <span style="display: inline-flex; align-items: baseline; gap: 7px; padding: 7px 14px; border-radius: 99px; background: #F3EEE4; border: 1px solid rgba(26,26,26,0.1); font-size: 13px; font-weight: 600">{{ tc.name }}<span style="font-weight: 900">{{ tc.count }}</span></span>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ hasBehaviour }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <h3 style="margin: 0 0 6px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em">Trackers</h3>
+                <div style="display: flex; flex-direction: column">
+                  <sc-for list="{{ trackerList }}" as="t" hint-placeholder-count="4">
+                    <div style="display: flex; gap: 14px; align-items: center; padding: 14px 0; border-top: 1px solid rgba(26,26,26,0.09)">
+                      <span style="font-size: 15px; font-weight: 700; flex: 1">{{ t.name }}</span>
+                      <span style="padding: 5px 13px; border-radius: 99px; background: #F3EEE4; border: 1px solid rgba(26,26,26,0.1); font-size: 12.5px; font-weight: 600">{{ t.category }}</span>
+                      <span style="font-size: 12.5px; color: rgba(26,26,26,0.45); width: 36px; text-align: right">{{ t.jurisdiction }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ hasCookieList }}" hint-placeholder-val="{{ false }}">
+              <div style="border-top: 1px solid rgba(26,26,26,0.09); padding-top: 16px">
+                <h3 style="margin: 0 0 4px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em">Cookies <span style="color: rgba(26,26,26,0.4); font-weight: 700; margin-left: 4px">{{ nCookies }}</span></h3>
+                <div style="display: grid; grid-template-columns: 1.4fr 1fr auto; gap: 6px 14px; align-items: center; padding: 10px 0 6px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em; color: rgba(26,26,26,0.4); border-bottom: 1px solid rgba(26,26,26,0.09)">
+                  <span>Cookie</span><span>Set by</span><span style="text-align: right">Category</span>
+                </div>
+                <div>
+                  <sc-for list="{{ cookieList }}" as="c" hint-placeholder-count="6">
+                    <div style="display: grid; grid-template-columns: 1.4fr 1fr auto; gap: 6px 14px; align-items: center; padding: 11px 0; border-top: 1px solid rgba(26,26,26,0.06)">
+                      <span style="font-size: 13px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all">{{ c.name }}</span>
+                      <span style="font-size: 12px; color: rgba(26,26,26,0.45); word-break: break-all">{{ c.domain }}</span>
+                      <span style="padding: 4px 11px; border-radius: 99px; background: #FBF8F1; border: 1px solid rgba(26,26,26,0.1); font-size: 11.5px; font-weight: 600; white-space: nowrap; justify-self: end">{{ c.category }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <!-- ======== SITE MAP ======== -->
+        <sc-if value="{{ isSitemap }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 18px">
+            <div>
+              <h3 style="margin: 0 0 6px; font-size: 23px; font-weight: 800; letter-spacing: -0.015em">{{ sitemapCount }} pages &middot; {{ sitemapSubs }} subdomains</h3>
+              <p style="margin: 0; font-size: 14px; color: rgba(26,26,26,0.55); line-height: 1.6">{{ sitemapGraphNote }}</p>
+            </div>
+            <div style="background: #FBF8F1; border: 1.5px solid rgba(26,26,26,0.08); border-radius: 24px; padding: 12px">
+              <div id="ak-graph" style="width: 100%; max-height: 900px; overflow: auto; min-height: 560px"></div>
+            </div>
+            <sc-if value="{{ hasSubList }}" hint-placeholder-val="{{ false }}">
+              <div style="border-top: 1px solid rgba(26,26,26,0.09); padding-top: 16px">
+                <h3 style="margin: 0 0 4px; font-size: 19px; font-weight: 800; letter-spacing: -0.01em">Subdomains discovered <span style="color: rgba(26,26,26,0.4); font-weight: 700; margin-left: 4px">{{ sitemapSubs }}</span></h3>
+                <p style="margin: 0 0 12px; font-size: 13px; color: rgba(26,26,26,0.5); line-height: 1.6">From public Certificate Transparency logs &mdash; the site&rsquo;s real attack surface, not guessed names.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 7px; max-height: 320px; overflow: auto">
+                  <sc-for list="{{ subdomainList }}" as="s" hint-placeholder-count="8">
+                    <span style="padding: 5px 12px; border-radius: 99px; background: #FBF8F1; border: 1px solid rgba(26,26,26,0.1); font-size: 12.5px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, monospace">{{ s }}</span>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-if>
+
+        <div style="border-top: 1.5px solid rgba(26,26,26,0.12); padding-top: 20px; display: flex; flex-direction: column; gap: 8px">
+          <p style="margin: 0; font-size: 14.5px; font-weight: 700">{{ tDisclaimer }}</p>
+          <p style="margin: 0; font-size: 13px; color: rgba(26,26,26,0.55)">{{ tStored }}</p>
+          <sc-if value="{{ showTranslatedNote }}" hint-placeholder-val="{{ false }}">
+            <p style="margin: 0; font-size: 13px; font-weight: 600; color: #1f9e57">{{ tTranslated }}</p>
+          </sc-if>
+        </div>
+
+      </div>
+    </section>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const ADHIKAAR_API = (window.ADHIKAAR_API !== undefined ? window.ADHIKAAR_API : '');  // '' = same-origin; set window.ADHIKAAR_API for a split (GitHub Pages -> HF) deploy
+class Component extends DCLogic {
+  state = {
+    url: '', policyText: '', showPaste: false,
+    phase: 'idle', // idle | fetching | analyzing | handoff | done
+    handoffReason: '', view: 'dpdp', result: null, scanTarget: '',
+    locale: 'en-IN', trans: {}, translatingFor: null,
+    authOpen: false, authLoginUrl: '', authAuthorized: false, authToken: '', authStage: 'idle', // idle | streaming | scanning
+    authUser: '', authPass: '', authTotp: '', authStatus: '',
+    deepScan: false
+  };
+
+  EXPECTED_PAGES = ['home', 'privacy notice', 'cookie policy', 'grievance contact', 'rights page'];
+
+  componentDidMount() {
+    try {
+      const u = new URLSearchParams(window.location.search).get('url');
+      if (u) { this.setState({ url: u }, () => this._runUrlScan(u)); }
+    } catch (e) {}
+    const seed = () => this.setState({ locale: window.ADHIKAR_I18N.getLocale() });
+    if (window.ADHIKAR_I18N) { seed(); }
+    else { const iv = setInterval(() => { if (window.ADHIKAR_I18N) { clearInterval(iv); seed(); } }, 50); }
+  }
+
+  // Site-map figure: a force-directed link graph of the crawled pages. Nodes = pages (coloured by
+  // subdomain; the home page dark, policy/legal pages green), edges = real links between them.
+  _graphSvg(sm) {
+    if (!sm || !sm.nodes || !sm.nodes.length) return '';
+    const N = sm.nodes.length;
+    // Big canvas: scales up with node count so the graph reads large and uncramped; shown at natural
+    // size inside a scrollable panel so you can pan across every node.
+    const W = Math.round(Math.max(1500, Math.min(2800, 900 + N * 16)));
+    const H = Math.round(W * 0.62);
+    const hosts = sm.subdomains || [];
+    const palette = ['#0072B2', '#E69F00', '#009E73', '#CC79A7', '#56B4E9', '#D55E00', '#8E6FB0'];  // Okabe-Ito, accessible
+    const hostColor = {}; hosts.forEach((h, i) => { hostColor[h] = palette[i % palette.length]; });
+    const nodes = sm.nodes.map((n, i) => ({ id: n.id, host: n.host, label: n.label, home: n.home, policy: n.policy, deg: 0,
+      x: W / 2 + Math.cos(i * 2.399) * (90 + (i % 11) * 44), y: H / 2 + Math.sin(i * 2.399) * (90 + (i % 11) * 44), vx: 0, vy: 0 }));
+    const edges = (sm.edges || []).filter((e) => nodes[e[0]] && nodes[e[1]]);
+    edges.forEach((e) => { nodes[e[0]].deg++; nodes[e[1]].deg++; });
+    // ideal edge length larger -> the graph spreads to fill the big canvas instead of balling up
+    const k = Math.max(130, Math.min(260, 1800 / Math.sqrt(N)));
+    for (let it = 0; it < 300; it++) {
+      for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+        let dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y, d = Math.sqrt(dx * dx + dy * dy) || 0.5;
+        let f = (k * k) / (d * d); nodes[i].vx += (dx / d) * f; nodes[i].vy += (dy / d) * f; nodes[j].vx -= (dx / d) * f; nodes[j].vy -= (dy / d) * f;
+      }
+      for (const e of edges) { const a = nodes[e[0]], b = nodes[e[1]]; let dx = b.x - a.x, dy = b.y - a.y, d = Math.sqrt(dx * dx + dy * dy) || 0.5;
+        let f = (d - k) * 0.05; a.vx += (dx / d) * f * k; a.vy += (dy / d) * f * k; b.vx -= (dx / d) * f * k; b.vy -= (dy / d) * f * k; }
+      for (const n of nodes) { n.vx += (W / 2 - n.x) * 0.006; n.vy += (H / 2 - n.y) * 0.006;  // gentle centring -> fills the canvas
+        n.x += Math.max(-12, Math.min(12, n.vx * 0.04)); n.y += Math.max(-12, Math.min(12, n.vy * 0.04)); n.vx *= 0.82; n.vy *= 0.82;
+        n.x = Math.max(34, Math.min(W - 34, n.x)); n.y = Math.max(40, Math.min(H - 24, n.y)); }
+    }
+    const esc = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    const shortLabel = (n) => { const p = (n.label || '/').split('/').filter(Boolean); return p.length ? p[p.length - 1].slice(0, 20) : 'home'; };
+    const homeSet = {}; nodes.forEach((n) => { if (n.home) homeSet[n.id] = 1; });
+    let svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '" style="display:block">';
+    svg += '<defs><radialGradient id="akbg" cx="50%" cy="42%" r="75%"><stop offset="0%" stop-color="#FFFFFF"/><stop offset="100%" stop-color="#F7F2E8"/></radialGradient>'
+      + '<filter id="aksh" x="-40%" y="-40%" width="180%" height="180%"><feDropShadow dx="0" dy="2.5" stdDeviation="3.5" flood-color="#1A1A1A" flood-opacity="0.16"/></filter></defs>';
+    svg += '<rect x="0" y="0" width="' + W + '" height="' + H + '" rx="22" fill="url(#akbg)"/>';
+    // edges: links touching the home page read a little stronger, the rest recede
+    for (const e of edges) { const a = nodes[e[0]], b = nodes[e[1]]; const hot = homeSet[a.id] || homeSet[b.id];
+      svg += '<line x1="' + a.x.toFixed(1) + '" y1="' + a.y.toFixed(1) + '" x2="' + b.x.toFixed(1) + '" y2="' + b.y.toFixed(1) + '" stroke="' + (hot ? 'rgba(26,26,26,0.16)' : 'rgba(26,26,26,0.08)') + '" stroke-width="' + (hot ? 1.5 : 1) + '"/>'; }
+    for (const n of nodes) { const rr = n.home ? 26 : (n.policy ? 18 : 12);
+      const fill = n.home ? '#1A1A1A' : (n.policy ? '#33C06D' : (hostColor[n.host] || '#9a9a9a'));
+      svg += '<circle cx="' + n.x.toFixed(1) + '" cy="' + n.y.toFixed(1) + '" r="' + rr + '" fill="' + fill + '" stroke="#FFFFFF" stroke-width="3.5" filter="url(#aksh)"><title>' + esc(n.host + n.label) + '</title></circle>';
+      if (n.home || n.policy || n.deg >= 3) {
+        svg += '<text x="' + n.x.toFixed(1) + '" y="' + (n.y + rr + 18).toFixed(1) + '" text-anchor="middle" font-size="15" font-weight="700" fill="rgba(26,26,26,0.78)" font-family="inherit">' + esc(n.home ? 'home' : shortLabel(n)) + '</text>';
+      }
+    }
+    svg += '</svg>';
+    return svg;
+  }
+
+  _paintGraph() {
+    try { const el = document.getElementById('ak-graph'); const r = this.state.result;
+      if (el && r && r.graphSvg) el.innerHTML = r.graphSvg; } catch (e) {}
+  }
+
+  tt(k) { const I = window.ADHIKAR_I18N; return I ? I.t(this.state.locale, k) : ''; }
+
+  // Layer 2: translate-after-reason. Only PUBLIC scan output is ever sent for
+  // translation; evidence quotes and citations stay verbatim in the original.
+  // (PII invariant: this scanner holds no user PII; a drafted rights letter
+  // must never pass through this function.)
+  async _ensureTranslation() {
+    const L = this.state.locale;
+    const I = window.ADHIKAR_I18N;
+    const r = this.state.result;
+    if (!I || !r || L === 'en-IN' || this.state.trans[L] || this.state.translatingFor === L) return;
+    const items = [r.risk.summary || '', r.risk.baseline || '', r.risk.rights || ''];
+    r.checks.forEach((c) => { items.push(c.finding || ''); items.push(c.fix || ''); });
+    const lang = I.LANGUAGES.find((l) => l.code === L);
+    this.setState({ translatingFor: L });
+    try {
+      const raw = await window.claude.complete({ messages: [{ role: 'user', content: 'Translate each string in the JSON array below into ' + lang.label + ' (' + lang.native + '), as used in India. Keep legal terms precise. Do NOT translate statutory citations like "s.6(1)", "Rule 3", the acronym DPDP, or anything inside double quotes. Empty strings stay empty. Return ONLY a JSON array of the same length and order, no commentary.\n\n' + JSON.stringify(items) }], max_tokens: 4000 });
+      const arr = JSON.parse(raw.replace(/^[\s\S]*?\[/, '[').replace(/\][^\]]*$/, ']'));
+      if (!Array.isArray(arr) || arr.length !== items.length) throw new Error('bad shape');
+      const tr = { summary: arr[0] || items[0], baseline: arr[1] || '', rights: arr[2] || items[2], findings: [], fixes: [] };
+      for (let i = 0; i < r.checks.length; i++) { tr.findings.push(arr[3 + i * 2] || ''); tr.fixes.push(arr[4 + i * 2] || ''); }
+      this.setState((s) => { const next = Object.assign({}, s.trans); next[L] = tr; return { trans: next, translatingFor: null }; });
+    } catch (e) {
+      // identity passthrough: keep showing English rather than a blank card
+      this.setState({ translatingFor: null });
+    }
+  }
+
+  chip(bg, fg) {
+    return { padding: '5px 14px', borderRadius: 99, background: bg, color: fg, fontSize: 12.5, fontWeight: 700, letterSpacing: '0.05em', whiteSpace: 'nowrap', flex: 'none' };
+  }
+
+  tab(active) {
+    return { border: 'none', cursor: 'pointer', fontFamily: 'inherit', fontSize: 14, fontWeight: 700, padding: '10px 18px', borderRadius: 99, background: active ? '#1A1A1A' : 'transparent', color: active ? '#F3EEE4' : '#1A1A1A', whiteSpace: 'nowrap' };
+  }
+
+  async _fetchPage(u) {
+    try {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 8000);
+      const res = await fetch(u, { signal: ctrl.signal });
+      clearTimeout(t);
+      if (!res.ok) return { ok: false, reason: 'returned ' + res.status };
+      const html = await res.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      doc.querySelectorAll('script,style,noscript,svg').forEach((n) => n.remove());
+      const text = (doc.body ? doc.body.textContent : '').replace(/\s+/g, ' ').trim();
+      return { ok: true, text: text, doc: doc };
+    } catch (e) {
+      return { ok: false, reason: 'blocked by the site or the browser (cross-site read)' };
+    }
+  }
+
+  async _runUrlScan(url) {
+    let target = (url || '').trim();
+    if (!target) return;
+    if (!/^https?:\/\//i.test(target)) target = 'https://' + target;
+    let host = target;
+    try { host = new URL(target).hostname; } catch (e) {}
+    this.setState({ phase: 'analyzing', scanTarget: host, result: null });
+    try {
+      const body = { url: target, org: host };
+      if (this.state.deepScan) body.scan_minutes = 30;   // crawl the whole site, time-bounded to 30 min
+      // Start the scan as a BACKGROUND JOB and poll for it. Each HTTP call returns instantly, so a long
+      // (deep) scan is never cut off by a proxy's ~100s request limit (Cloudflare 524).
+      const startRes = await fetch(ADHIKAAR_API + '/scan/start', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+      });
+      if (!startRes.ok) throw new Error('scan service returned ' + startRes.status);
+      const started = await startRes.json();
+      const jobId = started.job_id;
+      if (!jobId) throw new Error('no job id from scan service');
+      const maxMs = this.state.deepScan ? (35 * 60 * 1000) : (5 * 60 * 1000);
+      const t0 = Date.now();
+      let data = null;
+      while (Date.now() - t0 < maxMs) {
+        await new Promise((r) => setTimeout(r, 3000));
+        let s;
+        try {
+          const sRes = await fetch(ADHIKAAR_API + '/scan/status/' + jobId);
+          if (!sRes.ok) continue;
+          s = await sRes.json();
+        } catch (pollErr) { continue; }   // a transient poll failure is not fatal; keep polling
+        if (s.status === 'done') { data = s.result; break; }
+        if (s.status === 'error') throw new Error(s.error || 'scan failed');
+        if (s.status === 'unknown') throw new Error('scan job expired — please try again');
+        this.setState({ scanElapsed: s.elapsed || Math.round((Date.now() - t0) / 1000) });
+      }
+      if (!data) throw new Error('scan timed out');
+      if (!data.risk || !Array.isArray(data.checks)) throw new Error('unexpected response shape');
+      this.setState({ phase: 'done', result: { risk: data.risk, checks: data.checks, coverage: data.coverage, exposure: data.exposure || [], enforceability: data.enforceability || {}, grade: data.grade, duties: data.duties || [], sitemap: data.sitemap || {}, adequacy: data.adequacy, behaviour: data.behaviour || {}, graphSvg: this._graphSvg(data.sitemap) }, view: 'dpdp' }, () => this._ensureTranslation());
+    } catch (e) {
+      this.setState({ phase: 'handoff', showPaste: true,
+        handoffReason: 'Could not complete the scan (' + (e.message || 'unknown error') + '). You can paste the privacy policy text below instead.' });
+    }
+  }
+
+  // Authenticated scan: open a headed login window so the operator signs in (clearing any CAPTCHA/OTP
+  // themselves); then run a read-only scan of the logged-in area. The login is never stored.
+  async _startAuthLogin() {
+    if (!this.state.authAuthorized) {
+      this.setState({ handoffReason: '', authStage: 'idle' });
+      alert('Please confirm you are authorized to test this site before opening the login window.');
+      return;
+    }
+    let target = (this.state.url || '').trim();
+    if (!target) { alert('Enter the site URL first.'); return; }
+    if (!/^https?:\/\//i.test(target)) target = 'https://' + target;
+    const loginUrl = (this.state.authLoginUrl || '').trim() || target;
+    try {
+      const res = await fetch(ADHIKAAR_API + '/auth/start', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: target, login_url: loginUrl, authorized: true })
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.detail || data.error);
+      this.setState({ authToken: data.token, authStage: 'awaiting' });
+    } catch (e) {
+      alert('Could not open the login window: ' + (e.message || e));
+    }
+  }
+
+  async _runAuthScan() {
+    let target = (this.state.url || '').trim();
+    if (!/^https?:\/\//i.test(target)) target = 'https://' + target;
+    let host = target; try { host = new URL(target).hostname; } catch (e) {}
+    this.setState({ phase: 'analyzing', scanTarget: host, result: null });
+    try {
+      const res = await fetch(ADHIKAAR_API + '/auth/scan', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: this.state.authToken, url: target, org: host })
+      });
+      const data = await res.json();
+      if (data.error) throw new Error(data.detail || data.error);
+      if (!data.risk || !Array.isArray(data.checks)) throw new Error('unexpected response shape');
+      this.setState({ phase: 'done', authStage: 'idle', authToken: '',
+        result: { risk: data.risk, checks: data.checks, coverage: data.coverage, exposure: data.exposure || [], enforceability: data.enforceability || {}, grade: data.grade, duties: data.duties || [], sitemap: data.sitemap || {}, adequacy: data.adequacy, behaviour: data.behaviour || {}, graphSvg: this._graphSvg(data.sitemap), authenticated: true },
+        view: 'site' }, () => this._ensureTranslation());
+    } catch (e) {
+      this.setState({ phase: 'handoff', authStage: 'idle',
+        handoffReason: 'The authenticated scan could not complete: ' + (e.message || e) + '. Make sure you finished logging in before clicking Continue.' });
+    }
+  }
+
+  async _cancelAuth() {
+    const tok = this.state.authToken;
+    this.setState({ authStage: 'idle', authToken: '' });
+    if (tok) { try { await fetch(ADHIKAAR_API + '/auth/cancel', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token: tok, url: this.state.url }) }); } catch (e) {} }
+  }
+
+  // ---- Streamed remote-browser login (hosted path): the server runs a headless browser and streams
+  // it to a canvas here; the operator drives it to log in, then we capture the session and scan. ----
+  _wsBase() { return (ADHIKAAR_API || window.location.origin).replace(/^http/, 'ws'); }
+
+  async _startStreamLogin() {
+    if (!this.state.authAuthorized) { alert('Please confirm you are authorized to test this site before starting.'); return; }
+    let target = (this.state.url || '').trim();
+    if (!target) { alert('Enter the site URL first.'); return; }
+    if (!/^https?:\/\//i.test(target)) target = 'https://' + target;
+    const loginUrl = (this.state.authLoginUrl || '').trim() || target;
+    const body = { url: target, login_url: loginUrl, authorized: true };
+    if (this.state.authUser) body.username = this.state.authUser;
+    if (this.state.authPass) body.password = this.state.authPass;
+    if (this.state.authTotp) body.totp_secret = this.state.authTotp;
+    try {
+      const res = await fetch(ADHIKAAR_API + '/auth/stream_start', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body) });
+      const data = await res.json();
+      if (data.error) throw new Error(data.detail || data.error);
+      // Clear the credentials from UI state immediately; they are only needed for this one request.
+      this.setState({ authToken: data.token, authStage: 'streaming', authStatus: '',
+                      authUser: '', authPass: '', authTotp: '' }, () => this._wireStream(data.token));
+    } catch (e) { alert('Could not start the remote login: ' + (e.message || e)); }
+  }
+
+  _wireStream(token) {
+    const canvas = document.getElementById('adhikaarStream');
+    if (!canvas) return;
+    const cx = canvas.getContext('2d');
+    const ws = new WebSocket(this._wsBase() + '/auth/stream/' + token);
+    this._ws = ws;
+    // Frame pump: keep ONLY the latest frame and draw at the display refresh rate, dropping the rest.
+    // This decouples decode from arrival so incoming frames can never pile up and freeze the page.
+    let latestData = null, busy = false, alive = true;
+    const img = new Image();
+    const draw = () => { if (alive && latestData && !busy) { busy = true; const d = latestData; latestData = null; img.src = 'data:image/jpeg;base64,' + d; } };
+    img.onload = () => { try { cx.drawImage(img, 0, 0, canvas.width, canvas.height); } catch (e) {} busy = false; if (latestData) requestAnimationFrame(draw); };
+    img.onerror = () => { busy = false; if (latestData) requestAnimationFrame(draw); };
+    const sx = (e) => Math.round((e.offsetX / canvas.clientWidth) * canvas.width);
+    const sy = (e) => Math.round((e.offsetY / canvas.clientHeight) * canvas.height);
+    const send = (o) => { try { if (ws.readyState === 1) ws.send(JSON.stringify(o)); } catch (e) {} };
+    ws.onmessage = (ev) => {
+      let m; try { m = JSON.parse(ev.data); } catch (e) { return; }
+      if (m.type === 'frame') { latestData = m.data; if (!busy) requestAnimationFrame(draw); }
+      else if (m.type === 'status') { const se = document.getElementById('adhikaarStatus'); if (se) se.textContent = m.detail || ''; }  // imperative: no re-render mid-stream
+      else if (m.type === 'captured') { alive = false; this._runStreamScan(); }
+      else if (m.type === 'error' || m.type === 'timeout') { alive = false; this.setState({ phase: 'handoff', authStage: 'idle', handoffReason: 'Remote login ended: ' + (m.detail || m.type) + '.' }); try { ws.close(); } catch (e) {} }
+    };
+    ws.onclose = () => { alive = false; if (this._ws === ws) this._ws = null; };
+    const special = ['Enter', 'Backspace', 'Tab', 'Delete', 'Escape', 'ArrowLeft', 'ArrowUp', 'ArrowRight', 'ArrowDown', 'Home', 'End'];
+    let lastMove = 0;
+    canvas.addEventListener('mousemove', (e) => { const n = Date.now(); if (n - lastMove < 40) return; lastMove = n; send({ type: 'move', x: sx(e), y: sy(e) }); });
+    canvas.addEventListener('mousedown', (e) => { canvas.focus(); send({ type: 'down', x: sx(e), y: sy(e), button: e.button }); });
+    canvas.addEventListener('mouseup', (e) => send({ type: 'up', x: sx(e), y: sy(e), button: e.button }));
+    canvas.addEventListener('contextmenu', (e) => e.preventDefault());
+    canvas.addEventListener('wheel', (e) => { e.preventDefault(); send({ type: 'wheel', x: sx(e), y: sy(e), dx: e.deltaX, dy: e.deltaY }); }, { passive: false });
+    canvas.addEventListener('keydown', (e) => {
+      if (special.includes(e.key)) { e.preventDefault(); send({ type: 'key', k: e.key }); }
+      else if (e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); send({ type: 'char', text: e.key }); }
+    });
+  }
+
+  captureStream() {
+    if (this._ws) { try { this._ws.send(JSON.stringify({ type: 'capture' })); } catch (e) {} }
+    this.setState({ authStage: 'scanning' });
+  }
+
+  async _runStreamScan() {
+    let target = (this.state.url || '').trim();
+    if (!/^https?:\/\//i.test(target)) target = 'https://' + target;
+    let host = target; try { host = new URL(target).hostname; } catch (e) {}
+    this.setState({ phase: 'analyzing', scanTarget: host, result: null });
+    try {
+      const res = await fetch(ADHIKAAR_API + '/auth/stream_scan', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: this.state.authToken, url: target, org: host }) });
+      const data = await res.json();
+      if (data.error) throw new Error(data.detail || data.error);
+      if (!data.risk || !Array.isArray(data.checks)) throw new Error('unexpected response shape');
+      this.setState({ phase: 'done', authStage: 'idle', authToken: '',
+        result: { risk: data.risk, checks: data.checks, coverage: data.coverage, exposure: data.exposure || [], enforceability: data.enforceability || {}, grade: data.grade, duties: data.duties || [], sitemap: data.sitemap || {}, adequacy: data.adequacy, behaviour: data.behaviour || {}, graphSvg: this._graphSvg(data.sitemap), authenticated: true },
+        view: 'site' }, () => this._ensureTranslation());
+    } catch (e) {
+      this.setState({ phase: 'handoff', authStage: 'idle', handoffReason: 'The authenticated scan could not complete: ' + (e.message || e) + '.' });
+    }
+  }
+
+  cancelStream() {
+    if (this._ws) { try { this._ws.send(JSON.stringify({ type: 'cancel' })); this._ws.close(); } catch (e) {} this._ws = null; }
+    this.setState({ authStage: 'idle', authToken: '' });
+  }
+
+  async downloadPdf() {
+    if (this.state.pdfBusy) return;
+    let target = (this.state.scanTarget || this.state.url || '').trim();
+    if (!target) return;
+    if (!/^https?:\/\//i.test(target)) target = 'https://' + target;
+    const host = this.state.scanTarget || target;
+    this.setState({ pdfBusy: true });
+    try {
+      const res = await fetch(ADHIKAAR_API + '/report.pdf', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: target, org: host })
+      });
+      if (!res.ok) throw new Error('server ' + res.status);
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = (host || 'Adhikaar') + '-Compliance.pdf';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    } catch (e) {
+      alert('Could not generate the PDF (' + ADHIKAAR_API + '/report.pdf): ' + (e.message || e));
+    } finally {
+      this.setState({ pdfBusy: false });
+    }
+  }
+
+  _runTextScan() {
+    const t = (this.state.policyText || '').trim();
+    if (t.length < 200) {
+      this.setState({ phase: 'handoff', handoffReason: 'That text is too short to ground an honest analysis. Paste the full privacy policy so every finding can quote the real text.' });
+      return;
+    }
+    const unreached = this.EXPECTED_PAGES.filter((p) => p !== 'privacy notice').map((p) => ({ page: p, reason: 'only pasted text was provided' }));
+    this._analyze([{ page: 'privacy notice (pasted)', text: t }], this.state.scanTarget || this.state.url || 'Pasted policy text', { reached: ['privacy notice'], unreached: unreached });
+  }
+
+  async _analyze(texts, target, coverage) {
+    this.setState({ phase: 'analyzing', scanTarget: target });
+    let budget = 16000;
+    const per = Math.floor(budget / texts.length);
+    const corpus = texts.map((t) => '<PAGE name="' + t.page + '">\n' + t.text.slice(0, per) + '\n</PAGE>').join('\n');
+    const prompt = 'You are the analysis engine of Adhikaar, a data-rights companion grounded in India\u2019s DPDP Act 2023 and DPDP Rules 2025 (G.S.R. 846(E)). Analyse ONLY the text inside <PAGE> tags. Never invent facts not present in it.\n\nReturn STRICT JSON (no markdown fences) with this shape:\n{\n "risk": { "level": "Low|Medium|High", "summary": "2 sentences: how much data this service collects relative to what a service of its kind plausibly needs (data-appetite, for the person browsing).", "collects": ["data categories actually named in the text, max 8"], "baseline": "1-2 sentences of sector-norm guidance, or empty string. Phrase as reasonable-expectation guidance, never as law.", "rights": "2 sentences on which DPDP rights (access s.11, correction/erasure s.12) are most useful against this policy." },\n "checks": [\n  {"id":"notice","title":"Notice present and itemised","citation":"Act s.5 + Rules r.3"},\n  {"id":"notice_means","title":"Notice states how to withdraw, exercise rights, complain","citation":"Rules r.3"},\n  {"id":"consent","title":"Consent free, specific, informed, unambiguous, affirmative","citation":"Act s.6(1)"},\n  {"id":"withdrawal","title":"Withdrawal as easy as giving","citation":"Act s.6(4)-(6)"},\n  {"id":"banner","title":"Consent/cookie banner: reject as easy as accept","citation":"Act s.6(1) + Rules r.4"},\n  {"id":"contact","title":"Business contact published","citation":"Act s.8(9)"},\n  {"id":"grievance","title":"Grievance-redressal mechanism","citation":"Act s.8(10)"},\n  {"id":"rights","title":"Rights mechanism (access, correct, erase, nominate)","citation":"Act ss.11-14"},\n  {"id":"retention","title":"Retention and erasure","citation":"Act s.8(7)-(8) + Rules r.8"},\n  {"id":"security","title":"Security safeguards and breach readiness","citation":"Act s.8(5)-(6) + Rules r.7"},\n  {"id":"children","title":"Children\u2019s data","citation":"Act s.9"},\n  {"id":"crossborder","title":"Cross-border transfer disclosure","citation":"Act s.16"}\n ]\n}\n\nFor EACH check add:\n- "verdict": "PASS" | "PARTIAL" | "GAP" | "COULD_NOT_VERIFY" | "NOT_APPLICABLE"\n- "evidence": for PASS/PARTIAL a real, COMPLETE clause quoted VERBATIM from a page (a full sentence or clause; never a heading, never a marketing/reassurance line, never a fragment cut mid-word); else null\n- "evidence_page": the PAGE name the evidence came from, else null\n- "finding": one honest sentence. GAP must read "We couldn\u2019t find X on the pages we read. Under [citation], ..." \u2014 never "violating" / "illegal" / "non-compliant". COULD_NOT_VERIFY must read like "We couldn\u2019t reach the page this lives on, so we can\u2019t assess it. This is not a finding against the site."\n- "fix": one concrete line for GAP/PARTIAL, else null\n\nVerdict rules:\n- A GAP requires positive evidence of absence: the page where the obligation would live IS in the provided pages, and it is not there. If that page is not provided, the verdict is COULD_NOT_VERIFY.\n- "contact" (s.8(9)) and "grievance" (s.8(10)) are SEPARATE: publishing a contact is not the same as having a redressal mechanism.\n- "children" is NOT_APPLICABLE unless the text suggests the service plausibly serves children. "crossborder" is NOT_APPLICABLE unless the text discloses or implies processing outside India.\n- "banner" behaviour usually cannot be verified from policy text alone: unless the text describes the banner, use COULD_NOT_VERIFY.\n\nPages provided: ' + coverage.reached.join(', ') + '. Pages NOT provided: ' + (coverage.unreached.map((u) => u.page).join(', ') || 'none') + '.\n\n' + corpus;
+    try {
+      const raw = await window.claude.complete({ messages: [{ role: 'user', content: prompt }], max_tokens: 8000 });
+      const cleaned = raw.replace(/^[\s\S]*?\{/, '{').replace(/\}[^}]*$/, '}');
+      const data = JSON.parse(cleaned);
+      if (!data.risk || !Array.isArray(data.checks)) throw new Error('bad shape');
+      // Evidence discipline: every PASS/PARTIAL evidence must be a verbatim substring of a fetched page
+      const norm = (s) => (s || '').replace(/\s+/g, ' ').replace(/[\u2018\u2019]/g, "'").replace(/[\u201C\u201D]/g, '"').toLowerCase().trim();
+      const corpusNorm = norm(texts.map((t) => t.text).join(' '));
+      data.checks.forEach((c) => {
+        if (['PASS', 'PARTIAL'].includes(c.verdict)) {
+          const ev = norm(c.evidence);
+          const tooShort = !ev || ev.split(' ').length < 4;
+          if (tooShort || corpusNorm.indexOf(ev) === -1) {
+            c.verdict = 'COULD_NOT_VERIFY';
+            c.evidence = null; c.evidence_page = null;
+            c.finding = 'The engine could not trace its evidence for this check back to the pages we read, so it is not assessed. This is not a finding against the site.';
+            c.fix = null;
+          }
+        }
+      });
+      this.setState({ phase: 'done', result: { risk: data.risk, checks: data.checks, coverage: coverage, exposure: [], enforceability: {} }, view: 'you' }, () => this._ensureTranslation());
+    } catch (e) {
+      console.warn('[adhikar] analysis failed:', e);
+      this.setState({ phase: 'handoff', handoffReason: 'The analysis engine could not return a grounded result this time. Nothing was scored. Try again, or paste a cleaner copy of the policy text.' });
+    }
+  }
+
+  renderVals() {
+    const st = this.state;
+    const r = st.result;
+    const busy = st.phase === 'fetching' || st.phase === 'analyzing';
+    const L = st.locale;
+    const I = window.ADHIKAR_I18N;
+    const tr = (L !== 'en-IN' && r && st.trans[L]) ? st.trans[L] : null;
+
+    let compBand = '', compSummary = '', compChipStyle = this.chip('rgba(26,26,26,0.08)', '#1A1A1A');
+    let confLabel = '', confChipStyle = this.chip('rgba(26,26,26,0.08)', 'rgba(26,26,26,0.6)');
+    let hasScore = false, noScore = false, scoreValue = 0;
+    let checks = []; let coverageNote = '';
+    if (r) {
+      const cov = r.coverage;
+      const nReached = cov.reached.length;
+      // confidence from coverage
+      const confidence = nReached >= 4 ? 'high' : nReached >= 2 ? 'medium' : 'low';
+      confLabel = 'Confidence: ' + confidence;
+      confChipStyle = confidence === 'high' ? this.chip('rgba(51,192,109,0.18)', '#1f7a47') : confidence === 'medium' ? this.chip('rgba(240,162,75,0.2)', '#96601a') : this.chip('rgba(26,26,26,0.08)', 'rgba(26,26,26,0.6)');
+
+      const evald = r.checks.filter((c) => ['PASS', 'PARTIAL', 'GAP'].includes(c.verdict));
+      const cnv = r.checks.filter((c) => c.verdict === 'COULD_NOT_VERIFY').length;
+      const na = r.checks.filter((c) => c.verdict === 'NOT_APPLICABLE').length;
+      const pass = evald.filter((c) => c.verdict === 'PASS').length;
+      const part = evald.filter((c) => c.verdict === 'PARTIAL').length;
+      const gaps = evald.filter((c) => c.verdict === 'GAP').length;
+      const frac = evald.length ? (pass + 0.5 * part) / evald.length : 0;
+
+      if (confidence === 'low' || !evald.length) {
+        noScore = true; hasScore = false;
+        compBand = 'Gap report only';
+        compChipStyle = this.chip('rgba(26,26,26,0.08)', '#1A1A1A');
+      } else {
+        hasScore = true; scoreValue = Math.round(frac * 100);
+        if (frac >= 0.8) { compBand = 'Largely aligned'; compChipStyle = this.chip('rgba(51,192,109,0.18)', '#1f7a47'); }
+        else if (frac >= 0.5) { compBand = 'Partial alignment'; compChipStyle = this.chip('rgba(240,162,75,0.2)', '#96601a'); }
+        else { compBand = 'Significant gaps'; compChipStyle = this.chip('rgba(217,83,79,0.15)', '#b13a36'); }
+      }
+      compSummary = evald.length + ' of ' + r.checks.length + ' checks were evaluable: ' + pass + ' pass, ' + part + ' partial, ' + gaps + ' gaps. Excluded from the score: ' + cnv + ' could not be verified, ' + na + ' not applicable.' + (confidence === 'medium' && hasScore ? ' Coverage was partial, so treat this number with its caveat, never bare.' : '');
+
+      const nPages = (r.sitemap && (r.sitemap.n_pages || r.sitemap.count)) || nReached;
+      const nSubs = (r.sitemap && (r.sitemap.n_subdomains || (r.sitemap.subdomains ? r.sitemap.subdomains.length : 0))) || 1;
+      coverageNote = 'Crawled ' + nPages + ' page' + (nPages === 1 ? '' : 's') + ' across ' + nSubs + ' subdomain' + (nSubs === 1 ? '' : 's') + ' within the scan window — a representative sample reached in the time budget, not the site’s full page count.';
+
+      const chipFor = (v) => v === 'PASS' ? this.chip('rgba(51,192,109,0.18)', '#1f7a47')
+        : v === 'PARTIAL' ? this.chip('rgba(240,162,75,0.2)', '#96601a')
+        : v === 'GAP' ? this.chip('rgba(217,83,79,0.15)', '#b13a36')
+        : this.chip('rgba(26,26,26,0.08)', 'rgba(26,26,26,0.6)');
+      checks = r.checks.map((c, ci) => ({
+        name: c.title, citation: c.citation, status: (c.verdict || '').replace(/_/g, ' '), chipStyle: chipFor(c.verdict),
+        finding: (tr && tr.findings[ci]) || c.finding || '',
+        hasEvidence: !!c.evidence, evidence: c.evidence || '', evidencePage: c.evidence_page || '',
+        hasFix: !!c.fix, fix: (tr && c.fix && tr.fixes[ci]) || c.fix || ''
+      }));
+    }
+
+    const riskLevel = r ? (r.risk.level || 'Medium') : '';
+    const riskColor = riskLevel === 'Low' ? '#33C06D' : riskLevel === 'High' ? '#D9534F' : '#F0A24B';
+    const riskWidth = riskLevel === 'Low' ? '22%' : riskLevel === 'High' ? '85%' : '55%';
+
+    // New Phase-A panels: public exposure, enforceable-today (IT Act), sensitive-data inventory.
+    const sevChip = (s) => s === 'Critical' ? this.chip('rgba(217,83,79,0.18)', '#b13a36')
+      : s === 'High' ? this.chip('rgba(240,162,75,0.2)', '#96601a')
+      : this.chip('rgba(26,26,26,0.08)', 'rgba(26,26,26,0.6)');
+    const exp = (r && Array.isArray(r.exposure)) ? r.exposure : [];
+    const exposureItems = exp.map((e) => ({
+      severity: e.severity || 'Info', detail: e.detail || '',
+      provision: e.provision || '', chipStyle: sevChip(e.severity) }));
+    const enf = (r && r.enforceability) ? r.enforceability : {};
+    const dataCategories = r ? ((r.risk && r.risk.data_categories)
+      || (r.coverage && r.coverage.data_categories) || []) : [];
+    // DPDP + IT Act grade chips (from the backend deep/URL scan; absent on a paste-only scan).
+    const gradeInk = (g) => (g === 'A' || g === 'B') ? '#1E8A5A' : (g === 'C' || g === 'D') ? '#D08700' : '#D64545';
+    const dpdpGrade = (r && r.grade) ? r.grade : '';
+    const itActGrade = (enf && enf.it_act_grade) ? enf.it_act_grade : '';
+    const gradeMeaning = (g) => ({ A: 'Substantially complete', B: 'Good, minor gaps', C: 'Partial alignment', D: 'Significant gaps', E: 'Near-total absence' }[g] || '');
+    const dpdpScore = Math.round((r && r.adequacy ? r.adequacy : 0) * 100);
+    const itActScore = Math.round(((enf && enf.it_act_adequacy) || 0) * 100);
+    // 47-duty breakdown as a clean typographic list (a coloured dot carries severity, not a chip-in-a-box)
+    const sevRank = { Critical: 5, High: 4, Medium: 3, Low: 2, Info: 1 };
+    const dotFor = (sev, compliant) => compliant ? '#1E8A5A' : (sevRank[sev] >= 4 ? '#D64545' : sevRank[sev] >= 3 ? '#D08700' : 'rgba(26,26,26,0.28)');
+    const mkDuty = (d) => ({ requirement: d.requirement, anchor: d.anchor, meta: d.anchor + (d.mandatory ? '  ·  Mandatory' : ''),
+      label: (d.compliant ? 'Met' : (d.severity || 'Low')), dotStyle: 'background: ' + dotFor(d.severity, d.compliant), compliant: d.compliant });
+    const allDuties = (r && Array.isArray(r.duties)) ? r.duties : [];
+    const nonCompDuties = allDuties.filter((d) => !d.compliant).sort((a, b) => (sevRank[b.severity] || 0) - (sevRank[a.severity] || 0)).map(mkDuty);
+    const compDuties = allDuties.filter((d) => d.compliant).map(mkDuty);
+    // The IT Act tab shows ONLY the duties enforceable today (the same subset the IT-Act grade scores).
+    const inForceDuties = allDuties.filter((d) => d.it_act)
+      .sort((a, b) => ((a.compliant ? 1 : 0) - (b.compliant ? 1 : 0)) || ((sevRank[b.severity] || 0) - (sevRank[a.severity] || 0))).map(mkDuty);
+    const inForceMet = inForceDuties.filter((d) => d.compliant).length;
+    const sm = (r && r.sitemap) ? r.sitemap : {};
+    const bh = (r && r.behaviour) ? r.behaviour : {};
+    const trackerList = (bh.trackers || []).map((t) => ({ name: t.name, category: t.category || 'Other', jurisdiction: t.jurisdiction || '' }));
+    const trackerCats = (bh.tracker_categories || []).map((c) => ({ name: c.name, count: c.count }));
+    const cookieList = (bh.cookies || []).map((c) => ({ name: (c.name || '(unnamed)'), domain: c.domain, category: c.category, party: c.party, muted: (c.party === 'first-party') }));
+
+    return {
+      url: st.url, policyText: st.policyText, showPaste: st.showPaste,
+      pasteToggleLabel: st.showPaste ? this.tt('scan.hide') : this.tt('scan.paste'),
+      onUrlChange: (e) => this.setState({ url: e.target.value }),
+      onPolicyChange: (e) => this.setState({ policyText: e.target.value }),
+      onUrlKey: (e) => { if (e.key === 'Enter') this._runUrlScan(this.state.url); },
+      togglePaste: () => this.setState({ showPaste: !this.state.showPaste }),
+      toggleDeep: () => this.setState({ deepScan: !this.state.deepScan }),
+      deepLabel: (st.deepScan ? '☑ ' : '☐ ') + 'Deep scan — crawl the whole site (up to 30 min)',
+      deepColor: st.deepScan ? '#1f9e57' : 'rgba(26,26,26,0.55)',
+      scanUrl: () => this._runUrlScan(this.state.url),
+      scanText: () => this._runTextScan(),
+      toggleAuth: () => this.setState({ authOpen: !this.state.authOpen }),
+      onAuthLoginChange: (e) => this.setState({ authLoginUrl: e.target.value }),
+      onAuthUserChange: (e) => this.setState({ authUser: e.target.value }),
+      onAuthPassChange: (e) => this.setState({ authPass: e.target.value }),
+      onAuthTotpChange: (e) => this.setState({ authTotp: e.target.value }),
+      toggleAuthorized: () => this.setState({ authAuthorized: !this.state.authAuthorized }),
+      startAuthLogin: () => this._startStreamLogin(),
+      captureStream: () => this.captureStream(),
+      cancelStream: () => this.cancelStream(),
+      showAuth: st.authOpen,
+      authToggleLabel: st.authOpen ? 'Hide authenticated scan' : 'Authenticated scan (assess member-only pages)',
+      authIdle: st.authStage === 'idle',
+      authStreaming: st.authStage === 'streaming',
+      authScanning: st.authStage === 'scanning',
+      authLoginUrl: st.authLoginUrl,
+      authUser: st.authUser, authPass: st.authPass, authTotp: st.authTotp,
+      authAuthLabel: (st.authAuthorized ? '☑ ' : '☐ ') + 'I am authorized to test this site (my own site, a sanctioned audit, or with the owner’s consent)',
+      busy: busy,
+      statusLine: (st.phase === 'fetching' ? this.tt('scan.fetching') : this.tt('scan.reading')) + (st.scanElapsed ? '  ·  ' + st.scanElapsed + 's' : ''),
+      showHandoff: st.phase === 'handoff',
+      handoffReason: st.handoffReason,
+      showResult: st.phase === 'done' && !!r,
+      scanTarget: st.scanTarget,
+      coverageNote: coverageNote,
+      viewDpdp: () => this.setState({ view: 'dpdp' }),
+      viewItact: () => this.setState({ view: 'itact' }),
+      viewTrackers: () => this.setState({ view: 'trackers' }),
+      viewSitemap: () => this.setState({ view: 'sitemap' }, () => this._paintGraph()),
+      downloadPdf: () => this.downloadPdf(),
+      pdfLabel: st.pdfBusy ? 'Preparing PDF...' : 'Download PDF',
+      isDpdp: st.view === 'dpdp', isItact: st.view === 'itact', isTrackers: st.view === 'trackers', isSitemap: st.view === 'sitemap',
+      tabDpdpStyle: this.tab(st.view === 'dpdp'),
+      tabItactStyle: this.tab(st.view === 'itact'),
+      tabTrackersStyle: this.tab(st.view === 'trackers'),
+      tabSitemapStyle: this.tab(st.view === 'sitemap'),
+      riskLevel: riskLevel ? riskLevel + ' risk' : '',
+      riskChipStyle: this.chip(riskColor + '26', riskLevel === 'Low' ? '#1f7a47' : riskLevel === 'High' ? '#b13a36' : '#96601a'),
+      riskBarStyle: { height: '100%', width: riskWidth, borderRadius: 99, background: riskColor },
+      riskSummary: r ? ((tr && tr.summary) || r.risk.summary) : '',
+      collects: r ? (r.risk.collects || []) : [],
+      hasBaseline: !!(r && r.risk.baseline),
+      baselineNote: r ? ((tr && tr.baseline) || r.risk.baseline || '') : '',
+      rightsNote: r ? ((tr && tr.rights) || r.risk.rights) : '',
+      compBand: compBand, compChipStyle: compChipStyle, compSummary: compSummary,
+      confLabel: confLabel, confChipStyle: confChipStyle,
+      hasScore: hasScore, noScore: noScore, scoreValue: scoreValue,
+      checks: checks,
+      hasExposure: exposureItems.length > 0,
+      exposureItems: exposureItems,
+      hasEnforceable: !!(enf && enf.note),
+      enfNote: enf.note || '',
+      enfBadge: enf.applicable_now ? 'IT Act 2000 applies now' : 'Forward-looking (DPDP)',
+      enfChipStyle: enf.applicable_now ? this.chip('rgba(217,83,79,0.15)', '#b13a36')
+        : this.chip('rgba(26,26,26,0.08)', 'rgba(26,26,26,0.6)'),
+      enfHasProvisions: !!(enf.provisions && enf.provisions.length),
+      enfProvisions: enf.provisions || [],
+      hasGrades: !!dpdpGrade,
+      dpdpGrade: dpdpGrade,
+      dpdpGradeInk: 'color: ' + gradeInk(dpdpGrade),
+      dpdpGradeMeaning: gradeMeaning(dpdpGrade),
+      dpdpScore: dpdpScore,
+      hasItActGrade: !!itActGrade,
+      itActGrade: itActGrade,
+      itActGradeInk: 'color: ' + gradeInk(itActGrade),
+      itActGradeMeaning: gradeMeaning(itActGrade),
+      itActScore: itActScore,
+      itActApplicableNote: (enf && enf.applicable_now) ? 'Enforceable today — sensitive data (SPDI) observed, so the IT Act 2000 (s.43A) and SPDI Rules 2011 apply now.' : 'Becomes enforceable on DPDP commencement — no sensitive data (SPDI) was observed on the pages read.',
+      hasDuties: allDuties.length > 0,
+      nonCompDuties: nonCompDuties, nNonComp: nonCompDuties.length,
+      compDuties: compDuties, nComp: compDuties.length,
+      inForceDuties: inForceDuties, nInForce: inForceDuties.length, nInForceMet: inForceMet,
+      hasSitemap: !!(sm && sm.nodes && sm.nodes.length),
+      sitemapCount: sm.n_pages || sm.count || 0,
+      sitemapSubs: sm.n_subdomains || (sm.subdomains ? sm.subdomains.length : 0),
+      sitemapGraphNote: (function () {
+        const shown = sm.shown || (sm.nodes ? sm.nodes.length : 0);
+        const tot = sm.crawled_total || sm.n_pages || shown;
+        const lead = (tot > shown) ? ('Showing ' + shown + ' of ' + tot + ' crawled pages as a link graph')
+          : 'Every page we read, linked as the site links them';
+        return lead + ' — ' + '● home, ● policy / legal, coloured by subdomain. Hover a node for its path.';
+      })(),
+      subdomainList: (sm.subdomains || []).slice(0, 400),
+      hasSubList: !!(sm.subdomains && sm.subdomains.length > 1),
+      hasBehaviour: !!(bh && (bh.n_trackers || bh.n_cookies_pre_consent)),
+      nTrackers: bh.n_trackers || 0,
+      nCookies: bh.n_cookies || 0,
+      nCookiesPreConsent: bh.n_cookies_pre_consent || 0,
+      trackerList: trackerList,
+      trackerCats: trackerCats,
+      hasTrackerCats: trackerCats.length > 0,
+      cookieList: cookieList,
+      hasCookieList: cookieList.length > 0,
+      hasDataCategories: dataCategories.length > 0,
+      dataCategories: dataCategories,
+      locale: L,
+      languages: I ? I.LANGUAGES : [],
+      onLocaleChange: (e) => { const c = e.target.value; window.ADHIKAR_I18N.setLocale(c); this.setState({ locale: c }, () => this._ensureTranslation()); },
+      navWhat: this.tt('nav.what'), navScan: this.tt('nav.scan'), navAct: this.tt('nav.act'), navGuide: this.tt('nav.guide'), navAdd: this.tt('nav.add'),
+      tScanBadge: this.tt('scan.badge'), tScanH1: this.tt('scan.h1'), tScanSub: this.tt('scan.sub'), tScanBtn: this.tt('scan.btn'), tAnalyse: this.tt('scan.analyse'),
+      tHandoffChip: this.tt('handoff.chip'), tHandoffTitle: this.tt('handoff.title'),
+      tResultTitle: this.tt('result.title'), tabYou: this.tt('tab.you'), tabSite: this.tt('tab.site'),
+      tCollects: this.tt('result.collects'), tBaseline: this.tt('result.baseline'), tGuidance: this.tt('result.guidance'), tRights: this.tt('result.rights'),
+      tDisclaimer: this.tt('result.disclaimer'), tStored: this.tt('result.stored'),
+      showTranslatedNote: !!(r && L !== 'en-IN'),
+      tTranslated: st.translatingFor === L ? this.tt('scan.translating') : this.tt('result.translated')
+    };
+  }
+}
+
+</script>
+</body>
+</html>

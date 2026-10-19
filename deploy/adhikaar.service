@@ -1,0 +1,21 @@
+[Unit]
+Description=Adhikaar DPDP Compliance Engine (FastAPI)
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/Adhikaar/backend
+Environment=HF_HUB_OFFLINE=1
+Environment=TRANSFORMERS_OFFLINE=1
+# To enable the top-accuracy LLM judge, add your key here (optional):
+# Environment=ADHIKAAR_LLM_JUDGE=1
+# Environment=ADHIKAAR_LLM_PROVIDER=openai
+# Environment=ADHIKAAR_LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai
+# Environment=ADHIKAAR_LLM_API_KEY=your-key
+# Environment=ADHIKAAR_LLM_MODEL=gemini-3.6-flash
+ExecStart=/home/ubuntu/Adhikaar/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1 --timeout-keep-alive 300
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

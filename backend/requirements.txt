@@ -1,0 +1,18 @@
+pydantic>=2.0
+httpx>=0.24
+playwright>=1.40
+fastapi>=0.110
+uvicorn>=0.27
+reportlab>=4.0
+sentence-transformers>=2.2
+sentencepiece>=0.2          # required by the NLI DeBERTa-v3 tokenizer (verify.py Stage-2 judge)
+presidio-analyzer>=2.2     # PII/PCI detection: Aadhaar (Verhoeff), PAN, credit card (Luhn), GSTIN, ...
+pymupdf>=1.24              # PDF policy-document text extraction (docs.py)
+pytesseract>=0.3           # OCR fallback for scanned PDFs -- ALSO needs the `tesseract` binary on PATH
+pillow>=10.0               # image handling for the OCR fallback
+# Optional: subfinder (ProjectDiscovery) on PATH enables richer passive subdomain discovery
+# Optional: `tesseract` binary on PATH enables OCR of scanned (image-only) PDFs
+pdfplumber>=0.11
+trafilatura>=1.8
+docx2txt>=0.8
+python-docx>=1.1
